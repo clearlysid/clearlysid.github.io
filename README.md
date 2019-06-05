@@ -8,8 +8,8 @@
 
 ### To-Do List
 
-- [ ] Learn markdown syntax
-- [ ] Setup local dev env and repo
-- [ ] Build dummy website and push to GH pages
+- [x] Learn markdown syntax
+- [x] Setup local dev env and repo
+- [x] Build dummy website and push to GH pages
 - [ ] Connect custom domain
 - [ ] Implement SSL on domain
