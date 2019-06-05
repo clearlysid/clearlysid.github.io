@@ -1,1 +1,14 @@
-name: Siddharth Jha
+# Site settings
+title: Siddharth Jha
+email: mail@siddharthjha.com
+description: "Interaction Designer and Developer"
+baseurl: "" # the subpath of your site, e.g. /blog/
+url:  "" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+
+collections:
+  portfolio: 
+    output: true
+    permalink: /portfolio/:path/
