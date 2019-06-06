@@ -11,4 +11,4 @@
 
 - [x] Setup repo and local dev env
 - [x] Connect domain for testing
-- [ ] Create "Under Construction" landing page
+- [x] Create "Under Construction" landing page
