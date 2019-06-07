@@ -2,13 +2,21 @@
 
 ### Objectives of this project
 
-* To build a website where I can document and showcase my work 
-* To become familiar with SASS
-* Understanding how Jekyll and Github Pages Work
-* Experiment with Markdown
+* Build a website where I can document and showcase my work 
+* Learn SASS & Markdown
+* Understand how Jekyll and Github Pages Work
 
 ### To-Do List
 
-- [x] Setup repo and local dev env
-- [x] Connect domain for testing
-- [x] Create "Under Construction" landing page
+- [x] Create maintainance page and deploy
+- [ ] Write footer note'
+- [ ] Break SASS files into partials
+- [ ] 
+
+
+
+
+### Notes for self
+
+* Page title tag is in head include. set accordingly.
+*
