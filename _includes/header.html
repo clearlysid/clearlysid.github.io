@@ -2,21 +2,29 @@
     <div class="wrapper">
         <nav class="nav">
 
-            <div class="logo">SID.</div>
+            <div class="logo">
+                <a href="{{ site.baseurl }}/">SID.</a>
+            </div>
+
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+    
 
             <ul class="nav-links">
                 <li><a href="" class="underline">About</a></li>
                 <li><a href="" class="underline">Projects</a></li>
-                <li><a href="" class="underline">Blog</a></li>
+                <li><a href="{{ site.baseurl }}/blog/" class="underline">Blog</a></li>
                 <li><a href="" class="underline">Contact</a></li>
             </ul>
 
             <ul class="social-links">
-                <li><a href="https://www.instagram.com/clearlysid" class="grow"><img src="./assets/images/insta.svg" alt="Instagram" height="20px" width="20px"></a></li>
-                <li><a href="https://www.dribbble.com/clearlysid" class="grow"><img src="./assets/images/dribbble.svg" alt="Dribbble" height="20px" width="20px"></a></li>
-                <li><a href="https://www.linkedin.com/clearlysid" class="grow"><img src="./assets/images/linkedin.svg" alt="LinkedIn" height="20px" width="20px"></a></li>
+                <li><a href="https://www.instagram.com/clearlysid" class="grow"><img src="{{ site.baseurl }}/assets/images/insta.svg" alt="Instagram" height="20px" width="20px"></a></li>
+                <li><a href="https://www.dribbble.com/clearlysid" class="grow"><img src="{{ site.baseurl }}/assets/images/dribbble.svg" alt="Dribbble" height="20px" width="20px"></a></li>
+                <li><a href="https://www.linkedin.com/clearlysid" class="grow"><img src="{{ site.baseurl }}/assets/images/linkedin.svg" alt="LinkedIn" height="20px" width="20px"></a></li>
             </ul>
 
+            
         </nav>
     </div>
 </header>

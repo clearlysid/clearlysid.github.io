@@ -4,6 +4,7 @@
 nav {
     height: 6vh;
     display: flex;
+    max-width: 100%;
     width: 100%;
     align-items: center;
     justify-content: space-around;
@@ -16,6 +17,10 @@ nav {
         font-size: 2rem;
         font-weight: bold;
         width: 50px;
+    }
+
+    .burger {
+        display: none;
     }
 
     .nav-links {
@@ -41,6 +46,70 @@ nav {
         width: 50px;
         li {
             margin-right: 10px;
+        }
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    nav {
+        display: inline-block;
+        position: relative;
+
+        .burger {
+            display: inline-block;
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            right: 5%;
+            transform: translate(-5%, -50%);
+            z-index: 3;
+        }
+
+        .nav-links {
+            position: fixed;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            background: coral;
+            text-align: center;
+            clip-path: circle(100px at 90% -10%);
+            -webkit-clip-path: circle(100px at 90% -10%);
+            transition: all 0.5s cubic-bezier(.22,1.52,.31,.59);
+            pointer-events: none;
+
+            li {
+                opacity: 0;
+            }
+
+            // display: none;
+        }
+
+        .nav-links.open{
+            clip-path: circle(1000px at 90% -10%);
+            -webkit-clip-path: circle(1000px at 90% -10%);
+            pointer-events: all;
+        }
+
+        .social-links {
+            display: none;
+        }
+
+        .nav-links li:nth-child(1) {
+            transition: all 0.5s ease 0.2s;
+        }
+        .nav-links li:nth-child(2) {
+            transition: all 0.5s ease 0.4s;
+        }
+        .nav-links li:nth-child(3) {
+            transition: all 0.5s ease 0.6s;
+        }
+        .nav-links li:nth-child(4) {
+            transition: all 0.5s ease 0.8s;
+        }
+
+        li.fade {
+            opacity: 1;
         }
     }
 }
@@ -84,11 +153,6 @@ form {
     }    
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
 
 
 // footer style starts here
@@ -103,3 +167,4 @@ footer {
     padding: 20px;
     font-family: 'Heebo', sans-serif;
 }
+

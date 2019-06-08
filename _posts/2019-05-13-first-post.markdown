@@ -1,11 +1,12 @@
 ---
 layout: post
 title:  Trying out Invision Studio
-date:   2019-05-13
-description: march & april, looking forward to summer
-permalink: /fp
+permalink:
+excerpt_separator: <!--excerpt-->
 ---
 Coming from the world of Sketch, Principle and XD, the idea of having one program that can do it all seemed very appealing. Invision boasts being able to handle everything from wireframing to designing to creating high-fidelity functional prototypes and it might just end up replacing my trio of design programs. 
+
+<!--excerpt-->
 
 #### Hipster list
 <ul>
