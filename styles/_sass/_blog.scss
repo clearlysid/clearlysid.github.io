@@ -45,11 +45,30 @@
     }
 }
 
+h1 {
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    width: 60%;
+    margin: 0 auto;
+}
+
 body {
     background: #ECE9E6;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
+}
 
-    
-    
+
+.article-body {
+    margin: 0 auto;
+    width: 640px;
+    font-family: 'Heebo', 'Helvetica', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
 }

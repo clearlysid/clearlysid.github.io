@@ -13,9 +13,9 @@ nav {
 
     .logo  {
         margin-left: 20px;
-        font-family: 'Heebo', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         font-size: 2rem;
-        font-weight: bold;
+        font-weight: 800;
         width: 50px;
     }
 
@@ -40,12 +40,11 @@ nav {
 
     .social-links {
         list-style: none;
-        margin-right: 20px;
         display: flex;
         justify-content: space-around;
-        width: 50px;
+        width: 10vw;
         li {
-            margin-right: 10px;
+            margin-right: 20px;
         }
     }
 }
@@ -57,12 +56,12 @@ nav {
         position: relative;
 
         .burger {
+            cursor: pointer;
             display: inline-block;
             position: absolute;
-            cursor: pointer;
-            top: 50%;
-            right: 5%;
-            transform: translate(-5%, -50%);
+            top: 0;
+            right: 0;
+            margin: 20px 20px;
             z-index: 3;
         }
 
@@ -73,8 +72,8 @@ nav {
             width: 100%;
             background: coral;
             text-align: center;
-            clip-path: circle(100px at 90% -10%);
-            -webkit-clip-path: circle(100px at 90% -10%);
+            clip-path: circle(50px at 90% -10%);
+            -webkit-clip-path: circle(50px at 90% -10%);
             transition: all 0.5s cubic-bezier(.22,1.52,.31,.59);
             pointer-events: none;
 

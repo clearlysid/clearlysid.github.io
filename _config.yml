@@ -9,7 +9,9 @@ url:  "" # the base hostname & protocol for your site
 markdown: kramdown
 
 sass:
-  sass_dir: /assets/styles/_sass
+  sass_dir: /styles/_sass
+
+excerpt_separator: <!--excerpt-->
 
 collections:
   portfolio: 
