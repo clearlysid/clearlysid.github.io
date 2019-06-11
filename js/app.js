@@ -1,17 +1,12 @@
-// window.addEventListener('load', () => {
-//     const preload = document.querySelector('.preload');
-//     setTimeout(function() {
-//         preload.classList.add('preload-finish');
-//       }, 5000);
-// });
+// const swup = new Swup();
 
-const burger = document.querySelector(".burger");
-const navlinks = document.querySelector(".nav-links");
+const navTail = document.querySelector('.nav-tail');
 const links = document.querySelectorAll(".nav-links li");
+const burger = document.querySelector('.burger');
 
 burger.addEventListener('click', () => {
-    navlinks.classList.toggle("open");
-    links.forEach(link =>{
+    navTail.classList.toggle("open");
+    links.forEach(link => {
         link.classList.toggle("fade");
-    })
+    });
 });

@@ -2,10 +2,26 @@
 # This is the SCSS file that will be compiled to the main stylesheet of the site
 ---
 
+// import google fonts
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Questrial&display=swap');
+
+
+$background-colour: #EFEFEF;
+$body-font: 'Questrial', 'Helvetica', sans-serif;
+$heading-font: 'Montserrat', 'Helvetica' sans-serif;
+$root-font-size: 20px;
+
+body {
+  font-family: $body-font;
+}
+
+
 @import
   "_base",
   "_layouts",
   "_animations",
-  "_blog"
+  "_blog",
+  "_posts",
+  "_nav"
 ;
 
