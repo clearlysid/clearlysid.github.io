@@ -3,13 +3,12 @@
 ---
 
 // import google fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Questrial&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Hind:300,400,500,600,700&display=swap');
 
 $background-colour: #EFEFEF;
-$body-font: 'Questrial', 'Helvetica', sans-serif;
-$heading-font: 'Montserrat', 'Helvetica' sans-serif;
-$root-font-size: 20px;
+$body-font: 'Hind', 'Helvetica', sans-serif;
+$heading-font: 'Montserrat', 'Helvetica', sans-serif;
+$root-font-size: 18px;
 
 body {
   font-family: $body-font;
@@ -19,9 +18,9 @@ body {
 @import
   "_base",
   "_layouts",
+  "_components",
   "_animations",
   "_blog",
-  "_posts",
-  "_nav"
+  "_posts"
 ;
 

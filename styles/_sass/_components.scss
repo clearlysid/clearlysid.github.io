@@ -1,7 +1,7 @@
 nav {
     height: 2.5rem;
     width: 100%;
-    position: absolute; // change to relative to bring inline
+    position: relative; // change to relative to bring inline
 }
 
 .nav-head {
@@ -17,7 +17,7 @@ nav {
     text-align: center;
     position: absolute;
     margin: 0 auto;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     width: 100%;
     height: 100%;
     color: #888888;
@@ -41,6 +41,7 @@ nav {
     margin-left: 1rem;
     font-family: $heading-font;
     font-weight: 300;
+    padding: 0rem 0rem 0.2rem 0rem;
 }
 
 .social {
@@ -48,7 +49,6 @@ nav {
     border-radius: 3rem;
     fill: black;
 }
-
 
 @media screen and (max-width: 768px){
 
@@ -59,6 +59,9 @@ nav {
         height: 100vh;
         width: 100%;
         position: absolute;
+        top: 0;
+        left: 0;
+        margin-top: 0;
     }
 
     .nav-head {
@@ -126,9 +129,6 @@ nav {
         margin: 0 auto;
     }
 
-
-    
-
     .nav-tail.open {
         clip-path: circle(110vmax at calc(100% - 1.5rem) calc(0% + 1.5rem));  // 92% 4%
         -webkit-clip-path: circle(110vmax at calc(100% - 1.5rem) calc(0% + 1.5rem));
@@ -160,55 +160,52 @@ nav {
 
 }
 
-
-
 footer {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.200);
     text-align: center;
-    z-index: 0;
+    z-index: 10;
     font-size: 0.5rem;
 }
 
-
-
 @media screen and (min-width: 769px){
+
     .burger {
         display: none;
     }
 
     .icon-twitter:hover {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-color: rgb(106, 189, 252);
         background-color: #38A1F3;
     }
 
     .icon-insta:hover {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-color: #d973f8;
         background-color: #d6249f;
-        background-color: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 30%,#d6249f 60%,#285AEB 90%);
+        background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 30%,#d6249f 60%,#285AEB 90%);
     }
 
     .icon-dribbble:hover {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-color: #fc81bf;
         background-color: #ea4c89;
     }
 
     .icon-github:hover {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-color: #F4CBB2;
         background-color: #211F1F;
+        background-color: #6e5494;
     }
 
     .icon-linkedin:hover {
-        transition: all 0.3s ease;
+        transition: all 0.4s ease;
         background-color: rgb(113, 222, 255);
         background-color: #0077B5;
     }
-
 }
