@@ -1,0 +1,18 @@
+
+h1 {
+    margin-top: 20vh;
+    font-family: $heading-font;
+    text-align: center;
+    font-size: 72px;
+}
+
+p {
+    text-align: center;
+}
+
+.welcome {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
