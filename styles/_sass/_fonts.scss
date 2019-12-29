@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Noah";
+    src: url("fonts/Noah-Regular.woff2") format('woff2');
+    src: url("fonts/Noah-Regular.woff") format('woff');
+}
+
+@font-face {
+    font-family: "Noah";
+    src: url("fonts/Noah-Bold.woff2") format('woff2');
+    src: url("fonts/Noah-Bold.woff") format('woff');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "Noah";
+    src: url("fonts/Noah-RegularItalic.woff2") format('woff2');
+    src: url("fonts/Noah-RegularItalic.woff") format('woff');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "DM Serif Display";
+    src: url("fonts/DMSerifDisplay-Regular.woff2") format('woff2'),
+        url("fonts/DMSerifDisplay-Regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

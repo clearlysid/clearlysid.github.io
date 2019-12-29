@@ -5,9 +5,11 @@
 // import google fonts
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Hind:300,400,500,600,700&display=swap');
 
-$background-colour: #EFEFEF;
-$body-font: 'Hind', 'Helvetica', sans-serif;
-$heading-font: 'Montserrat', 'Helvetica', sans-serif;
+@import "_fonts" ;
+
+$background-colour: white;
+$body-font: 'Noah', 'Helvetica', sans-serif;
+$heading-font: 'DM Serif', 'Times New Roman', serif;
 $root-font-size: 18px;
 
 body {
@@ -19,12 +21,7 @@ body {
   "_base",
   "_layouts",
   "_components",
-  "_animations",
-  "_blog",
-  "_posts"
+  "_animations"
 ;
 
 
-.red {
-  margin: 0 auto;
-}

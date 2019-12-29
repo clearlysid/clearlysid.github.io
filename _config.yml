@@ -1,7 +1,7 @@
 # Site settings
 title: Siddharth Jha
 email: mail@siddharthjha.com
-description: "Interaction Design Student"
+description: "Digital Design Student"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url:  "" # the base hostname & protocol for your site
 
@@ -14,6 +14,6 @@ sass:
 excerpt_separator: <!--excerpt-->
 
 collections:
-  portfolio: 
+  work: 
     output: true
-    permalink: /portfolio/:path/
+    permalink: /work/:path/
