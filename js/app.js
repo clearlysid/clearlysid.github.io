@@ -17,3 +17,22 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 5000
   });
+
+
+window.onload = function() {
+	lax.setup() // init
+
+	const updateLax = () => {
+		lax.update(window.scrollY)
+		window.requestAnimationFrame(updateLax)
+	}
+
+	window.requestAnimationFrame(updateLax)
+}
+
+const burger = document.querySelector('.burger');
+const mainNav = document.querySelector('.main-nav');
+
+burger.addEventListener('click', () => {
+  mainNav.classList.toggle('open');
+});
