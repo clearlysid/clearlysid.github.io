@@ -66,6 +66,7 @@
     -webkit-animation-direction: normal, alternate;
     animation-direction: normal, alternate;
     fill: white;
+    stroke: white;
 }
 
 
@@ -101,4 +102,27 @@
 .hvr-underline:focus:before,
 .hvr-underline:active:before {
     right: 0;
+}
+
+@media screen and (min-width: 600px){
+
+    .icon-twitter:hover {
+        transition: all 0.4s ease;
+        background-color: #38A1F3;
+    }
+
+    .icon-insta:hover {
+        transition: all 0.4s ease;
+        background-image: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 30%,#d6249f 60%,#285AEB 90%);
+    }
+
+    .icon-dribbble:hover {
+        transition: all 0.4s ease;
+        background-color: #ea4c89;
+    }
+
+    .icon-linkedin:hover {
+        transition: all 0.4s ease;
+        background-color: #0077B5;
+    }
 }
