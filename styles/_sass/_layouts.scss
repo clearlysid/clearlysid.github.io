@@ -1,64 +1,7 @@
-.img-hero {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
-    object-position: 55% 0%;
-    position: absolute;
-    z-index: -2;
-}
 
-article {
-    max-width: 42rem;
-    margin: 1em auto;
-    padding: 2rem 0rem;
-}
-
-.article-title {
-    margin: 0em auto;
-    padding: 0rem 2rem;
-    font-family: $heading-font;
-    font-size: 2.25rem;
-    font-weight: 700; 
-}
-
-.article-details {
-    margin: 0rem auto;
-    padding: 0rem 2rem;
-    font-family: $heading-font;
-    font-size: 1.1rem;
-    font-weight: 300; 
-}
-
-.article-image {
-    margin: 0rem auto;
-    padding: 2rem 2rem 1rem;
-    width: 100%;
-}
-
-.article-body {
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    font-family: $body-font;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #222222;
-    line-height: 1.5;
-    letter-spacing: 0.01rem;
-
-    img {
-        padding: 1rem 0;
-        width: 100%;
-    }
-
-    p {
-        padding: 1rem 0;
-    }
-
-    pre {
-        padding: 1em 2em;
-        margin: 0 2rem;
-        font-size: 0.8rem;
-        border-radius: 1em;
-        background-color: rgba(0, 0, 0, 0.089);
-    }
+.ml3 {
+    font-family: 'DM Serif';
+    font-size: 10vw;
+    text-align: center;
+    padding-top: 40vh;
 }
