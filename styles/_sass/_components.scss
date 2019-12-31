@@ -6,6 +6,8 @@
     left: 0;
     padding: 1em;
     z-index: 10;
+    background-color: transparent;
+    border: none;
 }
 
 // Navigation Styling for Desktop
@@ -43,7 +45,10 @@
     
 
     .mail-link {
+        display: flex;
+        flex-direction: row;
         font-size: 0.6em;
+
         svg {
             margin-right: 1em;
             margin-bottom: -0.1em;  // this aligns is vertically with the email id
@@ -70,8 +75,6 @@
 
 @media screen and (max-width: 767px) {
 
-    
-
     .burger {
         position: fixed;
         top: 0;
@@ -80,6 +83,79 @@
         cursor: pointer;
         pointer-events: all;
         z-index: 10;
+        padding: 15px 15px;
+        display: inline-block;
+        border: 0;
+        background-color: transparent;
+    }
+
+    .burger-box {
+        width: 30px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+    }
+
+    .burger-inner {
+        display: block;
+        top: 50%;
+        margin-top: -2px;
+    }
+
+    .burger-inner,
+    .burger-inner::before,
+    .burger-inner::after {
+        width: 30px;
+        height: 2px;  // width of burger bars
+        background-color: #000;
+        border-radius: 4px;
+        position: absolute;
+        transition-property: transform;
+        transition-duration: 0.15s;
+        transition-timing-function: ease;
+    }
+
+    .burger-inner::before,
+    .burger-inner::after {
+        content: "";
+        display: block;
+    }
+
+    .burger-inner::before {
+        top: -10px;
+    }
+
+    .burger-inner::after {
+        bottom: -10px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        width: 100%;
+        height: 60vh;
+    
+        a {
+            text-transform: uppercase;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            text-align: center;
+            opacity: 0;
+            transform:translateX(20px);
+        }
+
+        a:nth-child(1) {
+            transition: all 0.2s ease 0.3s;
+        }
+        a:nth-child(2) {
+            transition: all 0.2s ease 0.4s;
+        }
+        a:nth-child(3) {
+            transition: all 0.2s ease 0.5s;
+        }
+      
+        
     }
 
     .main-nav {
@@ -88,46 +164,54 @@
         position: fixed;
         width: 100%;
         height: 100vh;
-        justify-content: space-between;
-        background-color: #efefef;
-        clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
-        -webkit-clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%);
-        transition: all 0.3s ease-in-out;
+        justify-content: space-evenly;
+        background-color: rgba(255, 255, 255, 0.9);
+        // 14 left, 23 right. x >,y v.
+        // clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+        // -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(.81,0,.31,.99);
         pointer-events: none;
         z-index: 8;
+        padding-top: 20vh;
+        padding-bottom: 20vh;
     }
 
     .main-nav.open {
-        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        // clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        // -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        opacity: 1;
         pointer-events: all;
 
-    }
+            .nav-links {
+                a {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
 
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        width: 100%;
-        height: 70vh;
-        padding: 20vh 3em;
-    
-        a {
-            text-transform: uppercase;
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 0.5em;
-            text-align: center;
+            .nav-bottom {
+                opacity: 1;
+            }
         }
-    }
+
+
+    
 
     .nav-bottom {
         display: flex;
         flex-direction: column-reverse;
         height: 30vh;
-        width: 80%;
-        margin: 0 auto 10vh;
+        width: 100%;
         align-items: center;
+        opacity: 0;
+        transition: all 0.5s ease 0.8s;
+
+        .mail-link {
+            svg {
+                display: none;
+            }
+        }
     }
 
     .social-links {
@@ -138,17 +222,14 @@
         margin-bottom: 1em;
     
         li {
-            margin: 0 0.25em;
-            padding: 0 0.25em;
-            border-radius: 10rem;
+            margin: 0 0.8em;
+
+            svg {
+                height: 20px;
+                width: 20px;
+            }
         }
     }
-
+    
 
 }
-
-
-
-
-
-

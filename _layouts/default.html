@@ -2,12 +2,23 @@
 <html lang="en">
 {% include head.html %}
 <body>
+
+    {% include nav.html %}
+
+    <main id="swup" class="transition-fade"> 
+
+
     {% include header.html %}
     
     {{ content }}
 
     {% include footer.html %}
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
+    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+    <script src="{{ site.baseurl }}/js/app.js"></script>
+
 </body>
 </html>
-
-

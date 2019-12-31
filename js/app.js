@@ -1,23 +1,20 @@
-console.log("Hello MK!");
+console.log("app.js is working!");
 
-var textWrapper = document.querySelector('.ml3');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+const swup = new Swup();
+const burger = document.querySelector('.burger');
+const mainNav = document.querySelector('.main-nav');
 
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml3 .letter',
-    opacity: [0,1],
-    easing: "easeInOutQuad",
-    duration: 2250,
-    delay: (el, i) => 150 * (i+1)
-  }).add({
-    targets: '.ml3',
-    opacity: 0,
-    duration: 1000,
-    easing: "easeOutExpo",
-    delay: 5000
-  });
+burger.addEventListener('click', () => {
+  mainNav.classList.toggle('open');
+  burger.classList.toggle('is-active');
+});
 
+swup.on('clickLink', function() {
+  mainNav.classList.remove('open');
+  burger.classList.remove('is-active');
+});
+
+// Scroll Library
 
 window.onload = function() {
 	lax.setup() // init
@@ -30,9 +27,7 @@ window.onload = function() {
 	window.requestAnimationFrame(updateLax)
 }
 
-const burger = document.querySelector('.burger');
-const mainNav = document.querySelector('.main-nav');
+// swup
 
-burger.addEventListener('click', () => {
-  mainNav.classList.toggle('open');
-});
+
+
