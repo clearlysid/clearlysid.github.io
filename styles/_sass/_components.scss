@@ -1,10 +1,8 @@
 .logo {
-    height: 6vh;
-    width: 6vh;
     position: fixed;
     top: 0;
     left: 0;
-    padding: 1em;
+    padding: 10px;
     z-index: 10;
     background-color: transparent;
     border: none;
@@ -18,7 +16,6 @@
 
 @media screen and (min-width: 768px) {
     .nav-links {
-        height: 6vh;
         display: flex;
         flex-direction: row;
         list-style: none;
@@ -30,7 +27,7 @@
         filter: invert(0);
 
         a {
-            margin: 0 0.5em;
+            margin: 0 0.5rem;
             text-transform: uppercase;
             font-size: 0.7rem;
         }
@@ -89,8 +86,6 @@
         position: fixed;
         top: 0;
         right: 0;
-        height: 6vh;
-        width: 6vh;
         cursor: pointer;
         pointer-events: all;
         z-index: 10;
