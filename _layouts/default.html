@@ -4,20 +4,11 @@
 <body>
 
     {% include nav.html %}
-
-    <main id="swup" class="transition-fade"> 
-
-
-    {% include header.html %}
-    
     {{ content }}
-
     {% include footer.html %}
 
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/lax.js"></script>
-    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.10.0/rellax.min.js"></script>
+    <script src="https://unpkg.com/scroll-out/dist/scroll-out.min.js"></script>
     <script src="{{ site.baseurl }}/js/app.js"></script>
 
 </body>

@@ -16,4 +16,6 @@
 
 ### Notes for self
 
-* Page title tag is in head include. set accordingly.
+* Modular portfolio pieces
+* Dark Mode
+* Dynamic colour for top-nav

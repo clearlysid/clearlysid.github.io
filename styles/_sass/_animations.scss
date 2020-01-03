@@ -52,6 +52,10 @@
         box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     }
 
+    .mail {
+        display: flex;
+    }
+
     .hvr-bob:hover, .hvr-bob:focus, .hvr-bob:active {
         -webkit-animation-name: hvr-bob-float, hvr-bob;
         animation-name: hvr-bob-float, hvr-bob;

@@ -1,6 +1,6 @@
 .logo {
-    height: 4em;
-    width: 4em;
+    height: 6vh;
+    width: 6vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -8,12 +8,17 @@
     z-index: 10;
     background-color: transparent;
     border: none;
+    filter: invert(0);
+    transition: all 0.3s ease;
 }
+
+
 
 // Navigation Styling for Desktop
 
 @media screen and (min-width: 768px) {
     .nav-links {
+        height: 6vh;
         display: flex;
         flex-direction: row;
         list-style: none;
@@ -21,11 +26,13 @@
         top: 0;
         right: 0;
         padding: 1em;
-    
+        transition: all 0.3s ease;
+        filter: invert(0);
+
         a {
-            padding: 0 0.5em;
+            margin: 0 0.5em;
             text-transform: uppercase;
-            font-size: 0.8em;
+            font-size: 0.7rem;
         }
     }
 
@@ -44,14 +51,18 @@
     }
     
 
-    .mail-link {
+    .mail {
         display: flex;
         flex-direction: row;
-        font-size: 0.6em;
-
+        align-items: center;
         svg {
             margin-right: 1em;
-            margin-bottom: -0.1em;  // this aligns is vertically with the email id
+        }
+
+        .mail-id {
+            font-size: 0.7rem;
+            margin: 0;
+            padding: 0;
         }
     }
     
@@ -60,7 +71,6 @@
         list-style: none;
         align-items: center;
         justify-content: space-around;
-    
         li {
             margin: 0 0.25em;
             padding: 0 0.25em;
@@ -68,7 +78,7 @@
         }
     }
 
-}
+} // Desktop-only styling ends
 
 
 // Navigation Styling for Mobile
@@ -79,7 +89,8 @@
         position: fixed;
         top: 0;
         right: 0;
-        margin: 1em;
+        height: 6vh;
+        width: 6vh;
         cursor: pointer;
         pointer-events: all;
         z-index: 10;
@@ -87,6 +98,8 @@
         display: inline-block;
         border: 0;
         background-color: transparent;
+        transition: all 0.3s ease;
+        filter: invert(0);
     }
 
     .burger-box {
@@ -94,6 +107,7 @@
         height: 24px;
         display: inline-block;
         position: relative;
+        background-color: transparent;
     }
 
     .burger-inner {
@@ -207,9 +221,12 @@
         opacity: 0;
         transition: all 0.5s ease 0.8s;
 
-        .mail-link {
+        .mail {
             svg {
                 display: none;
+            }
+            .mail-id {
+                font-size: 0.8em;
             }
         }
     }
@@ -232,4 +249,9 @@
     }
     
 
+} // Mobile-only styling ends
+
+
+.light {
+    filter: invert(1);
 }

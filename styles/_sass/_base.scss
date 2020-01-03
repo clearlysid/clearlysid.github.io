@@ -1,4 +1,5 @@
 :root { font-size: $root-font-size; }
+@media screen and (max-width: 767px) {:root { font-size: $root-font-size-mobile; }}
 
 html { height: 100%; }
 
@@ -8,6 +9,8 @@ html { height: 100%; }
     box-sizing: border-box;
     text-decoration: none;
 }
+
+
 
 a { colour: inherit; }
 a:link { text-decoration: none; color: inherit;}

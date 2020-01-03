@@ -2,16 +2,14 @@
 # This is the SCSS file that will be compiled to the main stylesheet of the site
 ---
 
-// import google fonts
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800|Hind:300,400,500,600,700&display=swap');
-
 @import "_fonts" ;
 
 $background-colour: white;
 $primary-colour: black;
 $body-font: 'Noah', 'Helvetica', sans-serif;
 $heading-font: 'DM Serif', 'Times New Roman', serif;
-$root-font-size: 18px;
+$root-font-size: 20px;
+$root-font-size-mobile: 16px;
 
 body {
   font-family: $body-font;

@@ -1,33 +1,28 @@
 console.log("app.js is working!");
 
-const swup = new Swup();
 const burger = document.querySelector('.burger');
 const mainNav = document.querySelector('.main-nav');
+const navLinks = document.querySelector('.nav-links');
+const siteLogo = document.querySelector('.logo');
+const projectHeader = document.querySelector(".project-header");
+// const headBg = window.getComputedStyle(projectHeader).backgroundColor;
 
 burger.addEventListener('click', () => {
   mainNav.classList.toggle('open');
   burger.classList.toggle('is-active');
 });
 
-swup.on('clickLink', function() {
-  mainNav.classList.remove('open');
-  burger.classList.remove('is-active');
-});
+// swup.on('clickLink', function() {
+//   mainNav.classList.remove('open');
+//   burger.classList.remove('is-active');
+// });
 
 // Scroll Library
 
-window.onload = function() {
-	lax.setup() // init
+var rellax = new Rellax('.rellax', {
+    center: true
+});
 
-	const updateLax = () => {
-		lax.update(window.scrollY)
-		window.requestAnimationFrame(updateLax)
-	}
-
-	window.requestAnimationFrame(updateLax)
-}
-
-// swup
-
-
-
+ScrollOut({
+    /* options */
+  });
