@@ -4,20 +4,21 @@ title: Siddharth's Work
 permalink: ./work/
 ---
 
+
+
 <div class="projects-section">
     <ul id="project-grid">
     {% for project in site.work %}
         <li class="project-item">
             <a href="{{ site.baseurl }}{{ project.permalink }}">
-                <div class ="project-item-image" style="background-image: {{ project.image }};"></div>
-                <!-- <div class ="project-item-info"><h2>{{ project.title }}</h2></div> -->
+                <!-- {{ project.title }} -->
+                <div class ="project-item-image">
+                    <img src="https://source.unsplash.com/weekly?cat" alt="">
+                </div>
             </a>
         </li>
     {% endfor %}
     </ul>
-
-
-
 </div>
 
 

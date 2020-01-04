@@ -24,4 +24,7 @@
         url("fonts/DMSerifDisplay-Regular.woff") format('woff');
     font-weight: normal;
     font-style: normal;
+    // -webkit-font-smoothing: antialiased;
+    // -webkit-font-smoothing: subpixel-antialiased;
+    // font-smoothing: none;
 }

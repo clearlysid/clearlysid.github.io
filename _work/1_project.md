@@ -20,7 +20,7 @@ Looking into how the composition of air has changed over the years, I realised t
 
 I came across a rare health phenomenon known as “Electromagnetic Hypersensitivity” or EHS for short. Reading through several papers published by the World Health Organization, it was clear to me that even though there isn’t yet an established link between the symptoms of EHS and EMF on a biological level, it is still a very real possibility and an extremely alarming one at that.
 
-<img src="{{ site.baseurl }}/assets/images/1.png" alt="" data-scroll>
+<img src="{{ site.baseurl }}/assets/images/1.png" alt="" class="test-image">
 
 ### Conclusions
 
