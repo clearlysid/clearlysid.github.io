@@ -1,6 +1,5 @@
 ---
 layout: project
-index: 2
 permalink: /vaya-lynk
 title: Vaya Lynk
 description: Packaging Design for Bluetooth Tracker

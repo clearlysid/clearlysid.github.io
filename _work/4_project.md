@@ -1,6 +1,5 @@
 ---
 layout: project
-index: 4
 permalink: /project-4
 title: Project 4
 description: Description for Project 4
