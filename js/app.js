@@ -63,27 +63,12 @@ anime.timeline({loop: true})
     targets: '.ml3 .letter',
     opacity: [0,1],
     easing: "easeInOutQuad",
-    duration: 2250,
+    duration: 5000,
     delay: (el, i) => 150 * (i+1)
   }).add({
     targets: '.ml3',
     opacity: 0,
     duration: 1000,
     easing: "easeOutExpo",
-    delay: 1000
+    delay: 2000
   });
-
-
-// testImage.addEventListener('mouseenter', () => {
-//     // noiseMap.setAttribute(scale, "20");
-//     console.log("mouse is entering");
-//     document.getElementById("Turbulence").setAttribute("baseFrequency", "0.05 0.03");
-// })
-
-// testImage.addEventListener('mouseleave', () => {
-//     // noiseMap.setAttribute(scale, "0");
-//     console.log("mouse is leaving");
-//     document.getElementById("Turbulence").setAttribute("baseFrequency", "0 0");
-// })
-
-  
