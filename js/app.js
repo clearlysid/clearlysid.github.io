@@ -72,3 +72,40 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 2000
   });
+
+
+  class ShapeOverlays {
+    constructor(elm) {
+      this.elm = elm; // Parent SVG element.
+      this.path = elm.querySelectorAll('path'); // Path elements in parent SVG. These are the layers of the overlay.
+      this.numPoints = 18; // Number of control points for Bezier Curve.
+      this.duration = 600; // Animation duration of one path element.
+      this.delayPointsArray = []; // Array of control points for Bezier Curve.
+      this.delayPointsMax = 300; // Max of delay value in all control points.
+      this.delayPerPath = 60; // Delay value per path.
+      this.timeStart = Date.now();
+      this.isOpened = false;
+    }
+    ...
+  }
+  const elmOverlay = document.querySelector('.shape-overlays');
+  const overlay = new ShapeOverlays(elmOverlay);
+
+  toggle() {
+    const range = 4 * Math.random() + 6;
+    for (var i = 0; i < this.numPoints; i++) {
+      const radian = i / (this.numPoints - 1) * Math.PI;
+      this.delayPointsArray[i] = (Math.sin(-radian) + Math.sin(-radian * range) + 2) / 4 * this.delayPointsMax;
+    }
+    ...
+  }
+  
+  updatePath(time) {
+    const points = [];
+    for (var i = 0; i < this.numPoints; i++) {
+      points[i] = ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1)) * 100
+    }
+    ...
+  }
+
+  ShapeOverlays.toggle();
