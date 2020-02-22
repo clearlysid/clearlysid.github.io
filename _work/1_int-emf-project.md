@@ -10,9 +10,10 @@ image: "https://source.unsplash.com/weekly?technology"
 color: 09041b
 ---
 
-### Assignment Brief
+# Assignment Brief
 Our objective was to derive a design project based on any one of the five classical elements: Fire, Water, Air, Earth or Aether, and execute it. As this semester was about to close out for the holidays, I wanted this to be a short, fun project where I’d get to learn and experiment with a new skill. The classical elements provided me a broad base from which I started to think, eventually settling on the element Air.
 <img src="{{ site.baseurl }}/assets/images/1.jpg" alt="">
+
 
 
 ### Research

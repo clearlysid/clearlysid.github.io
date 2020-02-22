@@ -4,10 +4,10 @@
 
 @import "_fonts" ;
 
-$background-colour: white;
+$background-colour: #ddd;
 $primary-colour: black;
 $body-font: 'Noah', 'Helvetica', sans-serif;
-$heading-font: 'DM Serif', 'Times New Roman', serif;
+$heading-font: 'Avenir Next', 'Helvetica', sans-serif;
 $root-font-size: 20px;
 $root-font-size-mobile: 16px;
 
@@ -22,5 +22,3 @@ body {
   "_components",
   "_animations"
 ;
-
-

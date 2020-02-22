@@ -46,6 +46,7 @@
 #project-grid {
     width: 90vw;
     margin: 10vh auto;
+    padding-bottom: 10vh;
     list-style: none;
     max-width: 1200px;
 }
@@ -55,12 +56,13 @@
     position: relative;
     width: 30%;
     margin-bottom: 0;
-    background-color: lightgray;
+    background-color: white;
     height: 0px;
     padding-top: 30%;
     overflow:hidden;
-
 }
+
+
 
 // Alternating Wide Projects x 3
 .project-item:nth-child(3n+1) {
