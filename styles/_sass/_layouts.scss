@@ -1,0 +1,42 @@
+.project-header {
+    height: 60vh;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20vw;
+    padding-top: 10vh;
+    color: black;
+
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .project-title {
+        margin: 0;
+        padding: 0;
+    }
+
+    .project-type {
+        font-family: $body-font;
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .project-description {
+        font-size: 1.4em;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.case-study {
+    max-width: 800px;
+    margin: 0 auto;
+    img {
+        width: 100%;
+        margin: 1em 0;
+    }
+}

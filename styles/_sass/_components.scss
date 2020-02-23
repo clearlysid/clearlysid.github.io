@@ -35,8 +35,9 @@
 .project-list {
         position: fixed;
         bottom: 0;
-        width: 100%;
+        max-width: 100%;
         padding: 0 2vw;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
@@ -48,9 +49,10 @@
 
 .project-item-title {
     font-family: Noah;
-    text-align: right;
+    text-align: center;
+    text-transform: uppercase;
     width: 100%;
-    font-weight: normal;
+    font-weight: bold;
     transform: translateY(-30px);
 }
 
@@ -70,23 +72,23 @@
     height: 30vh;
 }
 
-
-
 .primary-nav-container {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 280px;
     width: 280px;
-    position: absolute;
     z-index: 2;
+    margin-left: auto;
+    border-radius: 50%;
 }
-
-.primary-nav-container:hover {
-    border-top-style: hidden;
-}
-
 
 .burger {
     position: absolute;
-    margin-left: 2rem;
+    top: 0;
+    right: 0;
+    margin: 2vh 4vh;
 }
 
 

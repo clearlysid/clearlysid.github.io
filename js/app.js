@@ -84,8 +84,8 @@ primaryNavContainer.addEventListener("mouseenter", function( event ) {
     console.log("menu opens now");
     const menuFlyout = anime({
         targets: '.bar',
-        translateX: 48,
-        translateY: (elm, index, t) => index * 50,
+        translateX: -48,
+        translateY: (elm, index, t) => 20 + (index * 50),
         scaleX: 4,
         scaleY: 8,
         easing: 'easeInOutSine',
@@ -102,7 +102,7 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
     const menuFlyin = anime({
         targets: '.bar',
         translateX: 0,
-        translateY: (elm, index, t) => index / 50,
+        translateY: (elm, index, t) => (index / 50),
         scaleX: 1,
         scaleY: 1,
         easing: 'easeInOutSine',
