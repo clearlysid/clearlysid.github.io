@@ -8,6 +8,10 @@ layout: default
         <h3>Hello, I'm Siddharth!</h3>
         <p>A design student focused on UX and Interaction, who loves slick animation and occasionally dabbles in code.</p>
         <p>I’m looking for an <b>Internship</b> for <b>Summer 2020.</b> If you have a project/company that I can be of help to, please drop me an email.</p>
+        <!-- <div class="hero-buttons">
+            <a href="mailto:mail@siddharthjha.com"><button>Email</button></a><a href=""><button>Resume</button></a>
+        </div> -->
+        
     </div>
     <div class="hero-image">
         <img src="/assets/images/hero-opt.png" alt="">
@@ -16,7 +20,7 @@ layout: default
 
 <div class="project-list">
     {% for project in site.work %}
-        <a class="project-item">
+        <a class="project-item" href="{{ site.baseurl }}{{ project.permalink }}">
             <div class="box" style="position: relative;">
                 <div class="project-item-bg"></div>
                 <h5 class="project-item-title">{{ project.work }}</h5>

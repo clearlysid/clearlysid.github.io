@@ -32,6 +32,12 @@
     }
 }
 
+.hero-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
 .project-list {
         position: fixed;
         bottom: 0;
