@@ -5,8 +5,9 @@ title: International EMF Project
 description: A motion infographic explainer for the International EMF Project
 client: Class Assignment
 timeline: 5 weeks
-work: Motion Design
-image: "https://source.unsplash.com/weekly?technology"
+work: motion design
+image: 
+image-m: "https://source.unsplash.com/weekly?technology"
 color: 09041b
 ---
 

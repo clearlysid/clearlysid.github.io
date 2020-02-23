@@ -5,9 +5,9 @@ title: Project 5
 description: Description for Proejct 5
 client: Class Assignment
 timeline: 1 week
-work: Packaging Design
+work: print, editorial
 image:
-color: 
+color: ffffff
 ---
 
 
@@ -19,7 +19,7 @@ Vaya Lynk is a bluetooth smart tracker
 
 I came across a rare health phenomenon known as “Electromagnetic Hypersensitivity” or EHS for short. Reading through several papers published by the World Health Organization, it was clear to me that even though there isn’t yet an established link between the symptoms of EHS and EMF on a biological level, it is still a very real possibility and an extremely alarming one at that.
 
-<img src="{{ site.baseurl }}/assets/images/1.png" alt="" class="lax" data-lax-preset="fadeIn eager">
+<img src="{{ site.baseurl }}/assets/images/1.png">
 
 ### Conclusions
 

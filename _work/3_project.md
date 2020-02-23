@@ -5,9 +5,9 @@ title: Project 3
 description: Description for Project Three
 client: Class Assignment
 timeline: 1 week
-work: Packaging Design
+work: ui animation
 image:
-color: 
+color: ffffff
 ---
 
 

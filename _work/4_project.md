@@ -5,13 +5,13 @@ title: Project 4
 description: Description for Project 4
 client: Class Assignment
 timeline: 1 week
-work: Packaging Design
-image:
-color: 
+work: print + editorial
+image: /assets/images/book-cover.jpg
+color: ffffff
 ---
 
 
-## Research
+## Print Design
 
 Vaya Lynk is a bluetooth smart tracker 
 

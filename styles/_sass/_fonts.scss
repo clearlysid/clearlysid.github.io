@@ -19,12 +19,41 @@
 }
 
 @font-face {
-    font-family: "DM Serif";
-    src: url("fonts/DMSerifDisplay-Regular.woff2") format('woff2'),
-        url("fonts/DMSerifDisplay-Regular.woff") format('woff');
+    font-family: 'Avenir Next';
+    src: url('fonts/AvenirNext-Bold.woff2') format('woff2'),
+        url('fonts/AvenirNext-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/AvenirNext-Regular.woff2') format('woff2'),
+        url('fonts/AvenirNext-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-    // -webkit-font-smoothing: antialiased;
-    // -webkit-font-smoothing: subpixel-antialiased;
-    // font-smoothing: none;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/AvenirNext-Medium.woff2') format('woff2'),
+        url('fonts/AvenirNext-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/AvenirNext-Heavy.woff2') format('woff2'),
+        url('fonts/AvenirNext-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    src: url('fonts/AvenirNext-UltraLight.woff2') format('woff2'),
+        url('fonts/AvenirNext-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
 }

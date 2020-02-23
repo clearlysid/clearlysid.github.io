@@ -5,9 +5,9 @@ title: Vaya Lynk
 description: Packaging Design for Bluetooth Tracker
 client: Class Assignment
 timeline: 1 week
-work: Packaging Design
+work: packaging design
 image:
-color: 
+color: ffffff
 ---
 
 

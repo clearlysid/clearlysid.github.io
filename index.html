@@ -2,3 +2,25 @@
 title: Siddharth's Portfolio
 layout: default
 ---
+
+<div class="hero">
+    <div class="hero-text">
+        <h3>Hello, I'm Siddharth!</h3>
+        <p>A design student focused on UX and Interaction, who loves slick animation and occasionally dabbles in code.</p>
+        <p>I’m looking for an <b>Internship</b> for <b>Summer 2020.</b> If you have a project/company that I can be of help to, please drop me an email.</p>
+    </div>
+    <div class="hero-image">
+        <img src="/assets/images/hero-opt.png" alt="">
+    </div>
+</div>
+
+<div class="project-list">
+    {% for project in site.work %}
+        <div class="project-item" data-revealer-color="#{{ project.color }}" style="background: #ffffff">
+            <a href="{{ site.baseurl }}{{ project.permalink }}">
+            <h5 class="project-item-title">{{ project.work }}.</h5>
+            <img class="project-item-img" src="{{ project.image }}" alt="Featured Image" style="width: 100%; mix-blend-mode: multiply; transform:skew(-10deg,10deg);">
+            </a>
+        </div>
+    {% endfor %}
+</div>
