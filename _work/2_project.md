@@ -6,7 +6,7 @@ description: A finance tracking app for students
 client: Class Assignment
 timeline: 1 week
 work: ui animation
-image:
+image: /assets/images/thumbs/simplyspent.png
 color: ffffff
 ---
 

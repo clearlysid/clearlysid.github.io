@@ -6,13 +6,13 @@ description: A collection of various types of print and editorial design project
 client: Class Assignment
 timeline:
 work: print + editorial
-image: /assets/images/thumbs/book-cover.jpg
+image: /assets/images/thumbs/book-cover.png
 color: ffffff
 ---
 
 
 ## Book Cover
-<img src="{{ site.baseurl }}/assets/images/print/book-cover.jpg">
+<img src="{{ site.baseurl }}/assets/images/print/book-cover.png">
 
 As part of a book design assignment, I created a book cover for my project about music-making technology.
 

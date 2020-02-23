@@ -47,13 +47,32 @@
     margin: 0 1vw;
 }
 
+
+
 .project-item-title {
     font-family: Noah;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
     font-weight: bold;
-    transform: translateY(-30px);
+    margin: 0;
+	line-height: 1;
+	position: absolute;
+	z-index: 100;
+    display: block;
+	position: relative;
+	text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.project-item-bg {
+    display: block;
+    background-color:white;
+    position: absolute;
+	top: -1rem;
+    left: -1rem;
+	width: 90%;
+	height: 200%;
 }
 
 .project-item:nth-child(1) { 
@@ -71,6 +90,27 @@
 .project-item:nth-child(5) { 
     height: 30vh;
 }
+
+.project-item-img {
+    display: block;
+	flex: none;
+	margin: 0 auto;
+	max-width: 100%;
+    filter: grayscale(1);
+    opacity: 0.2;
+	transition: filter 0.3s;
+	transition: opacity 0.3s;
+}
+
+.project-item:hover .project-item-img {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+
+
+
+// Navigation Menu
 
 .primary-nav-container {
     display: block;
