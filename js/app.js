@@ -157,17 +157,31 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
             this.options = {   
                 image: {
                     translation : {x: -10, y: -10, z: 0},
-                    rotation : {x: 0, y: 0, z: 0}
+                    rotation : {x: 0, y: 0, z: 0},
+                    reverseAnimation : {
+                        duration : 1200,
+                        easing : 'easeOutElastic',
+                        elasticity : 600
+                    }
                 },
                 title: {
-                    translation : {x: 20, y: 10, z: 0}
+                    translation : {x: 20, y: 10, z: 0},
+                    reverseAnimation : {
+                        duration : 1000,
+                        easing : 'easeOutExpo',
+                        elasticity : 600
+                    }
                 },
                 shadow: {
                     translation : {x: 30, y: 20, z: 0},
                     rotation : {x: 0, y: 0, z: -2},
-                    reverseAnimation : {duration: 2, ease: 'Back.easeOut'}
-                },
+                    reverseAnimation : {
+                        duration: 2,
+                        easing: 'easeOutElastic'
+                    }
+                }, 
             };
+
             Object.assign(this.options, options);
             
             this.DOM.animatable = {};
@@ -198,22 +212,28 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
 
                 for (let key in this.DOM.animatable ) {
                     if( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {continue;}
-                    TweenMax.to(this.DOM.animatable[key],
-                        this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5, {
-                        ease: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.ease || 'Power2.easeOut' : 'Power2.easeOut',
-                        x: 0,
-                        y: 0,
-                        z: 0,
-                        rotationX: 0,
-                        rotationY: 0,
-                        rotationZ: 0
-                    });
+                    anime({
+						targets: this.DOM.animatable[key],
+						duration: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5,
+						easing: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'linear' : 'linear',
+						elasticity: this.options.reverseAnimation != undefined ? this.options.reverseAnimation.elasticity || null : null,
+						scaleX: 1,
+						scaleY: 1,
+						scaleZ: 1,
+						translateX: 0,
+						translateY: 0,
+						translateZ: 0,
+						rotateX: 0,
+						rotateY: 0,
+						rotateZ: 0
+					});                    
                 }
             });
             this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
             this.DOM.el.addEventListener('mousemove', this.mousemoveFn);
             this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
         }
+        
         tilt(ev) {
             if ( !allowTilt ) return;
             const mousepos = getMousePos(ev);
@@ -254,15 +274,7 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
                     }
                 };
 
-                TweenMax.to(this.DOM.animatable[key], 1.5, {
-                    ease: 'Power1.easeOut',
-                    x: transforms.translation.x,
-                    y: transforms.translation.y,
-                    z: transforms.translation.z,
-                    rotationX: transforms.rotation.x,
-                    rotationY: transforms.rotation.y,
-                    rotationZ: transforms.rotation.z
-                });
+                this.DOM.animatable[key].style.WebkitTransform = this.DOM.animatable[key].style.transform = 'translateX(' + transforms.translation.x + 'px) translateY(' + transforms.translation.y + 'px) translateZ(' + transforms.translation.z + 'px) rotateX(' + transforms.rotation.x + 'deg) rotateY(' + transforms.rotation.y + 'deg) rotateZ(' + transforms.rotation.z + 'deg)';
             }
         }
     }
@@ -281,3 +293,7 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
     let allowTilt = true;
     new Grid(document.querySelector('.project-list'));
 }
+
+
+
+// more

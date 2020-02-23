@@ -69,6 +69,7 @@
 	position: relative;
 	text-transform: uppercase;
     font-size: 1rem;
+    opacity: 0.3;
 }
 
 .project-item-bg {
@@ -102,7 +103,7 @@
 	flex: none;
 	margin: 0 auto;
 	max-width: 100%;
-    filter: grayscale(1);
+    filter: grayscale(0.2);
     opacity: 0.2;
 	transition: filter 0.3s;
 	transition: opacity 0.3s;
@@ -113,6 +114,13 @@
     opacity: 1;
 }
 
+.project-item:hover .project-item-title {
+    opacity: 1;
+}
+
+.smooth .project-item-img, .smooth .tilter__deco--lines, .smooth .project-item-bg, .smooth .project-item-title {
+    transition: transform 0.2s ease-out;
+}
 
 
 
