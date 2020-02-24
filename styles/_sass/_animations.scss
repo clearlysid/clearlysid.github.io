@@ -1,55 +1,61 @@
-// .overlay {
-//     position: absolute;
-//     top: 100vh;
-//     left: 0;
-//     height: 100vh;
-//     width: 100%;
-//     background-color: lightgray;
-//     z-index: 5;
-//     overflow: hidden;
-// }
+.transition-flow-up {
+    transform-origin: bottom;
+    transition: 1s transform cubic-bezier(0.86, 0, 0.07, 1) 0.2s;
+    transform: translateY(0);
+}
 
-// .transition-overlay-show-up {
-//     // transform: translateY(100vh);
-//     transition: 1s cubic-bezier(0.86, 0, 0.07, 1);
-// }
+.transition-flow-up:nth-child(1) {
+    transition-duration: 1.3s;
+}
+.transition-flow-up:nth-child(2) {
+    transition-duration: 1.1s;
+}
+.transition-flow-up:nth-child(3) {
+    transition-duration: 1.4s;
+}
+.transition-flow-up:nth-child(4) {
+    transition-duration: 1.2s;
+}
+.transition-flow-up:nth-child(5) {
+    transition-duration: 1.4s;
+}
 
-// html.is-leaving .transition-overlay-show-up {
-//     transform: translateY(-100%);
-// }
+html.is-animating .transition-flow-up {
+    transform: translateY(calc(-100vh - 30px));
+}
 
-// html.is-rendering .transition-overlay-hide-up {
-//     transition: 1s cubic-bezier(0.23, 1, 0.32, 1);
-//     transform: translateY(-200vh);
-// }
+.project-revealer {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: darkgrey;
+    z-index: 9;
+}
 
-// .transition-overlay-show-down {
-//     transition: 1s cubic-bezier(0.86, 0, 0.07, 1);
-// }
+.home-revealer {
+    position: absolute;
+    top: 100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: darkgrey;
+    transform: translateY(-200%);
+}
 
-// html.is-leaving .transition-overlay-show-down {
-//     transform: translateY(-100%);
-// }
+.transition-revealer-show {
+    transition: 1s transform cubic-bezier(0.86, 0, 0.07, 1);
+    transform: translateY(0);
+}
 
-// html.is-rendering .transition-overlay-hide-down {
-//     transition: 1s cubic-bezier(0.23, 1, 0.32, 1);
-//     transform: translateY(0vh);
-// }
+html.is-leaving .transition-revealer-show {
+    transform: translateY(-100%);
+}
 
-// .transition-flow-up:nth-child(1) {
-//     transition: 1.2s cubic-bezier(0.86, 0, 0.07, 1);
-// }
-// .transition-flow-up:nth-child(2) {
-//     transition: 1.4s cubic-bezier(0.86, 0, 0.07, 1);
-// }
-// .transition-flow-up:nth-child(3) {
-//     transition: 1.4s cubic-bezier(0.86, 0, 0.07, 1);
-// }
-// .transition-flow-up:nth-child(4) {
-//     transition: 1s cubic-bezier(0.86, 0, 0.07, 1);
-// }
+html.is-animating .transition-revealer-hide {
+    transition: 1s transform cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(-100%);
+}
 
 
-// html.is-leaving .transition-flow-up {
-//     transform: translateY(-200vh);
-// }

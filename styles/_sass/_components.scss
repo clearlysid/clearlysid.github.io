@@ -22,6 +22,10 @@
 }
 
 .hero-image {
+    -webkit-mix-blend-mode: hard-light;
+    -moz-mix-blend-mode: hard-light;
+    -o-mix-blend-mode: hard-light;
+    -ms-mix-blend-mode: hard-light;
     mix-blend-mode: hard-light;
     grid-column: 3 / 5;
     grid-row: 1;
@@ -54,8 +58,6 @@
     margin: 0 1vw;
 }
 
-
-
 .project-item-title {
     font-family: Noah;
     text-align: center;
@@ -68,9 +70,9 @@
 	z-index: 100;
     display: block;
 	position: relative;
-	text-transform: uppercase;
     font-size: 1rem;
-    opacity: 0.3;
+    opacity: 0.5;
+    transition: opacity 0.3s;
 }
 
 .project-item-bg {
@@ -80,7 +82,7 @@
 	top: -1rem;
     left: -1rem;
 	width: 90%;
-	height: 200%;
+	height: calc(100% + 1rem);
 }
 
 .project-item:nth-child(1) { 
@@ -105,9 +107,8 @@
 	margin: 0 auto;
 	max-width: 100%;
     filter: grayscale(0.2);
-    opacity: 0.2;
-	transition: filter 0.3s;
-	transition: opacity 0.3s;
+    opacity: 0.4;
+	transition: all 0.3s;
 }
 
 .project-item:hover .project-item-img {

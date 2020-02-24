@@ -11,7 +11,6 @@ layout: default
         <!-- <div class="hero-buttons">
             <a href="mailto:mail@siddharthjha.com"><button>Email</button></a><a href=""><button>Resume</button></a>
         </div> -->
-        
     </div>
     <div class="hero-image">
         <img src="/assets/images/hero-opt.png" alt="">
@@ -19,7 +18,7 @@ layout: default
 </div>
 
 
-<div class="project-list">
+<div class="project-list" id="project-list">
     {% for project in site.work %}
         <a class="project-item smooth transition-flow-up" href="{{ site.baseurl }}{{ project.permalink }}">
             <div class="box" style="position: relative;">
@@ -30,5 +29,7 @@ layout: default
         </a>
     {% endfor %}
 </div>
+
+<div class="project-revealer transition-revealer-show"></div>
     
 

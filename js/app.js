@@ -295,8 +295,13 @@ function onContentReplaced() {
 }
 // onContentReplaced Ends here
 
-// const swup = new Swup();
+const swup = new Swup();
 
 onContentReplaced();
 
-// swup.on('contentReplaced', onContentReplaced);
+swup.on('contentReplaced', onContentReplaced);
+
+
+if (document.querySelector('#project-list')) { //This checks if this element is on the the page (in the html)
+    // new scrollers(); 
+}
