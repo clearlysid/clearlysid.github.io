@@ -2,17 +2,12 @@
 <html lang="en">
 {% include head.html %}
 <body>
-    <main>
-    
     {% include nav.html %}
+    <main id="swup" class="transition-fade">
     {{ content }}
-   
-
-     
-
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://unpkg.com/animejs@3.1.0/lib/anime.min.js"></script>
+    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>  
     <script src="{{ site.baseurl }}/js/app.js"></script>
-    
 </body>
 </html>

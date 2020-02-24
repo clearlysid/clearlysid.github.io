@@ -1,5 +1,4 @@
 // Custom Mouse Cursor
-
 const pointer = document.createElement("div")
 pointer.id = "pointer-dot"
 const ring = document.createElement("div")
@@ -76,9 +75,7 @@ init_pointer({
             
 })
 
-
 // Navigation Menu Flyout
-
 const primaryNavContainer = document.querySelector('.primary-nav-container');
 primaryNavContainer.addEventListener("mouseenter", function( event ) {   
     console.log("menu opens now");
@@ -111,6 +108,8 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
 }, false);
 
 
+
+function onContentReplaced() {
 
 
 // Tilt Effect for Projects
@@ -294,6 +293,14 @@ primaryNavContainer.addEventListener("mouseleave", function( event ) {
     new Grid(document.querySelector('.project-list'));
 }
 
+}
+
 
 
 // more
+
+const swup = new Swup();
+
+onContentReplaced();
+
+swup.on('contentReplaced', onContentReplaced);
