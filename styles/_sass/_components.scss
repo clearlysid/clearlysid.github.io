@@ -47,6 +47,7 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
+        z-index: 10;
 }
 
 .project-item {
@@ -118,7 +119,7 @@
     opacity: 1;
 }
 
-.smooth .project-item-img, .smooth .tilter__deco--lines, .smooth .project-item-bg, .smooth .project-item-title {
+.smooth .project-item-img, .smooth .project-item-bg, .smooth .project-item-title {
     transition: transform 0.2s ease-out;
 }
 
@@ -152,3 +153,36 @@
     background-color: #000000;
     margin: 6px 0;
 }
+
+
+.back-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 2vh 4vh;
+
+    img {
+        width: 35px;
+    }
+}
+
+.temp-mobile {
+    display: block;
+    background-color: white;
+    z-index: 999;
+    pointer-events: none;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 30vh;
+}
+
+
+@media screen and (min-width: 800px) {
+    .temp-mobile {
+        display: none;
+    }
+}
+

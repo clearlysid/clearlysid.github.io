@@ -294,9 +294,6 @@ function onContentReplaced() {
 }
 
 }
-
-
-
 // more
 
 const swup = new Swup();

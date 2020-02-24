@@ -2,12 +2,22 @@
 <html lang="en">
 {% include head.html %}
 <body>
+    <div class="temp-mobile">
+        <center>
+            <h2>Hello,</h2>
+            <p>I'm still working on optimizing this site to run on mobile.</p>
+            <p>Meanwhile, why not try viewing this on a desktop instead?</p>
+        </center>
+    </div>
+
     {% include nav.html %}
-    <main id="swup" class="transition-fade">
+
+    <main id="swup">
     {{ content }}
     </main>
-    <!-- <script src="https://unpkg.com/animejs@3.1.0/lib/anime.min.js"></script>
-    <script src="https://unpkg.com/swup@latest/dist/swup.min.js"></script>   -->
+
+    <div class="overlay transition-overlay"></div>
+    
     <script src="{{ site.baseurl }}/js/anime.min.js"></script>
     <script src="{{ site.baseurl }}/js/swup.min.js"></script>
     <script src="{{ site.baseurl }}/js/app.js"></script>
