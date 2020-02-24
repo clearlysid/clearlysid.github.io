@@ -295,8 +295,8 @@ function onContentReplaced() {
 }
 // onContentReplaced Ends here
 
-const swup = new Swup();
+// const swup = new Swup();
 
 onContentReplaced();
 
-swup.on('contentReplaced', onContentReplaced);
+// swup.on('contentReplaced', onContentReplaced);
