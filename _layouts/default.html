@@ -2,7 +2,7 @@
 <html lang="en">
 {% include head.html %}
 <body>
-    <div class="temp-mobile">
+    <div class="temp-mobile" style="z-index: 999;">
         <center>
             <h2>Hello,</h2>
             <p>I'm still working on optimizing this site to run on mobile.</p>
@@ -12,11 +12,11 @@
 
     {% include nav.html %}
 
-    <main id="swup">
+    <!-- needs swup id here  -->
+    <main > 
     {{ content }}
     </main>
 
-    <div class="overlay transition-overlay"></div>
     
     <script src="{{ site.baseurl }}/js/anime.min.js"></script>
     <script src="{{ site.baseurl }}/js/swup.min.js"></script>

@@ -21,7 +21,7 @@ layout: default
 
 <div class="project-list">
     {% for project in site.work %}
-        <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}">
+        <a class="project-item smooth transition-flow-up" href="{{ site.baseurl }}{{ project.permalink }}">
             <div class="box" style="position: relative;">
                 <div class="project-item-bg"></div>
                 <h5 class="project-item-title">{{ project.work }}</h5>
@@ -30,4 +30,5 @@ layout: default
         </a>
     {% endfor %}
 </div>
+    
 
