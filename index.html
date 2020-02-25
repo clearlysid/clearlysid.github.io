@@ -2,7 +2,7 @@
 title: Siddharth's Portfolio
 layout: default
 ---
-
+<div class="home-screen">
 <div class="hero">
     <div class="hero-text">
         <h3>Hello, I'm Siddharth!</h3>
@@ -20,7 +20,7 @@ layout: default
 
 <div class="project-list" id="project-list">
     {% for project in site.work %}
-        <a class="project-item smooth transition-flow-up" href="{{ site.baseurl }}{{ project.permalink }}">
+        <a class="project-item smooth transition-flow-up" href="{{ site.baseurl }}{{ project.permalink }}" data-swup-transition="project-item">
             <div class="box" style="position: relative;">
                 <div class="project-item-bg"></div>
                 <h5 class="project-item-title">{{ project.work }}</h5>
@@ -29,7 +29,6 @@ layout: default
         </a>
     {% endfor %}
 </div>
-
-<div class="project-revealer transition-revealer-show"></div>
+</div>
     
 

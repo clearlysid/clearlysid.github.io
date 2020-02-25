@@ -18,7 +18,7 @@ const init_pointer = (options) => {
         mouseX = mouse.clientX
         mouseY = mouse.clientY
     }
-
+9
     window.onmousedown = (mouse) => {
         mouseDown = true
     }
@@ -68,6 +68,7 @@ const init_pointer = (options) => {
 
         requestAnimationFrame(render)
     }
+
     requestAnimationFrame(render)
 }
 
@@ -76,42 +77,42 @@ init_pointer({
 })
 
 // Navigation Menu Flyout
-const primaryNavContainer = document.querySelector('.primary-nav-container');
-primaryNavContainer.addEventListener("mouseenter", function( event ) {   
-    console.log("menu opens now");
-    const menuFlyout = anime({
-        targets: '.bar',
-        translateX: -48,
-        translateY: (elm, index, t) => 20 + (index * 50),
-        scaleX: 4,
-        scaleY: 8,
-        easing: 'easeInOutSine',
-        delay: (elm, index, t) => index * 20,
-        duration: 200,
-       });
+// const primaryNavContainer = document.querySelector('.primary-nav-container');
+// primaryNavContainer.addEventListener("mouseenter", function( event ) {   
+//     console.log("menu opens now");
+//     const menuFlyout = anime({
+//         targets: '.bar',
+//         translateX: -48,
+//         translateY: (elm, index, t) => 20 + (index * 50),
+//         scaleX: 4,
+//         scaleY: 8,
+//         easing: 'easeInOutSine',
+//         delay: (elm, index, t) => index * 20,
+//         duration: 200,
+//        });
 
-}, false);
+// }, false);
 
-primaryNavContainer.addEventListener("mouseleave", function( event ) {   
-    console.log("menu closes now");
-    const menuFlyin = anime({
-        targets: '.bar',
-        translateX: 0,
-        translateY: (elm, index, t) => (index / 50),
-        scaleX: 1,
-        scaleY: 1,
-        easing: 'easeInOutSine',
-        delay: (elm, index, t) => index * 20,
-        duration: 200,
-       });
+// primaryNavContainer.addEventListener("mouseleave", function( event ) {   
+//     console.log("menu closes now");
+//     const menuFlyin = anime({
+//         targets: '.bar',
+//         translateX: 0,
+//         translateY: (elm, index, t) => (index / 50),
+//         scaleX: 1,
+//         scaleY: 1,
+//         easing: 'easeInOutSine',
+//         delay: (elm, index, t) => index * 20,
+//         duration: 200,
+//        });
 
-}, false);
+// }, false);
 
 
 
 function onContentReplaced() {
-    // Tilt Effect for Projects
-    {
+
+    if (document.querySelector('#project-list')) { //This checks if this #project-list exists
         const lineEq = (y2, y1, x2, x1, currentVal) => {
             // y = mx + b 
             var m = (y2 - y1) / (x2 - x1), b = y1 - m * x1;
@@ -288,14 +289,97 @@ function onContentReplaced() {
 
         let allowTilt = true;
         new Grid(document.querySelector('.project-list'));
-
-
-    //both these closed brackets necessary DO NOT DELETE i know its tempting
     }
-}
-// onContentReplaced Ends here
 
-const swup = new Swup();
+
+
+    
+} // onContentReplaced Ends here
+
+const options = [  
+    {
+        from: '.*',
+        to: 'project-item',
+        in: function(next) {
+            document.querySelector('#swup').style.opacity = 0;
+            anime({
+                targets: '#swup',
+                easing: 'easeOutQuint',
+                duration: 1000,
+                opacity: 1,
+                complete: next
+            });
+        },
+        out: (next) => {
+            anime.set('#overlay', {translateY: 0});
+            anime.set('#overlay', {display: 'block'});
+            document.querySelector('#swup').style.opacity = 1;
+            var tl = anime.timeline({
+                duration: 1000
+            });
+            
+            tl
+            .add({ // get rid of old <main> div when overlay covers screen
+                targets: '#swup',
+                easing: 'easeOutQuint',
+                duration: 1,
+                delay: 1000,
+                opacity: 0,
+            })
+            .add({ // overlay show up
+                targets: '#overlay',
+                easing: 'easeInOutQuint',
+                translateY: -1 * window.innerHeight,
+                complete: next
+            }, 0)
+            .add({ // overlay hide up
+                targets: '#overlay',
+                easing: 'easeOutQuint',
+                translateY: -2 * window.innerHeight,
+            })
+            .add({ // smooth thumbnails animation
+                targets: '.project-item',
+                delay: 200,
+                easing: 'easeInOutQuint',
+                duration: function() { return anime.random(800, 1200); },
+                translateY: -1 * window.innerHeight - 50,
+            }, 0);
+        }
+    } //needs comma if next array item exists
+
+    // {
+    //     from: '.*',
+    //     to: 'home-page',
+    //     in: function(next) {
+    //         document.querySelector('#swup').style.opacity = 0;
+    //         anime({
+    //             targets: '#swup',
+    //             easing: 'easeOutQuint',
+    //             duration: 1000,
+    //             opacity: 1,
+    //             complete: next
+    //         });
+    //     },
+    //     out: (next) => {
+    //         anime.set('#overlay', {translateY: -2 * window.innerHeight});
+    //         anime.set('#overlay', {display: 'block'});
+    //         document.querySelector('#swup').style.opacity = 1;
+    //         anime({
+    //             targets: '#swup',
+    //             easing: 'easeOutQuint',
+    //             duration: 1000,
+    //             opacity: 0,
+    //             complete: next
+    //         });
+    //     }
+    // }
+
+    
+];
+
+const swup = new Swup({
+    plugins: [new SwupJsPlugin(options)]
+  });
 
 onContentReplaced();
 
@@ -304,4 +388,4 @@ swup.on('contentReplaced', onContentReplaced);
 
 if (document.querySelector('#project-list')) { //This checks if this element is on the the page (in the html)
     // new scrollers(); 
-}
+} 

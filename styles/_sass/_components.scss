@@ -1,5 +1,4 @@
 .hero {
-    position: static;
     display: grid;
     max-width: 60vw;
     width: 100%;
@@ -52,6 +51,7 @@
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
         z-index: 10;
+        // overflow: hidden;
 }
 
 .project-item {
@@ -106,14 +106,14 @@
 	flex: none;
 	margin: 0 auto;
 	max-width: 100%;
-    filter: grayscale(0.2);
-    opacity: 0.4;
+    filter: grayscale(0.8);
+    // opacity: 0.4;
 	transition: all 0.3s;
 }
 
 .project-item:hover .project-item-img {
     filter: grayscale(0);
-    opacity: 1;
+    // opacity: 1;
 }
 
 .project-item:hover .project-item-title {
@@ -135,7 +135,7 @@
     right: 0;
     height: 280px;
     width: 280px;
-    z-index: 2;
+    z-index: 60;
     margin-left: auto;
     border-radius: 50%;
 }
@@ -185,5 +185,10 @@
     .temp-mobile {
         display: none;
     }
+}
+
+.home-screen {
+    height: 100vh;
+	overflow: hidden;
 }
 
