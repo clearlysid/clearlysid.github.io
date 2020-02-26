@@ -1,15 +1,13 @@
 ---
 layout: project
-permalink: /vaya-lynk
+permalink: /projects/vaya-lynk
 title: Vaya Lynk
 description: Packaging Design for Bluetooth Tracker
-client: Class Assignment
-timeline: 1 week
-work: packaging design
-image: /assets/images/thumbs/vaya.png
+work: Packaging Design
+thumbnail: /assets/images/thumbs/vaya.png
+feature:
 color: ffffff
 ---
-
 
 ## Execution
 

@@ -1,15 +1,13 @@
 ---
 layout: project
-permalink: /print-design
+permalink: /projects/print-design
 title: Collection
 description: A collection of various types of print and editorial design projects I’ve done over the last couple of years.
-client: Class Assignment
-timeline:
-work: print + editorial
-image: /assets/images/thumbs/book-cover.png
+work: Print + Editorial
+thumbnail: /assets/images/thumbs/book-cover.png
+feature:
 color: ffffff
 ---
-
 
 ## Book Cover
 <img src="{{ site.baseurl }}/assets/images/print/book-cover.png">

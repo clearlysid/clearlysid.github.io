@@ -38,8 +38,32 @@
 .hero-buttons {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 70%;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 1rem;
+
+    a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        border: 2px solid black;
+        padding: 0.5rem;
+
+        p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        svg {
+            height: 1rem;
+            width: 1rem;
+            fill: black;
+        }
+    }
 }
+
 
 .project-list {
         position: fixed;
@@ -51,7 +75,6 @@
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
         z-index: 10;
-        // overflow: hidden;
 }
 
 .project-item {
@@ -157,7 +180,7 @@
 
 
 .back-button {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     margin: 2vh 4vh;
@@ -168,27 +191,25 @@
 }
 
 .temp-mobile {
-    display: block;
-    background-color: white;
-    z-index: 999;
-    pointer-events: none;
-    height: 100vh;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding-top: 30vh;
+    display: none;
 }
 
-
-@media screen and (min-width: 800px) {
-    .temp-mobile {
+// mobile-only styling
+@media screen and (max-width: 800px) {
+    main {
         display: none;
     }
-}
 
-.home-screen {
-    height: 100vh;
-	overflow: hidden;
+    .temp-mobile {
+        display: block;
+        background-color: white;
+        z-index: 999;
+        pointer-events: none;
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-top: 30vh;
+    }
 }
-

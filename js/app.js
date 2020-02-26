@@ -77,9 +77,9 @@ init_pointer({
 })
 
 // Navigation Menu Flyout
+
 // const primaryNavContainer = document.querySelector('.primary-nav-container');
-// primaryNavContainer.addEventListener("mouseenter", function( event ) {   
-//     console.log("menu opens now");
+// primaryNavContainer.addEventListener("mouseenter", function( event ) {
 //     const menuFlyout = anime({
 //         targets: '.bar',
 //         translateX: -48,
@@ -90,11 +90,9 @@ init_pointer({
 //         delay: (elm, index, t) => index * 20,
 //         duration: 200,
 //        });
-
 // }, false);
 
-// primaryNavContainer.addEventListener("mouseleave", function( event ) {   
-//     console.log("menu closes now");
+// primaryNavContainer.addEventListener("mouseleave", function( event ) {
 //     const menuFlyin = anime({
 //         targets: '.bar',
 //         translateX: 0,
@@ -105,7 +103,6 @@ init_pointer({
 //         delay: (elm, index, t) => index * 20,
 //         duration: 200,
 //        });
-
 // }, false);
 
 
@@ -290,41 +287,94 @@ function onContentReplaced() {
         let allowTilt = true;
         new Grid(document.querySelector('.project-list'));
     }
-
-
-
-    
 } // onContentReplaced Ends here
 
-const options = [  
+const options = [
+    
     {
-        from: '.*',
-        to: 'project-item',
+        from: '/projects/*',
+        to: '/index.html',
         in: function(next) {
             document.querySelector('#swup').style.opacity = 0;
-            anime({
+            anime.set('.project-item', {translateY: -1 * window.innerHeight - 50}); // set thumb-grid to above screen
+            var showHome = anime.timeline({
+                duration: 1000
+            });
+
+            showHome
+            .add({ 
+                targets: '#overlay',
+                easing: 'easeOutQuint',
+                translateY: 0,
+                delay: 600
+            })
+            .add({ 
+                targets: '.project-item',
+                easing: 'easeInOutQuint',
+                duration: function() { return anime.random(1000, 1500); },
+                translateY: 0,
+                complete: next
+            }, 0);
+            anime({ // show main body
                 targets: '#swup',
                 easing: 'easeOutQuint',
-                duration: 1000,
+                duration: 1,
+                opacity: 1,
+            });
+        },
+        out: (next) => {
+            document.querySelector('#swup').style.opacity = 1;
+            anime.set('#overlay', {translateY: -2 * window.innerHeight});
+            anime.set('#overlay', {display: 'block'});
+            var hideProject = anime.timeline({
+                duration: 800
+            });
+            
+            hideProject
+            .add({ // hide main body
+                targets: '#swup',
+                easing: 'linear',
+                opacity: 0,
+                duration: 1,
+                delay: 800,
+                complete: next
+            })
+            .add({ // overlay show down
+                targets: '#overlay',
+                easing: 'easeInOutQuint',
+                translateY: -1 * window.innerHeight,
+            }, 0);
+
+        }
+    },
+    {
+        from: '/',
+        to: '/projects/*',
+        in: function(next) {
+            document.querySelector('#swup').style.opacity = 0;
+            anime({ // show main body
+                targets: '#swup',
+                easing: 'easeOutQuint',
+                duration: 1,
                 opacity: 1,
                 complete: next
             });
         },
         out: (next) => {
-            anime.set('#overlay', {translateY: 0});
-            anime.set('#overlay', {display: 'block'});
             document.querySelector('#swup').style.opacity = 1;
-            var tl = anime.timeline({
+            anime.set('#overlay', {translateY: 0});
+            anime.set('#overlay', {display: 'block'}); // try to fix with css
+            var showProject = anime.timeline({
                 duration: 1000
             });
             
-            tl
-            .add({ // get rid of old <main> div when overlay covers screen
+            showProject
+            .add({ // hide main body
                 targets: '#swup',
-                easing: 'easeOutQuint',
-                duration: 1,
-                delay: 1000,
+                easing: 'linear',
                 opacity: 0,
+                duration: 1,
+                delay: 999
             })
             .add({ // overlay show up
                 targets: '#overlay',
@@ -339,42 +389,12 @@ const options = [
             })
             .add({ // smooth thumbnails animation
                 targets: '.project-item',
-                delay: 200,
                 easing: 'easeInOutQuint',
                 duration: function() { return anime.random(800, 1200); },
-                translateY: -1 * window.innerHeight - 50,
-            }, 0);
+                translateY: -1 * window.innerHeight - 50
+            }, 200);
         }
-    } //needs comma if next array item exists
-
-    // {
-    //     from: '.*',
-    //     to: 'home-page',
-    //     in: function(next) {
-    //         document.querySelector('#swup').style.opacity = 0;
-    //         anime({
-    //             targets: '#swup',
-    //             easing: 'easeOutQuint',
-    //             duration: 1000,
-    //             opacity: 1,
-    //             complete: next
-    //         });
-    //     },
-    //     out: (next) => {
-    //         anime.set('#overlay', {translateY: -2 * window.innerHeight});
-    //         anime.set('#overlay', {display: 'block'});
-    //         document.querySelector('#swup').style.opacity = 1;
-    //         anime({
-    //             targets: '#swup',
-    //             easing: 'easeOutQuint',
-    //             duration: 1000,
-    //             opacity: 0,
-    //             complete: next
-    //         });
-    //     }
-    // }
-
-    
+    }
 ];
 
 const swup = new Swup({

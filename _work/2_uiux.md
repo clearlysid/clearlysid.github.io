@@ -1,14 +1,12 @@
 ---
 layout: project
-permalink: /simply-spent
+permalink: /projects/simply-spent
 title: Simply Spent
 description: A finance tracking app for students
-client: Class Assignment
-timeline: 1 week
 work: UX/UI Design
-image: /assets/images/thumbs/simplyspent.png
+thumbnail: /assets/images/thumbs/simplyspent.png
+feature:
 color: ffffff
 ---
-
 
 ## UI Animation

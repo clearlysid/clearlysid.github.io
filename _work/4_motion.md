@@ -1,16 +1,15 @@
 ---
 layout: project
-permalink: /int-emf-project
+permalink: /projects/int-emf-project
 title: International EMF Project
 description: A motion infographic explainer for the International EMF Project
-client: Class Assignment
-timeline: 5 weeks
-work: motion design
-image: /assets/images/thumbs/motion.png
+work: Motion Design
+thumbnail: /assets/images/thumbs/motion.png
+feature: <iframe src="https://player.vimeo.com/video/391774451" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 color: ffffff
 ---
 
-# Assignment Brief
+## Assignment Brief
 Our objective was to derive a design project based on any one of the five classical elements: Fire, Water, Air, Earth or Aether, and execute it. As this semester was about to close out for the holidays, I wanted this to be a short, fun project where I’d get to learn and experiment with a new skill. The classical elements provided me a broad base from which I started to think, eventually settling on the element Air.
 <img src="{{ site.baseurl }}/assets/images/motion/1.jpg" alt="">
 
