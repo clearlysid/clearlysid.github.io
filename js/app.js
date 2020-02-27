@@ -352,11 +352,22 @@ const options = [
         to: '/projects/*',
         in: function(next) {
             document.querySelector('#swup').style.opacity = 0;
-            anime({ // show main body
+            var showProject = anime.timeline({
+                duration: 1000
+            });
+
+            showProject
+            .add({ // show main body
                 targets: '#swup',
                 easing: 'easeOutQuint',
                 duration: 1,
-                opacity: 1,
+                opacity: 1
+            })
+            .add({ // overlay hide up
+                targets: '#overlay',
+                easing: 'easeOutQuint',
+                translateY: -2 * window.innerHeight,
+                delay: 800,
                 complete: next
             });
         },
@@ -364,11 +375,11 @@ const options = [
             document.querySelector('#swup').style.opacity = 1;
             anime.set('#overlay', {translateY: 0});
             anime.set('#overlay', {display: 'block'}); // try to fix with css
-            var showProject = anime.timeline({
+            var hideHome = anime.timeline({
                 duration: 1000
             });
             
-            showProject
+            hideHome
             .add({ // hide main body
                 targets: '#swup',
                 easing: 'linear',
@@ -382,11 +393,7 @@ const options = [
                 translateY: -1 * window.innerHeight,
                 complete: next
             }, 0)
-            .add({ // overlay hide up
-                targets: '#overlay',
-                easing: 'easeOutQuint',
-                translateY: -2 * window.innerHeight,
-            })
+            
             .add({ // smooth thumbnails animation
                 targets: '.project-item',
                 easing: 'easeInOutQuint',

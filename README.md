@@ -11,4 +11,3 @@
 - [ ] Fix return home animation
 - [ ] Loading screen
 - [ ] Optimize all images
-- [ ] 
