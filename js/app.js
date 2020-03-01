@@ -375,6 +375,43 @@ function onPageLoad() {
             ring.classList.remove("link-hover");
         })
     });
+
+    const projectHeader = document.querySelector('.project-header');
+    const backButton = document.querySelector('.back-button');
+    if (projectHeader != null) {
+        let headBg = window.getComputedStyle(projectHeader).backgroundColor;
+        let sep = headBg.indexOf(",") > -1 ? "," : " ";
+        headBg = headBg.substr(4).split(")")[0].split(sep);
+    
+        for (let R in headBg) {
+            let r = headBg[R];
+            if (r.indexOf("%") > -1)
+            headBg[R] = Math.round(r.substr(0,r.length - 1) / 100 * 255);
+        }
+    
+        let r = headBg[0],
+            g = headBg[1],
+            b = headBg[2],
+            l = (Math.min(r,g,b) + Math.max(r,g,b)) / 2;
+    
+        // Toggle Nav Colours based on project-header-background
+        if (l < 128) {
+            // ring.classList.add('light');
+            backButton.classList.add('light');
+            projectHeader.style.color = "white";
+            } else if (l > 128){
+                projectHeader.style.color = "black";
+                backButton.classList.remove('light');
+            }
+    
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > projectHeader.offsetHeight - 50) {
+                backButton.classList.remove('light');
+            } else if (window.scrollY < projectHeader.offsetHeight){
+                backButton.classList.add('light');
+            }
+        })    
+    }
 }
 
 onPageLoad();
