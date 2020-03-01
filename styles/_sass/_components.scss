@@ -18,6 +18,11 @@
     flex-direction: column;
     margin-top: 10vh;
     height: 50vh;
+    font-size: 1.2rem;
+
+    h3 {
+        font-size: 2.4rem;
+    }
 }
 
 .hero-image {
@@ -41,7 +46,7 @@
     width: 70%;
     align-items: baseline;
     justify-content: space-between;
-    margin: 1rem;
+    margin: 0.8rem;
 
     a {
         display: flex;
@@ -49,6 +54,8 @@
         justify-content: center;
         border: 2px solid black;
         padding: 0.5rem;
+        opacity: 0.2;
+        transition: opacity 0.3s ease;
 
         p {
             font-size: 0.8rem;
@@ -61,6 +68,10 @@
             width: 1rem;
             fill: black;
         }
+    }
+
+    a:hover {
+        opacity: 0.8;
     }
 }
 

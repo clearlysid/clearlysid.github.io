@@ -161,3 +161,8 @@ a {
       -webkit-transform: rotate(-360deg);
     }
   }
+
+
+  .light {
+      filter: invert(1);
+  }
