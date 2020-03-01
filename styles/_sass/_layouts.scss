@@ -1,42 +1,136 @@
+
+
+.case-study {
+    margin: 10vh 12vw;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1;
+
+    img {
+        width: 100%;
+    }
+
+    p {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.7);
+        line-height: 1.6;
+    }
+
+    h2 {
+        font-family: 'Avenir Next';
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .text-left {
+        grid-column: 2 / span 2;
+        // grid-row: 1;
+    }
+
+    .text-right {
+        grid-column: 4 / span 2;
+    }
+
+    .text-center {
+        grid-column: 2 / span 4;
+    }
+
+    .image-right {
+        grid-column: 4 / span 3;
+    }
+
+    .image-left {
+        grid-column: 1 / span 3;
+    }
+
+    .image-center {
+        grid-column: 2 / span 4;
+    }
+
+    .image-left-half-left {
+        grid-column: 1 / span 1;
+    }
+    .image-left-half-right {
+        grid-column: 2 / span 1;
+    }
+
+ 
+
+    
+}
+
+footer {
+    background: #dddddd;
+    height: 50vh;
+    width: 100%;
+}
+
+
 .project-header {
-    height: 60vh;
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2vw;
+    grid-template-rows: repeat(5, 20%);
+    padding: 10vh 10vw;
+    color: white;
+
+    // iframe {
+    //     width: 100%;
+    //     height: 100%;
+    // }
+}
+
+.project-title {
+    margin: 0;
+    padding: 0;
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 3rem;
+}
+
+.project-type {
+    font-family: $body-font;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.project-description {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    grid-column: 1;
+}
+
+.project-feature {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.project-meta {
+    grid-column: 1;
+    grid-row: 5;
     display: flex;
     flex-direction: row;
-    padding: 0 20vw;
-    padding-top: 10vh;
-    color: black;
+    width: 80%;
+    justify-content: space-between;
 
-    .header-text {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-    }
-
-    .project-title {
+    h3 {
+        font-size: 0.8rem;
         margin: 0;
         padding: 0;
     }
-
-    .project-type {
-        font-family: $body-font;
-        text-transform: uppercase;
-        font-size: 14px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .project-description {
-        font-size: 1.4em;
-        margin: 0;
-        padding: 0;
+    
+    li {
+        list-style: none;
+        font-size: 0.8rem;
+        text-align: left;
     }
 }
 
-.case-study {
-    max-width: 800px;
-    margin: 0 auto;
-    img {
-        width: 100%;
-        margin: 1em 0;
-    }
+.project-year {
+    grid-row: 1;
+    grid-column: 2;
 }

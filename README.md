@@ -3,11 +3,12 @@
 ## To-Do List
 
 - [x] Tilt Effect for Projects
-- [ ] Custom Cursor
+- [x] Custom Cursor
 - [ ] Hamburger Navigation
 - [x] Homepage CTA Buttons
 - [ ] Project Layouts
 - [ ] Make an "All Projects" page
-- [ ] Fix return home animation
+- [x] Fix return home animation
 - [ ] Loading screen
 - [ ] Optimize all images
+- [ ] Site Icon

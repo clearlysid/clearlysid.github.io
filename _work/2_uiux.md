@@ -6,7 +6,7 @@ description: A finance tracking app for students
 work: UX/UI Design
 thumbnail: /assets/images/thumbs/simplyspent.png
 feature:
-color: ffffff
+color: 2effa6
 ---
 
 ## UI Animation

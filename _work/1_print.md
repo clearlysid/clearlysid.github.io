@@ -6,7 +6,7 @@ description: A collection of various types of print and editorial design project
 work: Print + Editorial
 thumbnail: /assets/images/thumbs/book-cover.png
 feature:
-color: ffffff
+color: 2d2c4e
 ---
 
 ## Book Cover
@@ -24,3 +24,4 @@ As part of a book design assignment, I created a book cover for my project about
 <img src="{{ site.baseurl }}/assets/images/print/type-brochure.jpg">
 
 To showcase a typeface, I created a small leaflet which details the features and the character-set offered by it.
+

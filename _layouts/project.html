@@ -1,19 +1,38 @@
 ---
 layout: default
 ---
-<header class="project-header" style="background-color:#{{ page.color }} ;">
-    <div class="header-text">
-        <h1 class="project-title">{{ page.title }}</h1>
-        <h2 class="project-type">{{ page.work }}</h2>
-        <p class="project-description">{{ page.description }}</p>
+<header class="project-header" style="background-color:#{{ page.color }}">
+    <h1 class="project-title">{{ page.title }}</h1>
+    <p class="project-description">{{ page.description }}</p>
+    <div class="project-meta">
+        <div class="project-year">
+            <h3>TYPE</h3>
+            <li>Class Assignment</li>
+            <li>2019</li>
+        </div>
+        <div class="project-role">
+            <h3>ROLE</h3>
+            <ul>
+                <li>Conceptualization</li>
+                <li>{{ page.work }}</li>
+            </ul>
+        </div>
+        <div class="project-stack">
+            <h3>STACK</h3>
+            <ul>
+                <li>Adobe Illustrator</li>
+                <li>Adobe After Effects</li>
+            </ul>
+        </div>
     </div>
+    
+    <div class="project-feature">{{ page.feature }}</div>
 </header>
 
 <a href="{{ site.baseurl }}/index.html" class="back-button" data-swup-transition="home-page"><img src="{{ site.baseurl }}/assets/icons/back.svg" alt=""></a>
 
 <article class="case-study">
     {{ content }}
-    
 </article>
 
 <footer>

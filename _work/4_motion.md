@@ -1,39 +1,56 @@
 ---
 layout: project
 permalink: /projects/int-emf-project
-title: International EMF Project
-description: A motion infographic explainer for the International EMF Project
+title: The EMF Project
+description: The International EMF Project is an initiative by the World Health Organization to assess possible health concerns on exposure to Electromagnetic Frequencies.<br><br>I built an animated explainer which introduces the project by highlighting the need for it, its functions and goals.
 work: Motion Design
 thumbnail: /assets/images/thumbs/motion.png
 feature: <iframe src="https://player.vimeo.com/video/391774451" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-color: ffffff
+color: 0B1533
 ---
+Assignment Brief
+-----------------
+{: .text-left}
+Our objective was to derive a design project based on any one of the five classical elements: Fire, Air, Water, Earth or Aether, and execute it. I eventually settled on the element Air, and started studying how its composition had changes over the years.
+{: .text-left}
 
-## Assignment Brief
-Our objective was to derive a design project based on any one of the five classical elements: Fire, Water, Air, Earth or Aether, and execute it. As this semester was about to close out for the holidays, I wanted this to be a short, fun project where I’d get to learn and experiment with a new skill. The classical elements provided me a broad base from which I started to think, eventually settling on the element Air.
-<img src="{{ site.baseurl }}/assets/images/motion/1.jpg" alt="">
+<figure class="image-right"><img src="{{ site.baseurl }}/assets/images/motion/1.jpg" alt=""></figure>
+<figure class="image-left"><img src="{{ site.baseurl }}/assets/images/motion/2.jpg" alt=""></figure>
 
-
-
-### Research
-Looking into how the composition of air has changed over the years I realised that in today's world, we are practically surrounded by wireless signals all the time. Smartphones, Wireless Routers, and all other gadgets that operate wirelessly communicate with each other via Radio Frequency signals. The presence of these signals has made the air much “denser” with Electromagnetic Frequencies. They have now grown to a point where the entire population including human and wildlife, are exposed to some degree of exposure to such signals. And so, there are a number of studies and research being undertaken to determine the long-term impacts that they have on the environment.
-<img src="{{ site.baseurl }}/assets/images/motion/2.jpg" alt="">
-
-### Arriving at the Problem
-Reading through several papers on the topic, I came across the International EMF Project, which has been established by WHO as a platform to provide a coordinated international response to concerns about possible health effects on exposure to EMF. However, the homepage of the project at https://who.int/emf doesn't make it quite clear at first glance. In fact, for first-time visitors to the project page, there isn't any context provided at all. This gave me the basis of my project, and a goal to work towards: to communicate what the project was.
-
-<img src="{{ site.baseurl }}/assets/images/motion/3.png" alt="">
-
-### Conceptualization
-Through a short motion infographic,  I wanted to create an “elevator pitch” for the International EMF Project. Something they could showcase on their online portals and communicate to visitors what the project was all about. Going through some short explainers for a few other brands I decided to condense my pitch to no more than 90 seconds and started working on the script. The concept here was more serious than casual, which is why I felt the need for an authoritative and neutral tone of voice.
+Research
+----------
+{: .text-right}
+Reading through several papers on the topic, I came across the International EMF Project, which has been established by WHO as a platform to provide a coordinated international response to concerns about possible health effects on exposure to Electromagnetic Radiation.
+{: .text-right}
 
 
-### Ideation
+Arriving at the Problem
+---------------------
+{: .text-center}
+The homepage of the project at https://who.int/emf doesn't make it clear what the project is, at first glance. In fact, for first-time visitors to the project page, there isn't any context provided at all. This gave me the basis of my project.
+{: .text-center}
+
+<figure class="image-center"><img src="{{ site.baseurl }}/assets/images/motion/3.png" alt=""></figure>
+
+Conceptualization
+-----------------
+{: .text-right}
+Through a short motion infographic, I wanted to create an “elevator pitch” for the project. Something that communicated to site visitors what the project was all about. I decided to condense my pitch to no more than 90 seconds and started working on the script. An authoritative, but neutral tone of voice was needed for a serious topic like this.
+{: .text-right}
+
+
+Ideation
+----------------
+{: .text-left}
 Scene by scene, I sketched out how the script will play out and described the visuals. Visualizing different ways of presenting information and working out the transitions. My main goal was to explore how information could be conveyed by basic geometric shapes and typography using motion.
+{: .text-left}
 
-### Visual Style
+Visual Style
+----------------
+{: .text-right}
 Once I was happy with my script and storyboarding, I starting to think about the colours, typography and other visual elements I would use in the project. I created a few of my scenes in Adobe I  llustrator and focused on styling them as they would appear in the final product.
+{: .text-right}
 
-<img src="{{ site.baseurl }}/assets/images/motion/4.png" alt="">
-<img src="{{ site.baseurl }}/assets/images/motion/5.png" alt="">
-<img src="{{ site.baseurl }}/assets/images/motion/6.png" alt="">
+<figure><img src="{{ site.baseurl }}/assets/images/motion/4.png" alt=""></figure>
+<figure class="image-left-half-left"><img src="{{ site.baseurl }}/assets/images/motion/5.png" alt=""></figure>
+<figure class="image-left-half-right"><img src="{{ site.baseurl }}/assets/images/motion/6.png" alt=""></figure>

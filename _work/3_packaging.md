@@ -6,7 +6,7 @@ description: Packaging Design for Bluetooth Tracker
 work: Packaging Design
 thumbnail: /assets/images/thumbs/vaya.png
 feature:
-color: ffffff
+color: 0e2c30
 ---
 
 ## Execution
