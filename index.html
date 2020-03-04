@@ -5,7 +5,7 @@ layout: default
 <div class="hero">
     <div class="hero-text">
         <h3>Hello, I'm Siddharth!</h3>
-        <p>A design student focused on UX and Interaction, who loves slick animation and occasionally dabbles in code.</p>
+        <p>A design student focused on UX and Interaction, who loves slick animation and occasionally dabbles in code.</p><br>
         <p>I’m looking for an <b>Internship</b> for <b>Summer 2020.</b> If you know of an opportunity that I'd be a good fit for, please drop me an email.</p>
         
         <div class="hero-buttons">
@@ -29,7 +29,7 @@ layout: default
     {% for project in site.work %}
         <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}" data-swup-preload="true">
             <div class="box" style="position: relative;">
-                <div class="project-item-bg"></div>
+                <!-- <div class="project-item-bg"></div> -->
                 <h5 class="project-item-title">{{ project.work }}</h5>
                 <img class="project-item-img" src="{{ project.thumbnail }}" style="width: 100%;">
             </div>

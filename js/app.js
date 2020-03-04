@@ -251,7 +251,7 @@ function projectHoverFX() {
                     anime({
                         targets: this.DOM.animatable[key],
                         duration: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5,
-                        easing: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'linear' : 'linear',
+                        easing: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'easeOutBack' : 'easeOutBack',
                         elasticity: this.options.reverseAnimation != undefined ? this.options.reverseAnimation.elasticity || null : null,
                         scaleX: 1,
                         scaleY: 1,
