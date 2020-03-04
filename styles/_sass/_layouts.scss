@@ -57,17 +57,13 @@
 .case-study {
     margin: 10vh 12vw;
     display: grid;
-    align-items: end;
+    // align-items: end;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repear(auto, 1fr);
 
-    img {width: 100%; padding: 2rem}
+    img {width: 100%; padding: 1rem}
     p {font-size: 1rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; }
-    h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: bold;}
-
-    // section {
-    //     background-color: white;
-    // }
+    h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500;}
 
     section:nth-of-type(1){
         grid-column: 2 / span 2;
@@ -76,7 +72,7 @@
 
     section:nth-of-type(2){
         grid-column: 4 / span 2;
-        grid-row: 3;
+        grid-row: 2;
     }
 
     section:nth-of-type(3){
@@ -84,7 +80,7 @@
     }
 
     section:nth-of-type(4){
-        grid-column: 4 / span 2;
+        grid-column: 2 / span 4;
     }
 
     section:nth-of-type(5){
@@ -106,9 +102,14 @@
     }
 
     figure:nth-of-type(2) {
-        grid-column: 1 / span 2;
+        grid-column: 1 / span 3;
         mix-blend-mode: multiply;
         grid-row: 2 / span 2;
+    }
+
+    figure:nth-of-type(3) {
+        grid-column: 4 / span 3;
+        grid-row: 3;
     }
 
     
