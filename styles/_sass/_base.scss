@@ -11,6 +11,10 @@ html { height: 100%; }
     cursor: url("https://img.icons8.com/material-sharp/8/000000/filled-circle.png"), auto;
 }
 
+a {
+    cursor: url("https://img.icons8.com/material-sharp/8/000000/filled-circle.png"), auto;
+}
+
 html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -33,7 +37,7 @@ body {
 
 h1 {
     font-family: $heading-font;
-    font-size: 4em;
+    font-size: 4rem;
     line-height: 1.1;
     padding: 0 1rem;
     margin-top: 4rem;
@@ -71,98 +75,18 @@ p {
     width: 0;
     height: 0;
     padding: 15px;
-    border: 2px solid black;
-    // position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
     position: fixed;
     border-radius: 100px;
     z-index: 200;
     pointer-events: none;
-    transition: background 0.2s ease-in-out;
 }
 
-a {
-    cursor: url("https://img.icons8.com/material-sharp/8/000000/filled-circle.png"), auto;
-}
 
 ::selection {
     background-color: #cccccc;
 }
 
-.link-hover {
-    background: rgba(0, 0, 0, 0.185);
+.light {
+    filter: invert(1);
 }
-
-.preloader {
-    height: 100vh;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #efefef;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    cursor: none;
-}
-
-.preloader-finish {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.spinner {
-    margin: 100px auto;
-    width: 40px;
-    height: 40px;
-    position: relative;
-  }
-  
-  .cube1, .cube2 {
-    background-color: #333;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    
-    -webkit-animation: sk-cubemove 1.8s infinite ease-in-out;
-    animation: sk-cubemove 1.8s infinite ease-in-out;
-  }
-  
-  .cube2 {
-    -webkit-animation-delay: -0.9s;
-    animation-delay: -0.9s;
-  }
-  
-  @-webkit-keyframes sk-cubemove {
-    25% { -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5) }
-    50% { -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg) }
-    75% { -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5) }
-    100% { -webkit-transform: rotate(-360deg) }
-  }
-  
-  @keyframes sk-cubemove {
-    25% { 
-      transform: translateX(42px) rotate(-90deg) scale(0.5);
-      -webkit-transform: translateX(42px) rotate(-90deg) scale(0.5);
-    } 50% { 
-      transform: translateX(42px) translateY(42px) rotate(-179deg);
-      -webkit-transform: translateX(42px) translateY(42px) rotate(-179deg);
-    } 50.1% { 
-      transform: translateX(42px) translateY(42px) rotate(-180deg);
-      -webkit-transform: translateX(42px) translateY(42px) rotate(-180deg);
-    } 75% { 
-      transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-      -webkit-transform: translateX(0px) translateY(42px) rotate(-270deg) scale(0.5);
-    } 100% { 
-      transform: rotate(-360deg);
-      -webkit-transform: rotate(-360deg);
-    }
-  }
-
-
-  .light {
-      filter: invert(1);
-  }

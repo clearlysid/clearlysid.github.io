@@ -8,8 +8,6 @@ let ringX = -100
 let ringY = -100
 let isHover = false
 let mouseDown = false
-// let preloaded = false
-// const preloader = document.querySelector(".preloader");
 
 const init_pointer = (options) => {
     window.onmousemove = (mouse) => {
@@ -29,8 +27,8 @@ const init_pointer = (options) => {
     const render = () => {
         ringX = trace(ringX, mouseX, 0.2)
         ringY = trace(ringY, mouseY, 0.2)
-        if (mouseDown) { ring.style.padding = 18 + "px"} else { ring.style.padding = 20 + "px" }
-        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 19)}px, ${ringY - (mouseDown ? 17 : 20)}px)`
+        if (mouseDown) { ring.style.padding = 22 + "px"} else { ring.style.padding = 24 + "px" }
+        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 21)}px, ${ringY - (mouseDown ? 17 : 21)}px)`
         requestAnimationFrame(render)
     }
     requestAnimationFrame(render)
@@ -329,31 +327,10 @@ function projectHoverFX() {
     new Grid(document.querySelector('.project-list'));
 }
 
-
-
-
-
-
 //---------------------------------------------------------------
 
 
-
 init_pointer({})
-
-// preloader
-// document.addEventListener("load", () => {
-//     preloaded = true;
-//     console.log("preloaded is now true");
-//     setTimeout(function(){
-//         preloader.classList.add("preloader-finish");
-//     }, 3000);
-// });
-
-// if (preloaded){
-//     preloader.remove();
-//     console.log("preloader has been removed");
-// }
-
 
 const swup = new Swup({
     plugins: [new SwupJsPlugin(pageTransitions)]
@@ -364,17 +341,6 @@ function onPageLoad() {
     if (document.querySelector('#project-list')) {
         projectHoverFX();
     }
-
-    let allLinks = document.querySelectorAll('a');
-    allLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            ring.classList.add("link-hover");
-        })
-
-        link.addEventListener('mouseleave', () => {
-            ring.classList.remove("link-hover");
-        })
-    });
 
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
@@ -415,42 +381,3 @@ function onPageLoad() {
 }
 
 onPageLoad();
-
-
-
-// this code takes image outside of paragraph
-// const imagesInPara = document.querySelector('p > img')
-// const actualPara = imagesInPara.parentElement
-// actualPara.insertAdjacentElement("afterend", imagesInPara)
-
-// Navigation Menu Flyout
-
-// const primaryNavContainer = document.querySelector('.primary-nav-container');
-// primaryNavContainer.addEventListener("mouseenter", function( event ) {
-//     const menuFlyout = anime({
-//         targets: '.bar',
-//         translateX: -48,
-//         translateY: (elm, index, t) => 20 + (index * 50),
-//         scaleX: 4,
-//         scaleY: 8,
-//         easing: 'easeInOutSine',
-//         delay: (elm, index, t) => index * 20,
-//         duration: 200,
-//        });
-// }, false);
-
-// primaryNavContainer.addEventListener("mouseleave", function( event ) {
-//     const menuFlyin = anime({
-//         targets: '.bar',
-//         translateX: 0,
-//         translateY: (elm, index, t) => (index / 50),
-//         scaleX: 1,
-//         scaleY: 1,
-//         easing: 'easeInOutSine',
-//         delay: (elm, index, t) => index * 20,
-//         duration: 200,
-//        });
-// }, false);
-
-
-
