@@ -7,7 +7,6 @@
     margin: 0 auto;
     margin-top: 4vh;
     grid-template-columns: repeat(5, 1fr);
-    grid-row: 1;
 }
 
 .hero-text {
@@ -195,21 +194,36 @@
 }
 
 // mobile-only styling
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
+    :root { font-size: 16px; }
+
     main {
         display: none;
     }
 
     .temp-mobile {
         display: block;
-        background-color: white;
+        background-color: #efefef;
         z-index: 999;
-        pointer-events: none;
         height: 100vh;
         width: 100%;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        padding-top: 30vh;
+        padding: 3rem;
+
+        span {background-color: #dddddd;}
+
+        .picture {
+            background-image: url(/assets/images/phone.jpg);
+            background-position: center;
+            background-size: cover;
+            border-radius: 50%;
+            width: 6rem;
+            height: 6rem;
+            margin: 1rem;
+        }
     }
+
+
 }

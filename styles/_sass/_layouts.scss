@@ -1,5 +1,6 @@
 .project-header {
     height: 70vh;
+    min-height: 30vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2vw;
@@ -58,11 +59,12 @@
     margin: 10vh 12vw;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-rows: min-content;
+    gap: 2vw;
 
     img {width: 100%;}
-    p {font-size: 1rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; }
-    h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500;}
+    p {font-size: 1rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; margin: 0; padding: 0;}
+    h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500; margin: 0; padding: 0;}
 
     section:nth-of-type(1){
         grid-column: 2 / span 2;
