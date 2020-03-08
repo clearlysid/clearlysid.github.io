@@ -1,11 +1,11 @@
 .project-header {
-    height: 70vh;
+    height: 40vw;
     min-height: 30vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2vw;
     grid-template-rows: repeat(5, 20%);
-    padding: 10vh 10vw;
+    padding: 5vw 10vw;
     color: black;
 }
 
@@ -27,6 +27,11 @@
 .project-feature {
     grid-column: 2;
     grid-row: 2;
+
+    img {
+        width: 40vw;
+        height: auto;
+    }
 }
 
 .project-meta {
@@ -56,7 +61,7 @@
 
 
 .case-study {
-    margin: 10vh 12vw;
+    margin: 5vw 12vw;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: min-content;
@@ -122,7 +127,7 @@
 
 footer {
     background: #dddddd;
-    height: 50vh;
+    height: 30vw;
     width: 100%;
 }
 
