@@ -337,10 +337,22 @@ const swup = new Swup({
   });
 swup.on('contentReplaced', onPageLoad);
 
+
+    // lax for scrolling animations
+    window.onload = function() {
+        lax.setup() // init
+        const updateLax = () => {
+            lax.update(window.scrollY)
+            window.requestAnimationFrame(updateLax)
+        }
+        window.requestAnimationFrame(updateLax)
+    }
+
 function onPageLoad() {
     if (document.querySelector('#project-list')) {
         projectHoverFX();
     }
+
 
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
@@ -378,6 +390,8 @@ function onPageLoad() {
             }
         })    
     }
+
+
 }
 
 onPageLoad();
