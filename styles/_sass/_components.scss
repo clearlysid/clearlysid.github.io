@@ -2,7 +2,7 @@
     display: grid;
     width: 60%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 4vh;
     grid-template-columns: repeat(5, 1fr);
 }
 
@@ -16,9 +16,7 @@
     margin-top: -2rem;
     font-size: 1.1rem;
 
-    h3 {
-        font-size: 2.6rem;
-    }
+    h3 {font-size: 2.6rem;}
 }
 
 .hero-image {
@@ -69,7 +67,7 @@
         position: fixed;
         max-width: 100%;
         padding: 0 2vw;
-        margin: -1rem auto;
+        margin: -4vh auto;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
@@ -97,30 +95,25 @@
     transition: opacity 0.3s;
 }
 
-.project-item-bg {
-    display: block;
-    background-color:white;
-    position: absolute;
-	top: -1rem;
-    left: -1rem;
-	width: 90%;
-	height: calc(100% + 1rem);
-}
-
 .project-item:nth-child(1) { //7
     height: 35vh;
+    height: 21vw;
 }
 .project-item:nth-child(2) {  // 8
     height: 40vh;
+    height: 24vw;
 }
 .project-item:nth-child(3) { //6
     height: 30vh;
+    height: 18vw;
 }
 .project-item:nth-child(4) { // 5
     height: 25vh;
+    height: 15vw;
 }
 .project-item:nth-child(5) {  // 6
     height: 30vh;
+    height: 18vw;
 }
 
 .project-item-img {
@@ -186,7 +179,7 @@
 }
 
 // mobile-only styling
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
     :root { font-size: 4vw; }
 
     main {
@@ -194,6 +187,7 @@
     }
 
     .temp-mobile {
+        span {background-color: #dddddd;}
         display: block;
         background-color: #efefef;
         z-index: 999;
@@ -203,7 +197,6 @@
         top: 0;
         left: 0;
         padding: 2.8rem;
-        span {background-color: #dddddd;}
         .picture {
             background-image: url(/assets/images/phone.jpg);
             background-position: center;
