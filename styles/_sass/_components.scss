@@ -1,9 +1,13 @@
+.home {
+    height: 90vh;
+}
+
 .hero {
     display: grid;
     width: 60%;
-    margin: 0 auto;
-    margin-top: 4vh;
+    margin: 2vh auto;
     grid-template-columns: repeat(5, 1fr);
+    height: 50vh;
 }
 
 .hero-text {
@@ -13,7 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -2rem;
+    margin-top: -3rem;
     font-size: 1.1rem;
 
     h3 {font-size: 2.6rem;}
@@ -72,7 +76,8 @@
         grid-template-columns: repeat(5, 1fr);
         align-items: end;
         z-index: 10;
-        height: 47vh;
+        // height: 47vh;
+        max-height: 50vh;
 }
 
 .project-item {
@@ -168,6 +173,7 @@ footer {
     width: 100%;
     padding: 3rem;
     padding-top: 5rem;
+    text-align: center;
 }
 
 
@@ -182,6 +188,7 @@ footer {
         padding-top: 1rem;
         padding-bottom: 1rem;
         width: 80%;
+        margin: 0 auto;
 
         a {
             display: flex;
