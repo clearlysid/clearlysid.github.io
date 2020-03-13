@@ -33,7 +33,7 @@ const init_pointer = (options) => {
     requestAnimationFrame(render)
 }
 
-window.addEventListener('touchstart', function() {ring.remove();});
+window.addEventListener('touchstart', function() {ring.remove();}); // hide cursor on touch
 
 const pageTransitions = [
     
