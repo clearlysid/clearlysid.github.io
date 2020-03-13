@@ -94,24 +94,28 @@ const pageTransitions = [
         to: '/projects/*',
         in: function(next) {
             document.querySelector('#swup').style.opacity = 0;
-            var showProject = anime.timeline({
-                duration: 1000
+            imagesLoaded( '#swup', { background: true }, function(){
+                console.log('all images and background images loaded');
+                var showProject = anime.timeline({
+                    duration: 1000
+                });
+    
+                showProject
+                .add({ // show main body
+                    targets: '#swup',
+                    easing: 'easeOutQuint',
+                    duration: 1,
+                    opacity: 1
+                })
+                .add({ // overlay hide up
+                    targets: '#overlay',
+                    easing: 'easeOutQuint',
+                    translateY: -2 * window.innerHeight,
+                    delay: 800,
+                    complete: next
+                });
             });
-
-            showProject
-            .add({ // show main body
-                targets: '#swup',
-                easing: 'easeOutQuint',
-                duration: 1,
-                opacity: 1
-            })
-            .add({ // overlay hide up
-                targets: '#overlay',
-                easing: 'easeOutQuint',
-                translateY: -2 * window.innerHeight,
-                delay: 800,
-                complete: next
-            });
+            
         },
         out: (next) => {
             document.querySelector('#swup').style.opacity = 1;
