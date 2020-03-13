@@ -95,7 +95,6 @@ const pageTransitions = [
         in: function(next) {
             document.querySelector('#swup').style.opacity = 0;
             imagesLoaded( '#swup', { background: true }, function(){
-                console.log('all images and background images loaded');
                 var showProject = anime.timeline({
                     duration: 1000
                 });
@@ -111,7 +110,7 @@ const pageTransitions = [
                     targets: '#overlay',
                     easing: 'easeOutQuint',
                     translateY: -2 * window.innerHeight,
-                    delay: 800,
+                    delay: 600,
                     complete: next
                 });
             });
@@ -330,10 +329,7 @@ function projectHoverFX() {
 
 init_pointer({})
 const swup = new Swup({
-    plugins: [
-            new SwupJsPlugin(pageTransitions),
-            new SwupPreloadPlugin(),
-    ]
+    plugins: [new SwupJsPlugin(pageTransitions)]
 });
 swup.on('contentReplaced', onPageLoad);
 
