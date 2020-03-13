@@ -115,7 +115,6 @@ const pageTransitions = [
                     complete: next
                 });
             });
-            
         },
         out: (next) => {
             document.querySelector('#swup').style.opacity = 1;
