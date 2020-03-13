@@ -1,7 +1,8 @@
 // Custom Mouse Cursor
 const ring = document.createElement("div")
 ring.id = "pointer-ring"
-document.body.insertBefore(ring, document.body.children[0])
+document.body.insertBefore(ring, document.body.children[0]);
+document.addEventListener("touchstart", ring.style.display = "none");
 let mouseX = -100
 let mouseY = -100
 let ringX = -100
