@@ -7,7 +7,6 @@ let ringX = -100
 let ringY = -100
 let isHover = false
 let mouseDown = false
-
 const init_pointer = (options) => {
     window.onmousemove = (mouse) => {
         mouseX = mouse.clientX
@@ -32,7 +31,6 @@ const init_pointer = (options) => {
     }
     requestAnimationFrame(render)
 }
-
 window.addEventListener('touchstart', function() {ring.remove();}); // hide cursor on touch
 
 const pageTransitions = [
@@ -228,9 +226,7 @@ function projectHoverFX() {
         initEvents() { 
             let enter = false;
             this.mouseenterFn = () => {
-                if ( enter ) {
-                    enter = false;
-                };
+                if ( enter ) {enter = false;};
                 clearTimeout(this.mousetime);
                 this.mousetime = setTimeout(() => enter = true, 40);
             };
@@ -330,7 +326,6 @@ function projectHoverFX() {
 
 
 init_pointer({})
-
 const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
 swup.on('contentReplaced', onPageLoad);
 
