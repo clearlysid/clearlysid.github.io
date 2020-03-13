@@ -326,7 +326,12 @@ function projectHoverFX() {
 
 
 init_pointer({})
-const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
+const swup = new Swup({
+    plugins: [
+            new SwupJsPlugin(pageTransitions),
+            new SwupPreloadPlugin(),
+    ]
+});
 swup.on('contentReplaced', onPageLoad);
 
 function onPageLoad() {

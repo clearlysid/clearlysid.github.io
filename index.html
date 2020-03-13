@@ -25,7 +25,7 @@ layout: default
     </div>
     <div class="project-list" id="project-list">
         {% for project in site.work %}
-            <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}" data-swup-preload="true">
+            <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}" data-swup-preload="true" [data-swup-preload]>
                 <div class="box" style="position: relative;">
                     <h5 class="project-item-title">{{ project.work }}</h5>
                     <img class="project-item-img" src="{{ project.thumbnail }}" style="width: 100%;">
