@@ -138,6 +138,22 @@ article {
     }
 }
 
+.iframe-container {
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: relative;
+
+    iframe {
+        border: 0;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+     }
+}
+   
+
 
 
 .motion {
@@ -155,13 +171,19 @@ article {
         grid-column: 2 / span 4;
         grid-row: 4;
         margin-bottom: 20vh;
-        img {
-            position: relative;
+
+        div {
             position: absolute;
+            overflow: hidden;
             left: 0;
             height: 30vh;
-            width: auto;
+            width: 100vw;
             opacity: 0.8;
+
+            img {
+                height: 30vh;
+                width: auto;
+            }
         }
     }
 
