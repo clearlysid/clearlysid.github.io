@@ -367,18 +367,19 @@ function onPageLoad() {
             // ring.classList.add('light');
             backButton.classList.add('light');
             projectHeader.style.color = "white";
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > projectHeader.offsetHeight - 50) {
+                    backButton.classList.remove('light');
+                } else if (window.scrollY < projectHeader.offsetHeight){
+                    backButton.classList.add('light');
+                }
+            })    
             } else if (l > 128){
                 projectHeader.style.color = "black";
                 backButton.classList.remove('light');
             }
     
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > projectHeader.offsetHeight - 50) {
-                backButton.classList.remove('light');
-            } else if (window.scrollY < projectHeader.offsetHeight){
-                backButton.classList.add('light');
-            }
-        })    
+
     }
 
 
