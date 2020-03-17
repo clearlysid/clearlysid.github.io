@@ -1,4 +1,4 @@
-// @media only screen and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
     .project-header {
         height: 40vw;
         min-height: 30vw;
@@ -71,7 +71,7 @@
         h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500; margin: 0; padding: 0;}
     }
     
-    
+}    
     .print {
         section {
             img {
@@ -174,12 +174,12 @@
                 position: absolute;
                 overflow: hidden;
                 left: 0;
-                height: 20vw;
+                height: 20vmax;
                 width: 100vw;
                 opacity: 0.8;
     
                 img {
-                    height: 20vw;
+                    height: 20vmax;
                     width: auto;
                 }
             }
@@ -258,7 +258,6 @@
             grid-row: 3;
         }
     }
-// }
 
 
 @media only screen and (max-width: 800px) {
@@ -318,8 +317,15 @@
     article {
         display: flex;
         flex-direction: column;
+        margin: 5vw 12vw;
         img {width: 100%;}
         p {font-size: 1rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; margin: 0; padding: 0;}
         h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500; margin: 0; padding: 0;}
+        gap: 0 0;
+
+        section, figure {
+            margin-bottom: 10vw;
+        }
     }
+
 }

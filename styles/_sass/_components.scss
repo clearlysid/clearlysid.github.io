@@ -157,7 +157,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        margin: 1rem 2rem;
+        padding: 1rem 2rem;
 
         img {width: 2rem;}
     } 
@@ -231,16 +231,12 @@
 
 
 // mobile-only styling
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
     :root { font-size: 4vw; }
 
-    #pointer-ring {
-        display: none;
-    }
+    #pointer-ring {display: none;}
 
-    .home {
-
-    }
+    .home {}
 
     .hero {
         display: flex;
@@ -289,6 +285,10 @@
         svg {
             width: 1.4rem;
             height: 1.4rem;
+            -webkit-animation: swipe 1s ease 5 alternate;
+            -moz-animation: swipe 1s ease 5 alternate;
+            -ms-animation: swipe 1s ease 5 alternate;
+            -o-animation: swipe 1s ease 5 alternate;
             animation: swipe 1s ease 5 alternate;
         }
 
@@ -333,7 +333,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        margin: 1rem 2rem;
+        padding: 1rem 2rem;
         img {width: 2rem;}
     } 
     
