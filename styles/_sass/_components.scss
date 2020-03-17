@@ -78,6 +78,10 @@
         }
     }
 
+    .mobile-cta {
+        display: none;
+    }
+
     .project-list {
             // position: fixed;
             max-width: 100%;
@@ -147,21 +151,7 @@
         transition: transform 0.2s ease-out;
     }
 
-
-
-    // Navigation Menu
-
-    .primary-nav-container {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 280px;
-        width: 280px;
-        z-index: 60;
-        margin-left: auto;
-        border-radius: 50%;
-    }
+    .glider-prev, .glider-next {display: none;}
 
     .back-button {
         position: fixed;
@@ -173,10 +163,6 @@
             width: 2rem;
         }
     } 
-
-    .temp-mobile {
-        display: none;
-    }
 
     footer {
         background: #dddddd;
@@ -255,16 +241,14 @@
     }
 
     .home {
-        overflow-y: scroll;
-        height: 100vh;
+
     }
 
     .hero {
         display: flex;
-        flex-direction: column;
         padding: 2.8rem;
+        padding-top: 1rem;
         width: 100%;
-        height: 100vh;
     }
 
     .picture {
@@ -282,34 +266,46 @@
         display: flex;
         flex-direction: column;
         font-size: 1rem;
+
+        p:nth-of-type(2) {
+            display: none;
+        }
+
         h3 {
             font-size: 2rem;
             .desktop-greeting {display: none;}
+            position: absolute;
+            left: 10rem;
+            top: 0.8rem;
         }
     }
     
     .hero-image {display: none;}
     .hero-buttons {display: none;}
-    
 
+    .mobile-cta {
+        margin: 1rem;
+        display: flex;
+        justify-content: start;
 
+        svg {
+            width: 1.4rem;
+            animation: swipe 1s ease 5 alternate;
+        }
 
+    }
     
     .project-list {
-            // position: fixed;
-            // max-width: 100%;
             padding: 0 2vw;
             margin: 0 auto;
-            z-index: 10;
-            width: 100vw;
-            height: 100vh;
+            // z-index: 10;
     }
     
     .project-item {
         margin: 0 1vw;
-        width: 100vw;
-        height: 100vh;
     }
+
+    .glider-prev, .glider-next {display: none;}
     
     .project-item-title {
         font-family: Noah;
@@ -333,17 +329,6 @@
         margin: 0 auto;
         max-width: 100%;
     }
-    
-
-
-
-
-
-
-
-
-
-
 
     .back-button {
         position: fixed;
