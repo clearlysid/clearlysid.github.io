@@ -333,16 +333,27 @@ const swup = new Swup({
 });
 swup.on('contentReplaced', onPageLoad);
 
+
+
+
+
 function onPageLoad() {
     if (document.querySelector('#project-list')) {projectHoverFX();}
 
-    lax.setup() // init
-    const updateLax = () => {
-        lax.update(window.scrollY);
+    if(window.innerWidth >= 800){
+        lax.setup() // init
+        const updateLax = () => {
+            lax.update(window.scrollY);
+            window.requestAnimationFrame(updateLax);
+        }
         window.requestAnimationFrame(updateLax);
     }
-    window.requestAnimationFrame(updateLax);
 
+    if(window.innerWidth <= 800){
+        // new Glider(document.querySelector('.project-selector'), {
+        //     slidesToShow: 
+        // })
+    }
 
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
@@ -378,11 +389,7 @@ function onPageLoad() {
                 projectHeader.style.color = "black";
                 backButton.classList.remove('light');
             }
-    
-
     }
-
-
 }
 
 onPageLoad();
