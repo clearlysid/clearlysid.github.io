@@ -1,3 +1,19 @@
+const firstLoad = document.createElement("div")
+firstLoad.id = "first-load"
+document.body.insertBefore(firstLoad, document.body.children[0]);
+window.addEventListener('load', () => {
+    anime({
+        targets: '#first-load',
+        easing: 'easeOutQuint',
+        delay: 500,
+        duration: 500,
+        opacity: 0,
+        complete: function() {
+            firstLoad.remove();
+        }
+    });
+})
+
 const ring = document.createElement("div")
 ring.id = "pointer-ring"
 document.body.insertBefore(ring, document.body.children[0]);
@@ -328,11 +344,8 @@ function projectHoverFX() {
 
 
 init_pointer({})
-const swup = new Swup({
-    plugins: [new SwupJsPlugin(pageTransitions)]
-});
+const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
 swup.on('contentReplaced', onPageLoad);
-
 
 function onPageLoad() {
     if(window.innerWidth >= 800){
@@ -346,21 +359,24 @@ function onPageLoad() {
     }
 
     if(window.innerWidth <= 800){
-        new Glider(document.querySelector('.project-list'), {
-            slidesToScroll: 1,
-            slidesToShow: 1.3,
-            dots: '#dots',
-            scrollLock: true,
-            draggable: true,
-            arrows: {
-            //   prev: '.glider-prev',
-              next: '.mobile-cta'
-            }
-        })
+        if (document.querySelector('#project-list')) {
+            new Glider(document.querySelector('.project-list'), {
+                slidesToScroll: 1,
+                slidesToShow: 1.3,
+                dots: '#dots',
+                scrollLock: true,
+                draggable: true,
+                arrows: {
+                //   prev: '.glider-prev',
+                  next: '.mobile-cta'
+                }
+            })
+        }
     }
 
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
+
     if (projectHeader != null) {
         let headBg = window.getComputedStyle(projectHeader).backgroundColor;
         let sep = headBg.indexOf(",") > -1 ? "," : " ";
@@ -377,7 +393,6 @@ function onPageLoad() {
             b = headBg[2],
             l = (Math.min(r,g,b) + Math.max(r,g,b)) / 2;
     
-        // Toggle Nav Colours based on project-header-background
         if (l < 128) {
             // ring.classList.add('light');
             backButton.classList.add('light');
@@ -394,6 +409,14 @@ function onPageLoad() {
                 backButton.classList.remove('light');
             }
     }
+
+    const burger = document.querySelector('.burger');
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('is-active');
+    })
+
+
+
 }
 
 onPageLoad();
