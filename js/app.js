@@ -362,7 +362,7 @@ function onPageLoad() {
         if (document.querySelector('#project-list')) {
             new Glider(document.querySelector('.project-list'), {
                 slidesToScroll: 1,
-                slidesToShow: 1.3,
+                slidesToShow: 1.2,
                 dots: '#dots',
                 scrollLock: true,
                 draggable: true,
@@ -376,6 +376,7 @@ function onPageLoad() {
 
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
+    const burger = document.querySelector('.burger');
 
     if (projectHeader != null) {
         let headBg = window.getComputedStyle(projectHeader).backgroundColor;
@@ -396,21 +397,25 @@ function onPageLoad() {
         if (l < 128) {
             // ring.classList.add('light');
             backButton.classList.add('light');
+            burger.classList.add('light');
             projectHeader.style.color = "white";
             window.addEventListener('scroll', () => {
                 if (window.scrollY > projectHeader.offsetHeight - 50) {
                     backButton.classList.remove('light');
+                    burger.classList.remove('light');
                 } else if (window.scrollY < projectHeader.offsetHeight){
                     backButton.classList.add('light');
+                    burger.classList.add('light');
                 }
             })    
             } else if (l > 128){
                 projectHeader.style.color = "black";
                 backButton.classList.remove('light');
+                burger.classList.remove('light');
             }
     }
 
-    const burger = document.querySelector('.burger');
+    
     burger.addEventListener('click', () => {
         burger.classList.toggle('is-active');
     })
