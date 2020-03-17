@@ -15,7 +15,15 @@
     <main id="swup"> 
     {{ content }}
     </main>
-    <div id="overlay"></div>
+    <div id="overlay">
+        <div id="spinner">
+            <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
+            <div class="loader" aria-hidden="true">
+                <div class="loader__sq"></div>
+                <div class="loader__sq"></div>
+            </div>
+        </div> 
+    </div>
     <script src="{{ site.baseurl }}/js/anime.min.js"></script>
     <script src="{{ site.baseurl }}/js/imagesloaded.pkgd.min.js"></script>
     <script src="{{ site.baseurl }}/js/swup.min.js"></script>
