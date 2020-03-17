@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include head.html %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width initial-scale=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% if page.title %}{{ page.title }} | Siddharth's Portfolio{% else %}{{ site.title }} | {{ site.description }}{% endif %}</title>
+        <meta name="description" content="{{ site.description }}">
+        <link rel="stylesheet" href="{{ site.baseurl }}/styles/glider.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+        <link id="CSS" rel="stylesheet" href="{{ site.baseurl }}/styles/main.css">
+    </head>
 <body>
-    {% include nav.html %}
+    <nav>
+        <div class="burger burger--spin">
+            <div class="burger-box">
+              <div class="burger-inner"></div>
+            </div>
+        </div>
+    </nav>
 
     <main id="swup"> 
     {{ content }}
     </main>
+
     <div id="overlay">
         <div id="spinner">
             <div class="loader" aria-hidden="true">
@@ -15,12 +31,14 @@
             </div>
         </div> 
     </div>
+
     <script src="{{ site.baseurl }}/js/anime.min.js"></script>
     <script src="{{ site.baseurl }}/js/imagesloaded.pkgd.min.js"></script>
     <script src="{{ site.baseurl }}/js/swup.min.js"></script>
-    <script src="{{ site.baseurl }}/js/swupjs.min.js"></script>
     <script src="{{ site.baseurl }}/js/lax.min.js" ></script>
     <script src="{{ site.baseurl }}/js/glider.min.js"></script>
     <script src="{{ site.baseurl }}/js/app.js"></script>
+
+    
 </body>
 </html>

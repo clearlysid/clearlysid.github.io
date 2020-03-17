@@ -1,25 +1,4 @@
-#overlay {
-    position: fixed;
-    top: 100vh;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #cccccc;
-    z-index: 5;
-    display: none;
-}
-
-#spinner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    position: fixed;
-    width: 100vw;
-    opacity: 0.1;
-}
-
-  @mixin same-size($sz) {
+@mixin same-size($sz) {
 	width: $sz;
 	height: $sz;
 }
@@ -118,3 +97,23 @@
 	
 }
 
+.burger--spin .burger-inner {
+    transition-duration: 0.22s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+    .burger--spin .burger-inner::before {
+      transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in; }
+    .burger--spin .burger-inner::after {
+      transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
+  
+  .burger--spin.is-active .burger-inner {
+    transform: rotate(225deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .burger--spin.is-active .burger-inner::before {
+      top: 0;
+      opacity: 0;
+      transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out; }
+    .burger--spin.is-active .burger-inner::after {
+      bottom: 0;
+      transform: rotate(-90deg);
+      transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
