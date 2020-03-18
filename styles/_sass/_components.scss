@@ -299,6 +299,16 @@
         }
 
     }
+
+    .social-icons {
+        svg {
+            width: 1.6rem;
+            height: 1.6rem;
+            margin: 1rem;
+            margin-left: 0;
+            opacity: 0.2;
+        }
+    }
     
     .project-list {
         display: none;
