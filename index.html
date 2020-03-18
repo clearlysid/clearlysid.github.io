@@ -35,17 +35,35 @@ layout: default
             <img src="/assets/images/hero.png" alt="">
         </div>
     </div>
+
     <div class="project-list" id="project-list">
         {% for project in site.work %}
-            <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}">
-                <div class="box" style="position: relative;">
-                    <h5 class="project-item-title">{{ project.work }}</h5>
-                    <img class="project-item-img" src="{{ project.thumbnail }}">
-                </div>
-            </a>
+        <a class="project-item smooth" href="{{ site.baseurl }}{{ project.permalink }}">
+            <div class="box" style="position: relative;">
+                <h5 class="project-item-title">{{ project.work }}</h5>
+                <img class="project-item-img" src="{{ project.thumbnail }}">
+            </div>
+        </a>
         {% endfor %}
     </div>
 
-    <button class="glider-prev">previous</button>
-    <button class="glider-next">next</button>
+    <div class="glide">
+        <div data-glide-el="track" class="glide__track">
+            <div class="project-carousel glide__slides">
+                {% for project in site.work %}
+                <a class="project-item glide__slide" href="{{ site.baseurl }}{{ project.permalink }}">
+                    <div class="box" style="position: relative;">
+                        <h5 class="project-item-title">{{ project.work }}</h5>
+                        <img class="project-item-img" src="{{ project.thumbnail }}">
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
+        </div>
+    </div>
 </header>

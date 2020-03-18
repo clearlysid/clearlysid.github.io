@@ -355,23 +355,31 @@ function onPageLoad() {
             window.requestAnimationFrame(updateLax);
         }
         window.requestAnimationFrame(updateLax);
-        if (document.querySelector('#project-list')) {projectHoverFX();}
+        if (document.querySelector('.project-list')) {projectHoverFX();}
     }
 
     if(window.innerWidth <= 800){
-        if (document.querySelector('#project-list')) {
-            new Glider(document.querySelector('.project-list'), {
-                slidesToScroll: 1,
-                slidesToShow: 1.2,
-                dots: '#dots',
-                scrollLock: true,
-                draggable: true,
-                arrows: {
-                //   prev: '.glider-prev',
-                  next: '.mobile-cta'
-                }
-            })
+        
+        if (document.querySelector('.project-list')) {
+            // new Glider(document.querySelector('.project-list'), {
+            //     slidesToScroll: 1,
+            //     slidesToShow: 1.2,
+            //     dots: '#dots',
+            //     scrollLock: true,
+            //     draggable: true,
+            //     arrows: {
+            //     //   prev: '.glider-prev',
+            //       next: '.mobile-cta'
+            //     }
+            // })
         }
+
+        new Glide('.glide', {
+            type: 'carousel',
+            perView: 1.3,
+            focusAt: 'center'
+
+        }).mount();
     }
 
     const projectHeader = document.querySelector('.project-header');
@@ -414,6 +422,13 @@ function onPageLoad() {
                 burger.classList.remove('light');
             }
     }
+
+    window.addEventListener('resize', () => {
+        let vh = window.innerHeight;
+        document.documentElement.style.setProperty('--window-height', `${vh}px`);
+      });
+
+
 
     
     burger.addEventListener('click', () => {
