@@ -427,8 +427,6 @@ function onPageLoad() {
         burger.classList.toggle('is-active');
     })
 
-
-
 }
 
 onPageLoad();
