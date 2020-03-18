@@ -388,7 +388,6 @@ function onPageLoad() {
                 burger.classList.remove('light');
             }
     } else {
-        backButton.classList.remove('light');
         burger.classList.remove('light');
     }
 

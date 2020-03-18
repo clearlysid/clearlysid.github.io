@@ -303,23 +303,23 @@
     }
     
     .project-list {
-            display: none;
+        display: none;
     }
     
     .project-item {
-        margin: 0 1vw;
+        margin-bottom: 4rem;
         height: 20rem;
     }
 
     .glide__slide .project-item-img{
-        filter: blur(1px);
         opacity: 0.7;
-        transition: 0.5s ease-in-out;
+        transform: scale(0.9);
+        transition: all 0.5s ease-in-out;
     }
 
     .glide__slide--active .project-item-img{
-        filter: none;
         opacity: 1;
+        transform: scale(1);
     }
 
     .glide__arrows {
