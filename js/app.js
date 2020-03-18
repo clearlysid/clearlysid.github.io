@@ -411,8 +411,8 @@ function onPageLoad() {
                 perView: 1.3,
                 focusAt: 'center',
                 autoplay: 8000,
-                animationTimingFunc: 'cubic-bezier(0.86, 0, 0.07, 1)',
-                animationDuration: 1000
+                animationTimingFunc: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                animationDuration: 600
             }).mount();
         }
     }
