@@ -408,7 +408,7 @@ function onPageLoad() {
     }
 
     window.addEventListener('resize', () => {
-        document.getElementById('#overlay').style.property = `${window.innerHeight}px`;
+        document.getElementById('overlay').style.property = `${window.innerHeight}px`;
         console.log("overlay height changed");
       });
 
