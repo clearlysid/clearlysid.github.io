@@ -1,7 +1,7 @@
 # Site settings
 title: Siddharth Jha
 email: mail@siddharthjha.com
-description: "Digital Designer"
+description: "A design student focused on UX and Interaction, who loves slick animation and occasionally dabbles in code."
 baseurl: "" # the subpath of your site, e.g. /blog/
 url:  "" # the base hostname & protocol for your site
 
@@ -10,8 +10,6 @@ markdown: kramdown
 
 sass:
   sass_dir: /styles/_sass
-
-excerpt_separator: <!--excerpt-->
 
 collections:
   work: 
