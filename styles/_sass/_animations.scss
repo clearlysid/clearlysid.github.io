@@ -138,7 +138,7 @@
     pointer-events: none;
 }
 
-.global-menu {
+.nav-menu {
     width: 100vw;
     height: 90vh;
     display: flex;
@@ -179,15 +179,3 @@
 .nav-link.is-opened:nth-of-type(3) {transition-delay: 1.2s;}
 .nav-link:nth-of-type(4) {transition-delay: 0.1s;}
 .nav-link.is-opened:nth-of-type(4) {transition-delay: 1.3s;}
-
-.nav-shape {
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-.nav-shape-path {fill: #dddddd;}

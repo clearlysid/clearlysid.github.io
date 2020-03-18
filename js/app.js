@@ -493,7 +493,6 @@ function onPageLoad() {
             l = (Math.min(r,g,b) + Math.max(r,g,b)) / 2;
     
         if (l < 128) {
-            // ring.classList.add('light');
             backButton.classList.add('light');
             burger.classList.add('light');
             projectHeader.style.color = "white";
@@ -560,6 +559,7 @@ function onPageLoad() {
             burger.classList.remove('is-active');
             for (var i = 0; i < navLinks.length; i++) {
               navLinks[i].classList.remove('is-opened');
+            //   onPageLoad();
             }
           }
     })
