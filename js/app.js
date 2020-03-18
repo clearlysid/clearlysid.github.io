@@ -552,6 +552,7 @@ function onPageLoad() {
           navShapePath.toggle();
           if (navShapePath.isOpened === true) {
             burger.classList.add('is-active');
+            burger.classList.remove('light');
             for (var i = 0; i < navLinks.length; i++) {
               navLinks[i].classList.add('is-opened');
             }
