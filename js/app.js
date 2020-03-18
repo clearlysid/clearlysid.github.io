@@ -387,9 +387,9 @@ function projectHoverFX() {
 init_pointer({})
 const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
 swup.on('contentReplaced', onPageLoad);
+swup.on('transitionStart', () => {burger.style.zIndex = "1";});
+swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(navShape);
-
-
 
 function onPageLoad() {
     const projectHeader = document.querySelector('.project-header');
