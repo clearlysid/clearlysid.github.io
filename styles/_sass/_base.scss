@@ -82,13 +82,9 @@ p {
 }
 
 
-::selection {
-    background-color: #cccccc;
-}
+::selection {background-color: #cccccc;}
 
-.light {
-    filter: invert(1);
-}
+.light {filter: invert(1);}
 
 .burger {
     position: fixed;
@@ -96,21 +92,11 @@ p {
     right: 0;
     padding: 1rem 2rem;
     display: inline-block;
-    cursor: pointer;
-    transition-property: opacity, filter;
-    transition-duration: 0.15s;
-    transition-timing-function: linear;
     background-color: transparent;
     border: 0;
     margin: 0;
     overflow: visible;
     z-index: 4;       
-}
-
-.burger.is-active .burger-inner,
-.burger.is-active .burger-inner::before,
-.burger.is-active .burger-inner::after {
-    background-color: #000;
 }
   
 .burger-box {
@@ -119,32 +105,24 @@ p {
     display: inline-block;
     position: relative;
 }
-  
-.burger-inner {
-    display: block;
-    top: 50%;
-    margin-top: -2px;
-}
 
 .burger-inner, .burger-inner::before, .burger-inner::after {
     width: 2.1rem;
     height: 0.18rem;
     background-color: #000;
-    border-radius: 2px;
+    border-radius: 0.12rem;
     position: absolute;
     transition-property: transform;
     transition-duration: 0.15s;
     transition-timing-function: ease;
     z-index: 200;
-}
-    
-.burger-inner::before, .burger-inner::after {
-      content: "";
-      display: block;
+    content: "";
+    display: block;
 }
 
-.burger-inner::before {top: -10px;}
-.burger-inner::after {bottom: -10px;}
+.burger-inner {top: 50%; margin-top: -0.12rem;}
+.burger-inner::before {top: -0.6rem;}
+.burger-inner::after {bottom: -0.6rem;}
 
 
 #overlay {

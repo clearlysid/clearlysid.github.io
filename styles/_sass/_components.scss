@@ -295,11 +295,11 @@
         svg {
             width: 1.4rem;
             height: 1.4rem;
-            -webkit-animation: swipe 1s ease 5 alternate;
-            -moz-animation: swipe 1s ease 5 alternate;
-            -ms-animation: swipe 1s ease 5 alternate;
-            -o-animation: swipe 1s ease 5 alternate;
-            animation: swipe 1s ease 5 alternate;
+            -webkit-animation: swipe 1s ease infinite alternate;
+            -moz-animation: swipe 1s ease infinite alternate;
+            -ms-animation: swipe 1s ease infinite alternate;
+            -o-animation: swipe 1s ease infinite alternate;
+            animation: swipe 1s ease infinite alternate;
         }
 
     }
