@@ -1,5 +1,10 @@
-const firstLoad = document.createElement("div")
-firstLoad.id = "first-load"
+const firstLoad = document.createElement("div");
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelectorAll('.nav-link');
+const navShape = document.querySelector('.nav-shape');
+const ring = document.createElement("div");
+
+firstLoad.id = "first-load";
 document.body.insertBefore(firstLoad, document.body.children[0]);
 window.addEventListener('load', () => {
     anime({
@@ -14,79 +19,89 @@ window.addEventListener('load', () => {
     });
 })
 
+ring.id = "pointer-ring"
+document.body.insertBefore(ring, document.body.children[0]);
+window.addEventListener('touchstart', function() {ring.remove();}); 
+let mouseX = -100
+let mouseY = -100
+let ringX = -100
+let ringY = -100
+let isHover = false
+let mouseDown = false
+
 class ShapeOverlays {
     constructor(elm) {
-      this.elm = elm;
-      this.path = elm.querySelectorAll('path');
-      this.numPoints = 3;
-      this.duration = 900;
-      this.delayPointsArray = [];
-      this.delayPointsMax = 300;
-      this.delayPerPath = 250;
-      this.timeStart = Date.now();
-      this.isOpened = false;
-      this.isAnimating = false;
+        this.elm = elm;
+        this.path = elm.querySelectorAll('path');
+        this.numPoints = 3;
+        this.duration = 900;
+        this.delayPointsArray = [];
+        this.delayPointsMax = 300;
+        this.delayPerPath = 250;
+        this.timeStart = Date.now();
+        this.isOpened = false;
+        this.isAnimating = false;
     }
     toggle() {
-      this.isAnimating = true;
-      for (var i = 0; i < this.numPoints; i++) {
-        this.delayPointsArray[i] = Math.random() * this.delayPointsMax;
-      }
-      if (this.isOpened === false) {
-        this.open();
-      } else {
-        this.close();
-      } 
+        this.isAnimating = true;
+        for (var i = 0; i < this.numPoints; i++) {
+            this.delayPointsArray[i] = Math.random() * this.delayPointsMax;
+        }
+        if (this.isOpened === false) {
+            this.open();
+        } else {
+            this.close();
+        } 
     }
     open() {
-      this.isOpened = true;
-      this.elm.classList.add('is-opened');
-      this.timeStart = Date.now();
-      this.renderLoop();
+        this.isOpened = true;
+        this.elm.classList.add('is-opened');
+        this.timeStart = Date.now();
+        this.renderLoop();
     }
     close() {
-      this.isOpened = false;
-      this.elm.classList.remove('is-opened');
-      this.timeStart = Date.now();
-      this.renderLoop();
+        this.isOpened = false;
+        this.elm.classList.remove('is-opened');
+        this.timeStart = Date.now();
+        this.renderLoop();
     }
     updatePath(time) {
-      const points = [];
-      for (var i = 0; i < this.numPoints; i++) {
-        points[i] = (1 - ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
-      }
-  
-      let str = '';
-      str += (this.isOpened) ? `M 0 0 V ${points[0]}` : `M 0 ${points[0]}`;
-      for (var i = 0; i < this.numPoints - 1; i++) {
-        const p = (i + 1) / (this.numPoints - 1) * 100;
-        const cp = p - (1 / (this.numPoints - 1) * 100) / 2;
-        str += `C ${cp} ${points[i]} ${cp} ${points[i + 1]} ${p} ${points[i + 1]} `;
-      }
-      str += (this.isOpened) ? `V 100 H 0` : `V 0 H 0`;
-      return str;
+        const points = [];
+        for (var i = 0; i < this.numPoints; i++) {
+            points[i] = (1 - ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
+        }
+    
+        let str = '';
+        str += (this.isOpened) ? `M 0 0 V ${points[0]}` : `M 0 ${points[0]}`;
+        for (var i = 0; i < this.numPoints - 1; i++) {
+            const p = (i + 1) / (this.numPoints - 1) * 100;
+            const cp = p - (1 / (this.numPoints - 1) * 100) / 2;
+            str += `C ${cp} ${points[i]} ${cp} ${points[i + 1]} ${p} ${points[i + 1]} `;
+        }
+        str += (this.isOpened) ? `V 100 H 0` : `V 0 H 0`;
+        return str;
     }
     render() {
-      if (this.isOpened) {
-        for (var i = 0; i < this.path.length; i++) {
-          this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i)));
+        if (this.isOpened) {
+            for (var i = 0; i < this.path.length; i++) {
+            this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * i)));
+            }
+        } else {
+            for (var i = 0; i < this.path.length; i++) {
+            this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))));
+            }
         }
-      } else {
-        for (var i = 0; i < this.path.length; i++) {
-          this.path[i].setAttribute('d', this.updatePath(Date.now() - (this.timeStart + this.delayPerPath * (this.path.length - i - 1))));
-        }
-      }
     }
     renderLoop() {
-      this.render();
-      if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
-        requestAnimationFrame(() => {
-          this.renderLoop();
-        });
-      }
-      else {
-        this.isAnimating = false;
-      }
+        this.render();
+        if (Date.now() - this.timeStart < this.duration + this.delayPerPath * (this.path.length - 1) + this.delayPointsMax) {
+            requestAnimationFrame(() => {
+            this.renderLoop();
+            });
+        }
+        else {
+            this.isAnimating = false;
+        }
     }
 }
 
@@ -133,17 +148,6 @@ const ease = {
     },
 }
 
-const ring = document.createElement("div")
-ring.id = "pointer-ring"
-document.body.insertBefore(ring, document.body.children[0]);
-let mouseX = -100
-let mouseY = -100
-let ringX = -100
-let ringY = -100
-let isHover = false
-let mouseDown = false
-
-
 const init_pointer = (options) => {
     window.onmousemove = (mouse) => {
         mouseX = mouse.clientX
@@ -168,118 +172,34 @@ const init_pointer = (options) => {
     }
     requestAnimationFrame(render)
 }
-window.addEventListener('touchstart', function() {ring.remove();}); // hide cursor on touch
 
 const pageTransitions = [
-    
     { // from project to home
         from: '/projects/*',
         to: '/index.html',
         in: function(next) {
-            document.querySelector('#swup').style.opacity = 0;
-            anime.set('.project-item', {translateY: -1 * window.innerHeight - 50}); // set thumb-grid to above screen
-            var showHome = anime.timeline({
-                duration: 1000
+            imagesLoaded( '#swup', { background: true }, function(){
+                fluidOverlay.toggle();
+                setTimeout( next, 1000);
             });
-            showHome
-            .add({ 
-                targets: '#overlay',
-                easing: 'easeOutQuint',
-                translateY: 0,
-                delay: 600
-            })
-            .add({ 
-                targets: '.project-item',
-                easing: 'easeInOutQuint',
-                duration: function() { return anime.random(1000, 1500); },
-                translateY: 0,
-                complete: next
-            }, 0);
-            anime({ // show main body
-                targets: '#swup',
-                easing: 'easeOutQuint',
-                duration: 1,
-                opacity: 1,
-            });
-            
         },
         out: (next) => {
-            document.querySelector('#swup').style.opacity = 1;
-            anime.set('#overlay', {translateY: -2 * window.innerHeight});
-            anime.set('#overlay', {display: 'block'});
-            var hideProject = anime.timeline({
-                duration: 800
-            });
-            hideProject
-            .add({ // hide main body
-                targets: '#swup',
-                easing: 'linear',
-                opacity: 0,
-                duration: 1,
-                delay: 800,
-                complete: next
-            })
-            .add({ // overlay show down
-                targets: '#overlay',
-                easing: 'easeInOutQuint',
-                translateY: -1 * window.innerHeight,
-            }, 0);
+            fluidOverlay.toggle();
+            setTimeout( next, 1000);
         }
     },
     { // from home to project
         from: '/',
         to: '/projects/*',
         in: function(next) {
-            document.querySelector('#swup').style.opacity = 0;
             imagesLoaded( '#swup', { background: true }, function(){
-                var showProject = anime.timeline({
-                    duration: 1000
-                });
-    
-                showProject
-                .add({ // show main body
-                    targets: '#swup',
-                    easing: 'easeOutQuint',
-                    duration: 1,
-                    opacity: 1
-                })
-                .add({ // overlay hide up
-                    targets: '#overlay',
-                    easing: 'easeOutQuint',
-                    translateY: -2 * window.innerHeight,
-                    delay: 600,
-                    complete: next
-                });
+                fluidOverlay.toggle();
+                setTimeout( next, 1000);
             });
         },
         out: (next) => {
-            document.querySelector('#swup').style.opacity = 1;
-            anime.set('#overlay', {translateY: 0});
-            anime.set('#overlay', {display: 'block'});
-            var hideHome = anime.timeline({
-                duration: 1000
-            });
-            
-            hideHome
-            .add({ // hide main body
-                targets: '#swup',
-                easing: 'linear',
-                opacity: 0,
-                duration: 1,
-                delay: 999
-            })
-            .add({ // overlay show up
-                targets: '#overlay',
-                easing: 'easeInOutQuint',
-                translateY: -1 * window.innerHeight,
-                complete: next
-            }, 0)
-            .add({ // smooth thumbnails animation
-                targets: '.project-item',
-                easing: 'easeInOutQuint',
-                duration: function() { return anime.random(800, 1200); },
-                translateY: -1 * window.innerHeight - 50
-            }, 200);
+            fluidOverlay.toggle();
+            setTimeout( next, 1000);
         }
     }
 ];
@@ -464,21 +384,16 @@ function projectHoverFX() {
 
 //---------------------------------------------------------------
 
-
 init_pointer({})
 const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
 swup.on('contentReplaced', onPageLoad);
-swup.on('transitionEnd', () => {
-    document.getElementById('overlay').style.display = 'none';
-})
+const fluidOverlay = new ShapeOverlays(navShape);
+
+
 
 function onPageLoad() {
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
-    const burger = document.querySelector('.burger');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navShape = document.querySelector('.nav-shape');
-    const navShapePath = new ShapeOverlays(navShape);
 
     if (projectHeader != null) {
         let headBg = window.getComputedStyle(projectHeader).backgroundColor;
@@ -541,33 +456,24 @@ function onPageLoad() {
             }).mount();
         }
     }
-
-    window.addEventListener('resize', () => {
-        document.getElementById('overlay').style.top = `${window.innerHeight}px`;
-        document.getElementById('overlay').style.height = `${window.innerHeight}px`;
-      });
-
     
     burger.addEventListener('click', () => {
-        if (navShapePath.isAnimating) {
-            return false;
-          }
-          navShapePath.toggle();
-          if (navShapePath.isOpened === true) {
+        if (fluidOverlay.isAnimating) {return false;}
+        fluidOverlay.toggle();
+
+        if (fluidOverlay.isOpened === true) {
             burger.classList.add('is-active');
             burger.classList.remove('light');
             for (var i = 0; i < navLinks.length; i++) {
-              navLinks[i].classList.add('is-opened');
+                navLinks[i].classList.add('is-opened');
             }
-          } else {
+        } else {
             burger.classList.remove('is-active');
             for (var i = 0; i < navLinks.length; i++) {
-              navLinks[i].classList.remove('is-opened');
-            //   onPageLoad();
+                navLinks[i].classList.remove('is-opened');
             }
-          }
+        }
     })
-
 }
 
 onPageLoad();
