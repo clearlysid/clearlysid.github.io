@@ -54,12 +54,6 @@
         }
     }
     
-    .project-year {
-        grid-row: 1;
-        grid-column: 2;
-    }
-    
-    
     article {
         margin: 5vw 12vw;
         display: grid;
@@ -231,7 +225,7 @@
     
     
     .packaging {
-        gap: 5vw 2vw;
+        gap: 4.8rem 2rem;
     
         section:nth-of-type(1){
             grid-column: 2 / span 2;
@@ -317,14 +311,14 @@
     article {
         display: flex;
         flex-direction: column;
-        margin: 5vw 12vw;
+        margin: 4.8rem 10rem;
         img {width: 100%;}
         p {font-size: 1rem; color: rgba(0, 0, 0, 0.7); line-height: 1.6; margin: 0; padding: 0;}
         h2 {font-family: 'Avenir Next'; font-size: 1.2rem; font-weight: 500; margin: 0; padding: 0;}
         gap: 0 0;
 
         section, figure {
-            margin-bottom: 10vw;
+            margin-bottom: 8rem;
         }
     }
 

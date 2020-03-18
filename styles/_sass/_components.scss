@@ -244,7 +244,9 @@
 
     #pointer-ring {display: none;}
 
-    .home {}
+    .home {
+        padding-bottom: 4rem;
+    }
 
     .hero {
         display: flex;
@@ -324,7 +326,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 4rem;
 
         button {
             background: none;

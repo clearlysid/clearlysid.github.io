@@ -411,7 +411,7 @@ function onPageLoad() {
                 perView: 1.3,
                 focusAt: 'center',
                 autoplay: 8000,
-                animationTimingFunc: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
+                animationTimingFunc: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 animationDuration: 600
             }).mount();
         }
@@ -420,7 +420,6 @@ function onPageLoad() {
     window.addEventListener('resize', () => {
         document.getElementById('overlay').style.top = `${window.innerHeight}px`;
         document.getElementById('overlay').style.height = `${window.innerHeight}px`;
-        console.log("overlay height changed");
       });
 
     
