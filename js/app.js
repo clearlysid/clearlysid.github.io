@@ -153,7 +153,6 @@ const pageTransitions = [
                 translateY: -1 * window.innerHeight,
                 complete: next
             }, 0)
-            
             .add({ // smooth thumbnails animation
                 targets: '.project-item',
                 easing: 'easeInOutQuint',
@@ -346,6 +345,9 @@ function projectHoverFX() {
 init_pointer({})
 const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
 swup.on('contentReplaced', onPageLoad);
+swup.on('transitionEnd', () => {
+    document.getElementById('overlay').style.display = 'none';
+})
 
 function onPageLoad() {
     const projectHeader = document.querySelector('.project-header');
@@ -405,8 +407,12 @@ function onPageLoad() {
         if (document.querySelector('.glide')) {
             new Glide('.glide', {
                 type: 'carousel',
+                startAt: 0,
                 perView: 1.3,
-                focusAt: 'center'
+                focusAt: 'center',
+                autoplay: 8000,
+                animationTimingFunc: 'cubic-bezier(0.86, 0, 0.07, 1)',
+                animationDuration: 1000
             }).mount();
         }
     }
