@@ -387,6 +387,9 @@ function onPageLoad() {
                 backButton.classList.remove('light');
                 burger.classList.remove('light');
             }
+    } else {
+        backButton.classList.remove('light');
+        burger.classList.remove('light');
     }
 
     if(window.innerWidth >= 800){
@@ -400,15 +403,18 @@ function onPageLoad() {
     }
 
     if(window.innerWidth <= 800){
-        new Glide('.glide', {
-            type: 'carousel',
-            perView: 1.3,
-            focusAt: 'center'
-        }).mount();
+        if (document.querySelector('.glide')) {
+            new Glide('.glide', {
+                type: 'carousel',
+                perView: 1.3,
+                focusAt: 'center'
+            }).mount();
+        }
     }
 
     window.addEventListener('resize', () => {
-        document.getElementById('overlay').style.property = `${window.innerHeight}px`;
+        document.getElementById('overlay').style.top = `${window.innerHeight}px`;
+        document.getElementById('overlay').style.height = `${window.innerHeight}px`;
         console.log("overlay height changed");
       });
 
