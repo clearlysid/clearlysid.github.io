@@ -163,8 +163,7 @@
         top: 0;
         left: 0;
         padding: 1rem 2rem;
-
-        img {width: 2rem;}
+        svg {width: 2rem;}
     } 
 
     footer {
@@ -247,7 +246,7 @@
     .hero {
         display: flex;
         padding: 2.8rem;
-        padding-top: 2.8rem;
+        padding-bottom: 2rem;
         width: 100%;
     }
 
@@ -284,9 +283,11 @@
     .hero-buttons {display: none;}
 
     .mobile-cta {
-        margin: 1rem;
+        margin: 1rem auto;
+        width: 70%;
         display: flex;
-        justify-content: start;
+        justify-content: center;
+        background: linear-gradient(rgba(255, 255, 255, 0) 50%, #dddddd 50%);
 
         svg {
             width: 1.4rem;
@@ -296,6 +297,10 @@
             -ms-animation: swipe 1s ease infinite alternate;
             -o-animation: swipe 1s ease infinite alternate;
             animation: swipe 1s ease infinite alternate;
+        }
+
+        p {
+            padding-right: 0;
         }
 
     }
@@ -374,7 +379,7 @@
         top: 0;
         left: 0;
         padding: 1rem 2rem;
-        img {width: 2rem;}
+        svg {width: 2rem;}
     } 
     
     

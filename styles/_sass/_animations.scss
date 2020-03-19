@@ -1,92 +1,3 @@
-@mixin same-size($sz) {
-	width: $sz;
-	height: $sz;
-}
-
-// container for animation
-.loader {
-	--sz: 4rem;
-	width: calc(var(--sz) * 2);
-	height: var(--sz);
-	margin: auto; // centers along both main and cross axis in flex containers
-	display: flex;
-	justify-content: space-evenly;
-}
-
-// each half of the animation container
-.loader__sq {
-	// size of each loader piece circle/triangle;
-	--p-sz: calc(var(--sz) / 4);
-	// margin offset so each half of the container overlaps a bit
-	--m-offset: calc((var(--p-sz) * -1) * 0.75);
-	position: relative;
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-evenly;
-	height: 100%;
-	width: 50%;
-
-	&::before,
-	&::after {
-		@include same-size(var(--p-sz));
-		content: "";
-		position: relative;
-		// transform is what's being animated
-		transform: translateY(calc((var(--sz) - var(--p-sz)) * -1));
-
-		animation: loader-box-bounce 0.5s cubic-bezier(0.3, 0.5, 0.4, 0.95)
-			calc(var(--i) * 0.06s) infinite alternate-reverse;
-	}
-
-	&:first-of-type {
-		margin-right: var(--m-offset);
-
-		// first el animated and first visual element
-		&::before {
-			--i: 1;
-			border: 1px solid #000
-		}
-
-		// second element visually; third el animated
-		&::after {
-			--i: 3;
-			background-color: #000;
-			// make the loader pieces triangles in supporting browsers
-			@supports (clip-path: circle()) {
-				clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-			}
-		}
-	}
-
-	&:nth-of-type(2) {
-
-		// third element visually; 2nd el animated
-		&::before {
-			--i: 2;
-			border: 1px solid #000;
-		}
-		
-		// fourth element visually, fourth el animated
-		&::after {
-			--i: 4;
-			background-color: #000;
-			border-radius: 50%;
-			
-			@supports (clip-path: circle()) {
-				border-radius: 0;
-				clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-			}
-		}
-
-	}
-}
-
-@keyframes loader-box-bounce {
-	to {
-		transform: translateY(0);
-	}
-}
-
 @keyframes swipe {
     from {
         -webkit-transform: translateX(-15%);
@@ -102,13 +13,8 @@
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.burger--spin .burger-inner::before {
-    transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
-}
-
-.burger--spin .burger-inner::after {
-    transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-}
+.burger--spin .burger-inner::before { transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in; }
+.burger--spin .burger-inner::after { transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19); }
   
 .burger--spin.is-active .burger-inner {
     transform: rotate(225deg);
@@ -130,13 +36,13 @@
 
 
 
-.hidden {
-    position: absolute;
-    overflow: hidden;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-}
+// .hidden {
+//     position: absolute;
+//     overflow: hidden;
+//     width: 0;
+//     height: 0;
+//     pointer-events: none;
+// }
 
 .nav-menu {
     width: 100vw;

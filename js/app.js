@@ -1,7 +1,7 @@
 const firstLoad = document.createElement("div");
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
-const navShape = document.querySelector('.nav-shape');
+const overlay = document.querySelector('.overlay');
 const ring = document.createElement("div");
 
 firstLoad.id = "first-load";
@@ -180,6 +180,7 @@ const pageTransitions = [
         in: function(next) {
             imagesLoaded( '#swup', { background: true }, function(){
                 fluidOverlay.toggle();
+                window.scrollTo(0, 0);
                 setTimeout( next, 1000);
             });
         },
@@ -194,6 +195,7 @@ const pageTransitions = [
         in: function(next) {
             imagesLoaded( '#swup', { background: true }, function(){
                 fluidOverlay.toggle();
+                window.scrollTo(0, 0);
                 setTimeout( next, 1000);
             });
         },
@@ -380,21 +382,9 @@ function projectHoverFX() {
     new Grid(document.querySelector('.project-list'));
 }
 
-
-
-//---------------------------------------------------------------
-
-init_pointer({})
-const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
-swup.on('contentReplaced', onPageLoad);
-swup.on('transitionStart', () => {burger.style.zIndex = "1";});
-swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
-const fluidOverlay = new ShapeOverlays(navShape);
-
-function onPageLoad() {
+function colourHeaderByBG() {
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
-
     if (projectHeader != null) {
         let headBg = window.getComputedStyle(projectHeader).backgroundColor;
         let sep = headBg.indexOf(",") > -1 ? "," : " ";
@@ -432,9 +422,24 @@ function onPageLoad() {
     } else {
         burger.classList.remove('light');
     }
+}
 
+
+
+
+//---------------------------------------------------------------
+
+init_pointer({})
+const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
+swup.on('contentReplaced', onPageLoad);
+swup.on('transitionStart', () => {burger.style.zIndex = "1";});
+swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
+const fluidOverlay = new ShapeOverlays(overlay);
+
+function onPageLoad() {
+    
     if(window.innerWidth >= 800){
-        lax.setup() // init
+        lax.setup()
         const updateLax = () => {
             lax.update(window.scrollY);
             window.requestAnimationFrame(updateLax);
@@ -462,18 +467,22 @@ function onPageLoad() {
         fluidOverlay.toggle();
 
         if (fluidOverlay.isOpened === true) {
+            setTimeout( () => {burger.classList.remove('light')}, 900);
             burger.classList.add('is-active');
-            burger.classList.remove('light');
+            
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].classList.add('is-opened');
             }
         } else {
+            setTimeout( () => {colourHeaderByBG()}, 600);
             burger.classList.remove('is-active');
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].classList.remove('is-opened');
             }
         }
     })
+
+    colourHeaderByBG();
 }
 
 onPageLoad();
