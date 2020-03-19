@@ -146,4 +146,30 @@ p {
 
 .overlay-path {fill: #cccccc;}
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 500;
+
+}
+
+.loader-text {
+    font-weight: 200;
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+
+.loader-text .letter {
+    display: inline-block;
+}
+
 
