@@ -199,6 +199,7 @@ const pageTransitions = [
                 duration: 1000,
                 delay: 1000
             });
+            loading.restart();
             imagesLoaded( '#swup', { background: true }, function(){
                 loading.pause();
                 anime({
@@ -206,9 +207,11 @@ const pageTransitions = [
                     opacity: 0,
                     duration: 200
                 });
-                fluidOverlay.toggle();
                 window.scrollTo(0, 0);
-                setTimeout( next, 1000);
+                setTimeout( () => {
+                    fluidOverlay.toggle();
+                    next();
+                }, 1000);
             });
         },
         out: (next) => {
