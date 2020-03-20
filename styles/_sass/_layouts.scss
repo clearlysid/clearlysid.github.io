@@ -68,11 +68,12 @@
 }    
     .print {
         section {
-            img {
-                width: 70%;
-                padding: 1rem;
-                height: auto;
-            }
+            // img {
+            //     width: 70%;
+            //     padding: 1rem;
+            //     height: auto;
+            //     max-width: 50vw;
+            // }
         }
     
         section:nth-of-type(1){
@@ -88,6 +89,12 @@
         section:nth-of-type(3){
             grid-column: 2 / span 2;
             grid-row: 4;
+
+            img {
+                width: 70%;
+                height: auto;
+                max-width: 50vw;
+            }
         }
     
         section:nth-of-type(4){
@@ -171,11 +178,8 @@
                 height: 20vmax;
                 width: 100vw;
                 opacity: 0.8;
-    
-                img {
-                    height: 20vmax;
-                    width: auto;
-                }
+                img {height: 20vmax; width: auto;}
+                @media only screen and (max-width: 800px) {overflow: scroll;}
             }
         }
     
@@ -187,11 +191,7 @@
         section:nth-of-type(5){
             grid-column: 2 / span 4;
             grid-row: 7;
-    
-    
-            img {
-                margin: 2rem 0;
-            }
+            img { margin: 1vmax 0;}
         }
     
         figure:nth-of-type(1) {
@@ -215,9 +215,8 @@
         }
     
         figure:nth-of-type(5) {
-            grid-column: 2 / span 4;
-            grid-row: 7;
-    
+            grid-column: 1 / span 3;
+            grid-row: 6;
         }
     
     
