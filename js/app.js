@@ -451,10 +451,10 @@ swup.on('contentReplaced', onPageLoad);
 swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(overlay);
-swup.preloadPages();
+
 
 function onPageLoad() {
-    
+    swup.preloadPages();
     if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
 
     if(window.innerWidth <= 800){
