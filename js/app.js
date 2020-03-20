@@ -451,7 +451,9 @@ swup.on('contentReplaced', onPageLoad);
 swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(overlay);
-
+lax.addPreset("addDepth", function() {
+    return { "data-lax-scale": "(vh) 1.05, (vh*0.7) 1, (vh*0.3) 1, -elh 0.8" }
+});
 
 function onPageLoad() {
     swup.preloadPages();
@@ -474,11 +476,9 @@ function onPageLoad() {
     burger.addEventListener('click', () => {
         if (fluidOverlay.isAnimating) {return false;}
         fluidOverlay.toggle();
-
         if (fluidOverlay.isOpened === true) {
             setTimeout( () => {burger.classList.remove('light')}, 900);
             burger.classList.add('is-active');
-            
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].classList.add('is-opened');
             }
@@ -492,6 +492,7 @@ function onPageLoad() {
     })
 
     lax.setup({ breakpoints: { small: 0, large: 800 }})
+
     const updateLax = () => {
         lax.update(window.scrollY);
         window.requestAnimationFrame(updateLax);
@@ -503,4 +504,7 @@ function onPageLoad() {
 
 onPageLoad();
   
+
+
+
 
