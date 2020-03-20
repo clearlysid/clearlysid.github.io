@@ -454,15 +454,7 @@ const fluidOverlay = new ShapeOverlays(overlay);
 
 function onPageLoad() {
     
-    if(window.innerWidth >= 800){
-        lax.setup()
-        const updateLax = () => {
-            lax.update(window.scrollY);
-            window.requestAnimationFrame(updateLax);
-        }
-        window.requestAnimationFrame(updateLax);
-        if (document.querySelector('.project-list')) {projectHoverFX();}
-    }
+    if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
 
     if(window.innerWidth <= 800){
         if (document.querySelector('.glide')) {
@@ -497,6 +489,13 @@ function onPageLoad() {
             }
         }
     })
+
+    lax.setup({ breakpoints: { small: 0, large: 800 }})
+    const updateLax = () => {
+        lax.update(window.scrollY);
+        window.requestAnimationFrame(updateLax);
+    }
+    window.requestAnimationFrame(updateLax);
 
     colourHeaderByBG();
 }
