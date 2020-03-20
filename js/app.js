@@ -446,11 +446,12 @@ function colourHeaderByBG() {
 //---------------------------------------------------------------
 
 init_pointer({})
-const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions)]});
+const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions), new SwupPreloadPlugin()]});
 swup.on('contentReplaced', onPageLoad);
 swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(overlay);
+swup.preloadPages();
 
 function onPageLoad() {
     
