@@ -178,11 +178,13 @@
     .footer-nav {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
+        width: 59rem;
+        margin: 0 auto;
 
         .contact-links {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: space-evenly;
             padding-top: 1rem;
             padding-bottom: 1rem;
             width: 80%;
@@ -190,7 +192,7 @@
 
             a {
                 display: flex;
-                flex-direction: row;
+                // flex-direction: row;
                 justify-content: center;
                 padding: 0.6rem 0;
                 opacity: 0.4;
@@ -200,12 +202,6 @@
                     font-size: 0.8rem;
                     text-transform: uppercase;
                     font-weight: bold;
-                }
-        
-                svg {
-                    height: 1rem;
-                    width: 1rem;
-                    fill: black;
                 }
             }
         
@@ -398,6 +394,7 @@
             padding: 1rem 0;
             width: 100%;
             margin: 0 auto;
+            align-items: center;
     
             a {
                 display: flex;
@@ -415,14 +412,14 @@
     
         .contact {
             margin: 0 auto;
-            text-align: left;
+            text-align: center;
             font-size: 0.8rem;
     
             h3 {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 margin: 0;
                 padding-bottom: 0.4rem;
-                font-weight: 500;
+                font-weight: 600;
             }
         }
     }
