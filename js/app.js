@@ -449,7 +449,7 @@ swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(overlay);
 lax.addPreset("addDepth", function() {
-    return { "data-lax-scale": "(vh) 1.05, -elh 0.9" }
+    return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
 });
 
 function onPageLoad() {
