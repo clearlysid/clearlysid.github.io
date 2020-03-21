@@ -440,9 +440,6 @@ function colourHeaderByBG() {
     }
 }
 
-
-
-
 //---------------------------------------------------------------
 
 init_pointer({})
@@ -452,7 +449,7 @@ swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
 const fluidOverlay = new ShapeOverlays(overlay);
 lax.addPreset("addDepth", function() {
-    return { "data-lax-scale": "(vh) 1.05, (vh*0.7) 1, (vh*0.3) 1, -elh 0.8" }
+    return { "data-lax-scale": "(vh) 1.05, -elh 0.9" }
 });
 
 function onPageLoad() {
