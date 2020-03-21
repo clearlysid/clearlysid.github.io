@@ -1,23 +1,8 @@
-const firstLoad = document.createElement("div");
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
 const overlay = document.querySelector('.overlay');
 const ring = document.createElement("div");
-
-firstLoad.id = "first-load";
-document.body.insertBefore(firstLoad, document.body.children[0]);
-window.addEventListener('load', () => {
-    anime({
-        targets: '#first-load',
-        easing: 'easeOutQuint',
-        delay: 500,
-        duration: 500,
-        opacity: 0,
-        complete: function() {
-            firstLoad.remove();
-        }
-    });
-})
+window.addEventListener('load', () => {document.body.classList.remove('fade')});
 
 ring.id = "pointer-ring"
 document.body.insertBefore(ring, document.body.children[0]);
@@ -178,7 +163,7 @@ const pageTransitions = [
         from: '/projects/*',
         to: '/index.html',
         in: function(next) {
-            imagesLoaded( '#swup', { background: true }, function(){
+            imagesLoaded( '#swup', { background: true }, function(){      
                 fluidOverlay.toggle();
                 window.scrollTo(0, 0);
                 setTimeout( next, 1000);
@@ -200,7 +185,7 @@ const pageTransitions = [
                 delay: 1000
             });
             loading.restart();
-            imagesLoaded( '#swup', { background: true }, function(){
+            imagesLoaded( '#swup', { background: true }, function(){    
                 loading.pause();
                 anime({
                     targets: '.loader',
@@ -213,6 +198,7 @@ const pageTransitions = [
                     next();
                 }, 1000);
             });
+
         },
         out: (next) => {
             anime.set('.loader', {opacity: 0})
@@ -452,8 +438,14 @@ lax.addPreset("addDepth", function() {
     return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
 });
 
+
 function onPageLoad() {
-    swup.preloadPages();
+
+    
+
+    // swup.preloadPage('/projects/int-emf-project')
+
+    
     if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
 
     if(window.innerWidth <= 800){
