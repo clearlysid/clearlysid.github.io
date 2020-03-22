@@ -12,9 +12,10 @@
 - [ ] Site Icon
 - [ ] Mobile slider is janky, should make more fun!
 - [ ] Play around with Variable fonts
-- [ ] Swup preload plugin doesn't preload?
+- [x] Swup preload plugin doesn't preload?
 - [ ] Thank you note in burger menu
-- [ ] Add Dribbble/Behance Icon
+- [ ] Add Dribbble/Behance/Github Icon
 - [ ] Social media icons on desktop!
 - [ ] Add a Blog section
 - [ ] Image Alt Texts
+- [ ] Create initial animated loading screen 
