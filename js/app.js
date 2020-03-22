@@ -440,12 +440,6 @@ lax.addPreset("addDepth", function() {
 
 
 function onPageLoad() {
-
-    
-
-    // swup.preloadPage('/projects/int-emf-project')
-
-    
     if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
 
     if(window.innerWidth <= 800){
