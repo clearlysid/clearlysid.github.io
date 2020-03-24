@@ -430,14 +430,15 @@ function colourHeaderByBG() {
 
 init_pointer({})
 const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions), new SwupPreloadPlugin()]});
+const fluidOverlay = new ShapeOverlays(overlay);
+
 swup.on('contentReplaced', onPageLoad);
 swup.on('transitionStart', () => {burger.style.zIndex = "1";});
 swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
-const fluidOverlay = new ShapeOverlays(overlay);
+
 lax.addPreset("addDepth", function() {
     return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
 });
-
 
 function onPageLoad() {
     if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
