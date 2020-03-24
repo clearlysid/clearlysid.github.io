@@ -475,8 +475,9 @@ function onPageLoad() {
         }
     })
 
-    lax.setup({ breakpoints: { small: 0, large: 800 }})
-
+    lax.setup({
+        breakpoints: { small: 0, large: 800 }
+    })
     const updateLax = () => {
         lax.update(window.scrollY);
         window.requestAnimationFrame(updateLax);
