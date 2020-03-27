@@ -18,4 +18,4 @@
 - [ ] Social media icons on desktop!
 - [ ] Add a Blog section
 - [ ] Image Alt Texts
-- [ ] Create initial animated loading screen 
+- [ ] Animated Loading screen at launch...with sweet svg! 
