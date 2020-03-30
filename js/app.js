@@ -166,12 +166,12 @@ const pageTransitions = [
             imagesLoaded( '#swup', { background: true }, function(){      
                 fluidOverlay.toggle();
                 window.scrollTo(0, 0);
-                setTimeout( next, 1000);
+                setTimeout( next, 1200);
             });
         },
         out: (next) => {
             fluidOverlay.toggle();
-            setTimeout( next, 1000);
+            setTimeout( next, 1200);
         }
     },
     { // from home to project
@@ -196,14 +196,14 @@ const pageTransitions = [
                 setTimeout( () => {
                     fluidOverlay.toggle();
                     next();
-                }, 1000);
+                }, 1200);
             });
 
         },
         out: (next) => {
             anime.set('.loader', {opacity: 0})
             fluidOverlay.toggle();
-            setTimeout( next, 1000);
+            setTimeout( next, 1200);
         }
     }
 ];
