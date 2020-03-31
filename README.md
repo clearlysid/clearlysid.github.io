@@ -8,7 +8,7 @@
 - [x] Project Layouts
 - [ ] "All Projects" page
 - [ ] "About Me" page that feels like a story...
-- [ ] Make the Desktop aniamtions "feel" more fluid
+- [ ] Make the Desktop animations "feel" more fluid
 - [ ] Site Icon
 - [ ] Mobile slider is janky, should make more fun!
 - [ ] Play around with Variable fonts
