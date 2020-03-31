@@ -2,7 +2,6 @@
 
 ## To-Do List
 
-test site
 - [x] Overlay Transitions
 - [x] Custom Cursor
 - [x] Burger Navigation
