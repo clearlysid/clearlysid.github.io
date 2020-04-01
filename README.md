@@ -19,3 +19,8 @@
 - [ ] Add a Blog section
 - [ ] Image Alt Texts
 - [ ] Animated Loading screen at launch...with sweet svg! 
+
+## Future Stack
+
+GSAP, Barba.js, Three? Maybe.
+Need to design it first.
