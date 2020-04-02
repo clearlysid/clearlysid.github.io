@@ -18,10 +18,10 @@
         <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css" id="CSS">
     </head>
 
-
-<body>
+<body data-barba="wrapper">
     <script>
         document.body.classList.add('fade');
+        window.addEventListener('load', () => {document.body.classList.remove('fade')});
     </script>
 
     <nav>
@@ -45,22 +45,22 @@
         </div>
     </nav>
 
-    <main id="swup"> 
+    <main data-barba="container"> 
     {{ content }}
     </main>
 
     <svg class="overlay" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="overlay-path"></path></svg>
-    
-    <div class="loader">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="none" stroke="#000" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"/><path fill="none" stroke-linecap="round" stroke="#000" stroke-width="4" stroke-miterlimit="10" d="M50 50l35 .5"><animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path><path fill="none" stroke-linecap="round" stroke="#000" stroke-width="4" stroke-miterlimit="10" d="M50 50l-.5 24"><animateTransform attributeName="transform" dur="15s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path></svg>
-    </div>
 
-    <script src="{{ site.baseurl }}/js/anime.min.js"></script>
-    <script src="{{ site.baseurl }}/js/imagesloaded.pkgd.min.js"></script>
-    <script src="{{ site.baseurl }}/js/swup.min.js"></script>
-    <script src="{{ site.baseurl }}/js/swuppreloadplugin.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
+
+
+    <!-- <script src="{{ site.baseurl }}/js/swup.min.js"></script>
+    <script src="{{ site.baseurl }}/js/swuppreloadplugin.js"></script> -->
+
     <script src="{{ site.baseurl }}/js/lax.min.js" ></script>
     <script src="{{ site.baseurl }}/js/glide.min.js"></script>
+
+    <script src="https://unpkg.com/@barba/core"></script>
     <script src="{{ site.baseurl }}/js/app.js"></script>
 
 </body>
