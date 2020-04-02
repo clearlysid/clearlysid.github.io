@@ -395,10 +395,6 @@ barba.init({
     }]
 });
 
-lax.addPreset("addDepth", function() {
-    return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
-});
-
 function onPageLoad() {
     if(window.innerWidth >= 800){
         if (document.querySelector('.project-list')){
@@ -424,23 +420,12 @@ function onPageLoad() {
         }
     })
 
-    lax.setup({
-        breakpoints: { small: 0, large: 800 }
-    })
-    const updateLax = () => {
-        lax.update(window.scrollY);
-        window.requestAnimationFrame(updateLax);
-    }
-    window.requestAnimationFrame(updateLax);
-
     colourHeaderByBG();
 
   
 }
 
 onPageLoad();
-  
-
 
 const lazyload = target => {
     const io = new IntersectionObserver((entries, observer) => {
