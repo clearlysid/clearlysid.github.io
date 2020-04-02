@@ -244,7 +244,7 @@
     }
 
     .picture {
-        background-image: url(/assets/images/phone.jpg);
+        background-image: url(/assets/phone.jpg);
         background-position: center;
         background-size: cover;
         border-radius: 50%;
@@ -307,13 +307,21 @@
             opacity: 0.2;
         }
     }
+
+    .gallery {
+        
+        width: 100vw;
+    }
     
     .project-list {
-        display: none;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
     }
     
     .project-item {
         margin-bottom: 2rem;
+        width: 100vw;
         // height: 20rem;
     }
 

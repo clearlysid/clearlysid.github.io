@@ -400,19 +400,9 @@ lax.addPreset("addDepth", function() {
 });
 
 function onPageLoad() {
-    if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
-
-    if(window.innerWidth <= 800){
-        if (document.querySelector('.glide')) {
-            new Glide('.glide', {
-                type: 'carousel',
-                startAt: 0,
-                perView: 1.3,
-                focusAt: 'center',
-                autoplay: 8000,
-                animationTimingFunc: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animationDuration: 600
-            }).mount();
+    if(window.innerWidth >= 800){
+        if (document.querySelector('.project-list')){
+            projectHoverFX();
         }
     }
     
@@ -444,10 +434,32 @@ function onPageLoad() {
     window.requestAnimationFrame(updateLax);
 
     colourHeaderByBG();
+
+  
 }
 
 onPageLoad();
   
+
+
+const lazyload = target => {
+    const io = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            console.log('io-log');
+            if(entry.isIntersecting){
+                const img = entry.target;
+                const src = img.getAttribute('data-lazy');
+                img.setAttribute('src', src);
+                img.classList.add('fade');
+                observer.disconnect();
+            }
+        });
+    });
+    io.observe(target);
+};
+
+const images = document.querySelectorAll('lazy');
+images.forEach(lazyload);
 
 
 
