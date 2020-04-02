@@ -387,13 +387,10 @@ barba.init({
         enter(data){
             window.scrollTo(0, 0);
             fluidOverlay.toggle();
-            setTimeout( () => {
-                onPageLoad();
-            }, 800);
+            onPageLoad();
             setTimeout( () => {
                 burger.style.zIndex = "1"
             }, 1000);
-            
         }
     }]
 });
