@@ -2,7 +2,7 @@ const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
 const overlay = document.querySelector('.overlay');
 const ring = document.createElement("div");
-window.addEventListener('load', () => {document.body.classList.remove('fade')});
+
 
 ring.id = "pointer-ring"
 document.body.insertBefore(ring, document.body.children[0]);
@@ -152,61 +152,11 @@ const init_pointer = (options) => {
         ringX = trace(ringX, mouseX, 0.2)
         ringY = trace(ringY, mouseY, 0.2)
         if (mouseDown) { ring.style.padding = 22 + "px"} else { ring.style.padding = 24 + "px" }
-        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 21)}px, ${ringY - (mouseDown ? 17 : 21)}px)`
+        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 19)}px, ${ringY - (mouseDown ? 17 : 19)}px)`
         requestAnimationFrame(render)
     }
     requestAnimationFrame(render)
 }
-
-const pageTransitions = [
-    { // from project to home
-        from: '/projects/*',
-        to: '/index.html',
-        in: function(next) {
-            imagesLoaded( '#swup', { background: true }, function(){      
-                fluidOverlay.toggle();
-                window.scrollTo(0, 0);
-                setTimeout( next, 1200);
-            });
-        },
-        out: (next) => {
-            fluidOverlay.toggle();
-            setTimeout( next, 1200);
-        }
-    },
-    { // from home to project
-        from: '/',
-        to: '/projects/*',
-        in: function(next) {
-            var loading = anime({
-                targets: '.loader',
-                opacity: 1,
-                duration: 1000,
-                delay: 1000
-            });
-            loading.restart();
-            imagesLoaded( '#swup', { background: true }, function(){    
-                loading.pause();
-                anime({
-                    targets: '.loader',
-                    opacity: 0,
-                    duration: 200
-                });
-                window.scrollTo(0, 0);
-                setTimeout( () => {
-                    fluidOverlay.toggle();
-                    next();
-                }, 1200);
-            });
-
-        },
-        out: (next) => {
-            anime.set('.loader', {opacity: 0})
-            fluidOverlay.toggle();
-            setTimeout( next, 1200);
-        }
-    }
-];
 
 function projectHoverFX() {
     const lineEq = (y2, y1, x2, x1, currentVal) => {
@@ -303,21 +253,16 @@ function projectHoverFX() {
 
                 for (let key in this.DOM.animatable ) {
                     if( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {continue;}
-                    anime({
-                        targets: this.DOM.animatable[key],
+                    gsap.to(this.DOM.animatable[key], {
                         duration: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5,
-                        easing: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'easeOutBack' : 'easeOutBack',
-                        elasticity: this.options.reverseAnimation != undefined ? this.options.reverseAnimation.elasticity || null : null,
-                        scaleX: 1,
-                        scaleY: 1,
-                        scaleZ: 1,
-                        translateX: 0,
-                        translateY: 0,
-                        translateZ: 0,
-                        rotateX: 0,
-                        rotateY: 0,
-                        rotateZ: 0
-                    });                    
+                        ease: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'easeOutBack' : 'easeOutBack',
+                        x: 0,
+                        y: 0,
+                        z: 0,
+                        rotationX: 0,
+                        rotationY: 0,
+                        rotationZ: 0
+                    });
                 }
             });
             this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
@@ -429,12 +374,29 @@ function colourHeaderByBG() {
 //---------------------------------------------------------------
 
 init_pointer({})
-const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions), new SwupPreloadPlugin()]});
 const fluidOverlay = new ShapeOverlays(overlay);
 
-swup.on('contentReplaced', onPageLoad);
-swup.on('transitionStart', () => {burger.style.zIndex = "1";});
-swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
+barba.init({
+    transitions: [{
+        leave(data) {
+            const done = this.async();
+            fluidOverlay.toggle();
+            burger.style.zIndex = "4"
+            setTimeout( done, 1200);
+        },
+        enter(data){
+            window.scrollTo(0, 0);
+            fluidOverlay.toggle();
+            setTimeout( () => {
+                onPageLoad();
+            }, 800);
+            setTimeout( () => {
+                burger.style.zIndex = "1"
+            }, 1000);
+            
+        }
+    }]
+});
 
 lax.addPreset("addDepth", function() {
     return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
