@@ -373,7 +373,7 @@ function colourHeaderByBG() {
 
 //---------------------------------------------------------------
 
-init_pointer({})
+init_pointer();
 const fluidOverlay = new ShapeOverlays(overlay);
 
 barba.init({
@@ -443,7 +443,7 @@ const lazyload = target => {
     io.observe(target);
 };
 
-const images = document.querySelectorAll('lazy');
+const images = document.querySelectorAll('.lazy');
 images.forEach(lazyload);
 
 

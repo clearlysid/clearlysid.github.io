@@ -1,3 +1,82 @@
+.burger {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem 2rem;
+    display: inline-block;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    z-index: 4;       
+}
+  
+.burger-box {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    position: relative;
+}
+
+.burger-inner, .burger-inner::before, .burger-inner::after {
+    width: 2.1rem;
+    height: 0.16rem;
+    background-color: #000;
+    border-radius: 0.12rem;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
+    z-index: 200;
+    content: "";
+    display: block;
+}
+
+.burger-inner {top: 50%; margin-top: -0.12rem;}
+.burger-inner::before {top: -0.6rem;}
+.burger-inner::after {bottom: -0.6rem;}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.overlay-path {fill: #cccccc;}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 500;
+
+    svg {
+        width: 2rem;
+        height: 4rem;
+        opacity: 0.6;
+    }
+
+}
+
+.wip {
+    padding: 2rem;
+    opacity: 0.4;
+}
+
+
+
+
 @media only screen and (min-width: 800px) {
     .home {
         height: 100vh;
