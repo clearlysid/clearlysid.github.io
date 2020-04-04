@@ -1,18 +1,21 @@
 ---
 layout: project
-permalink: /projects/int-emf-project
 title: The EMF Project
 work: Motion Design
-description: The International EMF Project is an initiative by the World Health Organization to assess possible health concerns on exposure to Electromagnetic Frequencies.<br><br>I built an animated explainer which introduces the project, highlights the need for it, its functions and goals.
-year: 2019
-client: Class Assignment
-role1: Motion Design
-role2: Sound Design
-stack1: Adobe After Effects
-stack2: Adobe Illustrator
 thumbnail: /assets/thumbs/motion.png
 feature: <div class="iframe-container"><iframe src="https://player.vimeo.com/video/391774451" frameborder="0" allowfullscreen></iframe></div>
 color: 0B1533
+
+description:
+    - The International EMF Project is an initiative by the World Health Organization to assess possible health concerns on exposure to Electromagnetic Frequencies.
+
+    - I built an animated explainer which introduces the project, highlights the need for it, its functions and goals.
+
+metadata:
+  - name: Role
+    items: [Motion Design, Sound Design]
+  - name: Stack
+    items: [Adobe After Effects, Adobe Illustrator, Ableton Live]
 ---
 
 <article class="motion">

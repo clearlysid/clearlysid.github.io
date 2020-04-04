@@ -1,18 +1,21 @@
 ---
 layout: project
-permalink: /projects/simply-spent
 title: Simply Spent
-work: UI Design
-description: Despite access to so many expense-tracking platforms, I was intrigued by how most teens in the country didn't use any of them. In this project, I set out to find the reasons why  ...and hopefully fix them if I could.<br><br>"Simply Spent" is an app concept, aimed at providing a frictionless experience tracking day to day transactions for young adults in India.
-year: 2019
-client: Class Assignment
-role1: UX Research
-role2: UI Animation
-stack1: Sketch
-stack2: Principle
+work: UX/UI Design
 thumbnail: /assets/thumbs/ui.png
 feature:
 color: 0d6b56
+
+description:
+  - Despite access to so many expense-tracking platforms, I was intrigued by how most teens in the country didn’t use any of them. In this project, I set out to find the reasons why  …and hopefully fix them if I could.
+
+  - “Simply Spent” is an app concept, aimed at providing a frictionless experience tracking day to day transactions for young adults in India.
+
+metadata:
+  - name: Role
+    items: [UX Research, UI Animation]
+  - name: Stack
+    items: [Figma, Principle]
 ---
 
 <article class="ui">
