@@ -4,14 +4,27 @@ email: mail@siddharthjha.com
 description: "A design student focused on UX and Interaction, who loves slick animation and frequently dabbles in code."
 baseurl: "" # the subpath of your site, e.g. /blog/
 url:  "" # the base hostname & protocol for your site
-
-# Build settings
 markdown: kramdown
 
 sass:
   sass_dir: /styles/_sass
 
 collections:
-  work: 
+  portfolio: 
     output: true
-    permalink: /work/:path/
+    permalink: /projects/:title/
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "portfolio" # previously `page` in Jekyll 2.2.
+    values:
+      layout: "project"
+      permalink: /projects/:title/
