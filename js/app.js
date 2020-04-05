@@ -1,18 +1,7 @@
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
 const overlay = document.querySelector('.overlay');
-const ring = document.createElement("div");
 
-
-ring.id = "pointer-ring"
-document.body.insertBefore(ring, document.body.children[0]);
-window.addEventListener('touchstart', function() {ring.remove();}); 
-let mouseX = -100
-let mouseY = -100
-let ringX = -100
-let ringY = -100
-let isHover = false
-let mouseDown = false
 
 class ShapeOverlays {
     constructor(elm) {
@@ -50,10 +39,16 @@ class ShapeOverlays {
         this.timeStart = Date.now();
         this.renderLoop();
     }
+    
     updatePath(time) {
         const points = [];
+        function cubicInOut(t){
+            return t < 0.5
+                ? 4.0 * t * t * t
+                : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+        }
         for (var i = 0; i < this.numPoints; i++) {
-            points[i] = (1 - ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
+            points[i] = (1 - cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
         }
     
         let str = '';
@@ -89,51 +84,17 @@ class ShapeOverlays {
         }
     }
 }
-
-const ease = {
-    exponentialIn: (t) => {
-    return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
-    },
-    exponentialOut: (t) => {
-    return t == 1.0 ? t : 1.0 - Math.pow(2.0, -10.0 * t);
-    },
-    exponentialInOut: (t) => {
-    return t == 0.0 || t == 1.0
-        ? t
-        : t < 0.5
-        ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
-        : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
-    },
-    sineOut: (t) => {
-    const HALF_PI = 1.5707963267948966;
-    return Math.sin(t * HALF_PI);
-    },
-    circularInOut: (t) => {
-    return t < 0.5
-        ? 0.5 * (1.0 - Math.sqrt(1.0 - 4.0 * t * t))
-        : 0.5 * (Math.sqrt((3.0 - 2.0 * t) * (2.0 * t - 1.0)) + 1.0);
-    },
-    cubicIn: (t) => {
-    return t * t * t;
-    },
-    cubicOut: (t) => {
-    const f = t - 1.0;
-    return f * f * f + 1.0;
-    },
-    cubicInOut: (t) => {
-    return t < 0.5
-        ? 4.0 * t * t * t
-        : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
-    },
-    quadraticOut: (t) => {
-    return -t * (t - 2.0);
-    },
-    quarticOut: (t) => {
-    return Math.pow(t - 1.0, 3.0) * (1.0 - t) + 1.0;
-    },
-}
-
-const init_pointer = (options) => {
+function initPointer(){
+    const ring = document.createElement("div");
+    ring.id = "pointer-ring"
+    document.body.insertBefore(ring, document.body.children[0]);
+    window.addEventListener('touchstart', function() {ring.remove();}); 
+    let mouseX = -100
+    let mouseY = -100
+    let ringX = -100
+    let ringY = -100
+    let isHover = false
+    let mouseDown = false
     window.onmousemove = (mouse) => {
         mouseX = mouse.clientX
         mouseY = mouse.clientY
@@ -157,183 +118,12 @@ const init_pointer = (options) => {
     }
     requestAnimationFrame(render)
 }
-
-function projectHoverFX() {
-    const lineEq = (y2, y1, x2, x1, currentVal) => {
-        // y = mx + b 
-        var m = (y2 - y1) / (x2 - x1), b = y1 - m * x1;
-        return m * currentVal + b;
-    };
-
-    const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-    const getRandomFloat = (min, max) => (Math.random() * (max - min) + min).toFixed(2);
-
-    const setRange = (obj) => {
-        for(let k in obj) {
-            if( obj[k] == undefined ) {
-                obj[k] = [0,0];
-            }
-            else if( typeof obj[k] === 'number' ) {
-                obj[k] = [-1*obj[k],obj[k]];
-            }
-        }
-    };
-
-    const getMousePos = (e) => {
-        let posx = 0;
-        let posy = 0;
-        if (!e) e = window.event;
-        if (e.pageX || e.pageY) 	{
-            posx = e.pageX;
-            posy = e.pageY;
-        }
-        else if (e.clientX || e.clientY) 	{
-            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        return { x : posx, y : posy }
-    };
-    
-    class Item {
-        constructor(el, options) {
-            this.DOM = {el: el};
-            this.options = {   
-                image: {
-                    translation : {x: -10, y: -10, z: 0},
-                    rotation : {x: 0, y: 0, z: 0},
-                    reverseAnimation : {
-                        duration : 1200,
-                        easing : 'easeOutElastic',
-                        elasticity : 600
-                    }
-                },
-                title: {
-                    translation : {x: 20, y: 10, z: 0},
-                    reverseAnimation : {
-                        duration : 1000,
-                        easing : 'easeOutExpo',
-                        elasticity : 600
-                    }
-                },
-                container: {
-                    translation : {x: 30, y: 20, z: 0},
-                    rotation : {x: 0, y: 0, z: -2},
-                    reverseAnimation : {
-                        duration: 2,
-                        easing: 'easeOutElastic'
-                    }
-                }, 
-            };
-
-            Object.assign(this.options, options);
-            
-            this.DOM.animatable = {};
-            this.DOM.animatable.image = this.DOM.el.querySelector('.project-item-img');
-            this.DOM.animatable.title = this.DOM.el.querySelector('.project-item-title');
-            this.DOM.animatable.container = this.DOM.el.querySelector('.project-item-bg');
-            
-            this.initEvents();
-        }
-        
-        initEvents() { 
-            let enter = false;
-            this.mouseenterFn = () => {
-                if ( enter ) {enter = false;};
-                clearTimeout(this.mousetime);
-                this.mousetime = setTimeout(() => enter = true, 40);
-            };
-            this.mousemoveFn = ev => requestAnimationFrame(() => {
-                if ( !enter ) return;
-                this.tilt(ev);
-            });
-            this.mouseleaveFn = (ev) => requestAnimationFrame(() => {
-                if ( !enter || !allowTilt ) return;
-                enter = false;
-                clearTimeout(this.mousetime);
-
-                for (let key in this.DOM.animatable ) {
-                    if( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {continue;}
-                    gsap.to(this.DOM.animatable[key], {
-                        duration: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5,
-                        ease: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'easeOutBack' : 'easeOutBack',
-                        x: 0,
-                        y: 0,
-                        z: 0,
-                        rotationX: 0,
-                        rotationY: 0,
-                        rotationZ: 0
-                    });
-                }
-            });
-            this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
-            this.DOM.el.addEventListener('mousemove', this.mousemoveFn);
-            this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
-        }
-        
-        tilt(ev) {
-            if ( !allowTilt ) return;
-            const mousepos = getMousePos(ev);
-            // Document scrolls.
-            const docScrolls = {
-                left : document.body.scrollLeft + document.documentElement.scrollLeft, 
-                top : document.body.scrollTop + document.documentElement.scrollTop
-            };
-            const bounds = this.DOM.el.getBoundingClientRect();
-            // Mouse position relative to the main element (this.DOM.el).
-            const relmousepos = { 
-                x : mousepos.x - bounds.left - docScrolls.left, 
-                y : mousepos.y - bounds.top - docScrolls.top 
-            };
-            
-            // Movement settings for the animatable elements.
-            for (let key in this.DOM.animatable) {
-                if ( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {
-                    continue;
-                }
-                
-                let t = this.options[key] != undefined ? this.options[key].translation || {x:0,y:0,z:0} : {x:0,y:0,z:0},
-                    r = this.options[key] != undefined ? this.options[key].rotation || {x:0,y:0,z:0} : {x:0,y:0,z:0};
-
-                setRange(t);
-                setRange(r);
-                
-                const transforms = {
-                    translation : {
-                        x: (t.x[1]-t.x[0])/bounds.width*relmousepos.x + t.x[0],
-                        y: (t.y[1]-t.y[0])/bounds.height*relmousepos.y + t.y[0],
-                        z: (t.z[1]-t.z[0])/bounds.height*relmousepos.y + t.z[0],
-                    },
-                    rotation : {
-                        x: (r.x[1]-r.x[0])/bounds.height*relmousepos.y + r.x[0],
-                        y: (r.y[1]-r.y[0])/bounds.width*relmousepos.x + r.y[0],
-                        z: (r.z[1]-r.z[0])/bounds.width*relmousepos.x + r.z[0]
-                    }
-                };
-
-                this.DOM.animatable[key].style.WebkitTransform = this.DOM.animatable[key].style.transform = 'translateX(' + transforms.translation.x + 'px) translateY(' + transforms.translation.y + 'px) translateZ(' + transforms.translation.z + 'px) rotateX(' + transforms.rotation.x + 'deg) rotateY(' + transforms.rotation.y + 'deg) rotateZ(' + transforms.rotation.z + 'deg)';
-            }
-        }
-    }
-    
-    class Grid {
-        constructor(el) {
-            this.DOM = {el: el};
-            this.items = [];
-            Array.from(this.DOM.el.querySelectorAll('a.project-item')).forEach((item) => {
-                const itemObj = new Item(item);
-                this.items.push(itemObj);
-            });
-        }
-    }
-    let allowTilt = true;
-    new Grid(document.querySelector('.project-list'));
-}
-
 function colourHeaderByBG() {
+    const projectHeaderBG = document.querySelector('.project-background');
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
-    if (projectHeader != null) {
-        let headBg = window.getComputedStyle(projectHeader).backgroundColor;
+    if (projectHeaderBG != null) {
+        let headBg = window.getComputedStyle(projectHeaderBG).backgroundColor;
         let sep = headBg.indexOf(",") > -1 ? "," : " ";
         headBg = headBg.substr(4).split(")")[0].split(sep);
     
@@ -353,10 +143,10 @@ function colourHeaderByBG() {
             burger.classList.add('light');
             projectHeader.style.color = "white";
             window.addEventListener('scroll', () => {
-                if (window.scrollY > projectHeader.offsetHeight - 50) {
+                if (window.scrollY > projectHeaderBG.offsetHeight - 50) {
                     backButton.classList.remove('light');
                     burger.classList.remove('light');
-                } else if (window.scrollY < projectHeader.offsetHeight){
+                } else if (window.scrollY < projectHeaderBG.offsetHeight){
                     backButton.classList.add('light');
                     burger.classList.add('light');
                 }
@@ -370,10 +160,29 @@ function colourHeaderByBG() {
         burger.classList.remove('light');
     }
 }
+function burgerToggler(){
+    burger.addEventListener('click', () => {
+        if (fluidOverlay.isAnimating) {return false;}
+        fluidOverlay.toggle();
+        if (fluidOverlay.isOpened === true) {
+            setTimeout( () => {burger.classList.remove('light')}, 900);
+            burger.classList.add('is-active');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.add('is-opened');
+            }
+        } else {
+            setTimeout( () => {colourHeaderByBG()}, 600);
+            burger.classList.remove('is-active');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove('is-opened');
+            }
+        }
+    });
+}
 
 //---------------------------------------------------------------
 
-init_pointer();
+initPointer();
 const fluidOverlay = new ShapeOverlays(overlay);
 
 barba.init({
@@ -392,59 +201,64 @@ barba.init({
                 burger.style.zIndex = "1"
             }, 1000);
         }
+    }, {
+        name: 'home-to-project',
+        sync: true,
+        from: {
+            namespace: 'default'
+        },
+        to: {
+            namespace: 'project'
+        },
+        leave(data){
+            console.log('new transition leave');
+            gsap.to("#home",{
+                duration: 1,
+                opacity: 0,
+                onComplete: () => {
+                    this.async();
+                }
+            });
+
+        },
+        enter(data){
+            onPageLoad();
+            var tl = gsap.timeline();
+            tl.from(".project-background",{
+                duration: 0.6,
+                width: 0,
+            }).from(".project-title, .project-description, .project-metadata", {
+                duration: 0.3,
+                opacity: 0,
+                y: 10,
+                stagger: 0.2
+            }).from("article > *", {
+                duration: 0.5,
+                opacity: 0,
+                y: 10,
+                stagger: 0.2
+            })
+        }
     }]
 });
 
 function onPageLoad() {
-    if(window.innerWidth >= 800){
-        if (document.querySelector('.project-list')){
-            projectHoverFX();
-        }
-    }
-    
-    burger.addEventListener('click', () => {
-        if (fluidOverlay.isAnimating) {return false;}
-        fluidOverlay.toggle();
-        if (fluidOverlay.isOpened === true) {
-            setTimeout( () => {burger.classList.remove('light')}, 900);
-            burger.classList.add('is-active');
-            for (var i = 0; i < navLinks.length; i++) {
-                navLinks[i].classList.add('is-opened');
-            }
-        } else {
-            setTimeout( () => {colourHeaderByBG()}, 600);
-            burger.classList.remove('is-active');
-            for (var i = 0; i < navLinks.length; i++) {
-                navLinks[i].classList.remove('is-opened');
-            }
-        }
-    })
 
+    burgerToggler();
     colourHeaderByBG();
 
-  
+    window.addEventListener('scroll', () => {
+        if (window.scrollX > 200) {
+            document.getElementById('home').classList.add('fade');
+        } else if (window.scrollX < 200){
+            document.getElementById('home').classList.remove('fade');
+        }
+    });
 }
 
 onPageLoad();
 
-const lazyload = target => {
-    const io = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            console.log('io-log');
-            if(entry.isIntersecting){
-                const img = entry.target;
-                const src = img.getAttribute('data-lazy');
-                img.setAttribute('src', src);
-                img.classList.add('fade');
-                observer.disconnect();
-            }
-        });
-    });
-    io.observe(target);
-};
 
-const images = document.querySelectorAll('.lazy');
-images.forEach(lazyload);
 
 
 
