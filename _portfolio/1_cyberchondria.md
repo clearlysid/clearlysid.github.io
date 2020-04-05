@@ -1,5 +1,4 @@
 ---
-layout: project
 title: The Cyberchondria Clinic
 work: Web Design
 thumbnail: /assets/thumbs/doc.png
@@ -22,7 +21,7 @@ metadata:
 
 Often times, I overheard my mom complaining to my dad (Yes, both are doctors. And yes, I still chose to not become one) about non-cooperative patients who always cross-checked their diagnosis and compared it to random results from Google, and complained when they didn't fully align.
 
-When I got the chance to build anything I wanted for a social awareness project, I dived head first into the popular clinic of Dr. Google to see how it was and <a href="https://paper.dropbox.com/doc/Case-Study-Using-the-Web-to-obtain-Medical-Information-MMkdg5MqSX0jUBKzAbyvR?_tk=share_copylink" target="_blank" style="font-weight: bold;">here are my findings.</a> Quite a few insights were still to be gathered, but overall I had a good picture of what I wanted to build.
+When I got the chance to build anything I wanted for a social awareness project, I dived head first into the popular clinic of Dr. Google to see how it was and [here are my findings.](https://paper.dropbox.com/doc/Case-Study-Using-the-Web-to-obtain-Medical-Information-MMkdg5MqSX0jUBKzAbyvR?_tk=share_copylink) Quite a few insights were still to be gathered, but overall I had a good picture of what I wanted to build.
 
 <figure>
     <img src="{{ site.baseurl }}/assets/scomm/research.png" alt="">
