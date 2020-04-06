@@ -9,13 +9,19 @@ layout: default
 </header>
 
 <div class="portfolio">
+    <div class="draggable"></div>
     <div class="project-list">
         {% for item in site.portfolio %}
-        <a class="project-item" href="{{ item.url }}">
-            <img class="project-item-img" src="{{ site.baseurl }}{{ item.thumbnail }}">
-            <h5 class="project-item-title">{{ item.work }}</h5>
-        </a>
+        <div class="project-item">
+            <div class="img-outer">
+                <div class="img-inner" style="background-image:url('assets/placeholder.jpg');"></div>
+            </div>
+            <span class="project-item-title">
+                <a class="project-link" href="{{ item.url }}">
+                    <span>{{ item.work }}</span>
+                </a>
+            </span>
+        </div>
         {% endfor %}
     </div>
 </div>
-
