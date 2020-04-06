@@ -50,7 +50,19 @@
 
 
 #pointer-ring {display: none;}
-@media screen and (max-width: 800px) {:root { font-size: 4vw; }}
+
+// certain mobile-only queries
+@media screen and (max-width: 800px) {
+    :root { font-size: 4vw; }
+    main {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
 
 .social-icons {
     svg {
@@ -60,36 +72,6 @@
         margin-left: 0;
         opacity: 0.2;
     }
-}
-
-.project-list {
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    align-items: center;
-}
-
-.project-item {
-    width: 100vw;
-    margin: 0 2rem 4rem;
-}
-
-.project-item-title {
-    font-family: Noah;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-    font-weight: bold;
-    margin: 0;
-    font-size: 1rem;
-}
-
-.project-item-img {
-    display: block;
-    flex: none;
-    margin: 0 auto;
-    max-height: 40rem;
-    max-width: 80vw;
 }
 
 .back-button {
@@ -112,6 +94,8 @@ footer {
 
 }
 
+// Homepage Styles
+
 #home {
     display: flex;
     flex-direction: column;
@@ -126,8 +110,7 @@ footer {
     }
 
     h1 {
-        margin-top: 1rem; 
-
+        margin-top: 1rem;
         span {
             display: none;
         }
@@ -143,27 +126,105 @@ footer {
     }
 }
 
+// Portfolio Styles
+
+@media screen and (max-width: 800px) {
+    .portfolio {
+        position: relative;
+        width: -moz-fit-content;
+        width: fit-content;
+    }
+    
+    .draggable {
+        height: 24rem;
+        width: 100%;
+        position: absolute;
+    }
+    
+    .project-list {
+        width: -moz-fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: start;
+        position: relative;
+        pointer-events: none;
+        will-change: transform;
+    }
+    
+    .project-item {
+        height: 100%;
+        margin-right: 4rem;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        will-change: transform;
+    }
+    
+    .project-item:first-child {
+        margin-left: 4rem;
+    }
+    
+    .img-outer {
+        --imgheight: 20rem;
+        height: var(--imgheight);
+        width: calc(var(--imgheight) * 0.7);
+        overflow: hidden;
+        position: relative;
+        flex: none;
+    }
+    
+    .img-inner {
+        width: calc(100% + 2rem);
+        height: calc(100% + 2rem);
+        left: -1rem;
+        top: -1rem;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: absolute;
+    }
+    
+    .project-item-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem;
+        user-select: none;
+        pointer-events: all;
+    }
+}
+
+
+
+// Blog Styles
 
 .blog-home {
     max-width: 800px;
     width: 80vw;
     margin: 8rem auto;
-
-    ul {
+    
+    .post-list {
         list-style: none;
         margin-top: 4rem;
 
-        a {
-            display: inline-block;
-            transition: border 0.2s ease;
-            border: none;
+        li {
+            margin: 1rem 0;
         }
 
-        a:hover {
+        h3 {
+            transition: border 0.2s ease;
+            border-bottom: 2px solid transparent;
+            display: inline-block;
+        }
+
+        a:hover h3 {
             border-bottom: 2px solid black;
         }
     }   
 }
+
+// Project Styles
 
 .project-header {
     padding: 2.8rem;
@@ -231,15 +292,12 @@ article {
     width: 100%;
 }
 
-
-
-
 // Desktop only styles begin here
 @media only screen and (min-width: 800px) {
     #pointer-ring {display: initial;}
 
     #home {
-        position: fixed;
+        position: absolute;
         height: 100vh;
         width: 24rem;
         display: flex;
@@ -276,15 +334,8 @@ article {
         }
     }
 
-    #home.fade {
-        * {
-            opacity: 0;
-            transform: translateX(-20%);
-        }
-    }
-
     footer {
-        position: fixed;
+        position: static;
         padding: 0;
         bottom: 0;
         left: 0;
@@ -292,63 +343,76 @@ article {
     }
 
     .portfolio {
-        position: absolute;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: relative;
+        height: calc(100vh - 2.13rem);
+        width: -moz-fit-content;
+        width: fit-content;
     }
-
-    .project-list {
-        display: flex;
-        flex-direction: row;
-        height: 36rem;
-    }
-
-    .project-item {
-        margin: 0 0;
-        margin-right: 6rem;
-        height: 30rem;
-        width: 20rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .project-item:nth-of-type(1) {
-        margin-left: 40rem; // allows home to be visible
-        align-self: center;
-    }
-
-    .project-item:nth-of-type(2) {
-        align-self: flex-end;
-    }
-
-    .project-item:nth-of-type(3) {
-        align-self: flex-start;
-    }
-
-    .project-item:nth-of-type(4) {
-        align-self: center;
-    }
-
-    .project-item-title {
-        text-align: center;
-        text-transform: uppercase;
+    
+    .draggable {
+        height: 24rem;
+        top: calc(50% - 12rem);
         width: 100%;
-        font-weight: bold;
-        margin: 0;
-        font-size: 1rem;
-        opacity: 0.5;
-        transition: opacity 0.2s;
+        position: absolute;
+        cursor: grab;
     }
-
-    .project-item-img {
-        margin: 0 auto;
-        max-width: 100%;
+    
+    .draggable:active {
+        cursor: grabbing;
     }
-
-    .project-item:hover .project-item-title {
-        opacity: 1;
+    
+    .project-list {
+        height: 100vh;
+        width: -moz-fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: start;
+        position: relative;
+        pointer-events: none;
+        will-change: transform;
+    }
+    
+    .project-item {
+        height: 100%;
+        margin-right: 4rem;
+        position: relative;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        will-change: transform;
+    }
+    
+    .project-item:first-child {
+        margin-left: 40rem;
+    }
+    
+    .img-outer {
+        --imgheight: 30rem;
+        height: var(--imgheight);
+        width: calc(var(--imgheight) * 0.7);
+        overflow: hidden;
+        position: relative;
+        flex: none;
+    }
+    
+    .img-inner {
+        width: calc(100% + 2rem);
+        height: calc(100% + 2rem);
+        left: -1rem;
+        top: -1rem;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: absolute;
+    }
+    
+    .project-item-title {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem;
+        user-select: none;
+        pointer-events: all;
     }
 
     .project-header {
@@ -395,6 +459,7 @@ article {
         }
 
     }
+
 
     article {
         padding-top: 2rem;
