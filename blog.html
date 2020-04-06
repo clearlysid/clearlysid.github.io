@@ -10,11 +10,22 @@ permalink: /blog/
 </a>
 
 <main class="blog-home">
+
+
     <h1>Siddharth's Blog</h1>
-    <ul>
+    <ul class="post-list">
         {% for post in site.posts %}
-        <li><a href="{{ post.url }}"><h3>{{ post.title }}</h3></a></li>
+        <li>
+            <a href="{{ post.url }}">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.excerpt }}</p>
+            </a>
+        </li>
         {% endfor %}
     </ul>
+
+
+
+
 </main>
 

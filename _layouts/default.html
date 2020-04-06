@@ -6,13 +6,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>
             {% if page.title %}
-                "{{ page.title }}" | Siddharth's Portfolio
+                {{ page.title }} | Siddharth's Portfolio
             {% else %}
                 {{ site.title }} | Interaction & Product Designer
             {% endif %}
         </title>
         <meta name="description" content="{{ site.description }}">
-        <link rel="stylesheet" href="{{ site.baseurl }}/styles/main.css" id="CSS">
+        <link rel="stylesheet" href={{ "/styles/main.css" | absolute_url }} id="CSS">
     </head>
 
 <body data-barba="wrapper">
@@ -20,7 +20,7 @@
         <div class="burger"><div class="burger-box"><div class="burger-inner"></div></div></div>
         <div class="nav-menu">
             <div class="nav-menu__wrap">
-                <a class="nav-link" href="{{ site.baseurl }}/blog/">Read Blog</a>
+                <a class="nav-link" href={{ "/blog/" | absolute_url }}>Read Blog</a>
                 <a class="nav-link" href="mailto:mail@siddharthjha.com">Send Email</a>
                 <a class="nav-link" href="https://drive.google.com/file/d/1L5bvyeM8n71tFKDgWVrLvQv_pBSxNlCN/view?usp=sharing">View Resume</a>
                 <div class="nav-link social-icons">
@@ -48,9 +48,10 @@
 
     <svg class="overlay" viewBox="0 0 100 100" preserveAspectRatio="none"><path class="overlay-path"></path></svg>
 
-    <script src="{{ site.baseurl }}/js/gsap.min.js"></script>
-    <script src="{{ site.baseurl }}/js/barba.umd.js"></script>
-    <script src="{{ site.baseurl }}/js/app.js"></script>
+    <script src={{ "/js/gsap.min.js" | absolute_url }}></script>
+    <script src={{ "/js/draggabilly.pkgd.min.js" | absolute_url }}></script>
+    <script src={{ "/js/barba.umd.js" | absolute_url }}></script>
+    <script src={{ "/js/app.js" | absolute_url }}></script>
 
 </body>
 </html>
