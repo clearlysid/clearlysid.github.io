@@ -1,7 +1,7 @@
 ---
 title: Simply Spent
 work: UX/UI Design
-thumbnail: /assets/thumbs/ui.png
+thumbnail: /assets/thumbs/simplyspent.png
 feature: <img src="/assets/thumbs/ui.png">
 color: 0d6b56
 

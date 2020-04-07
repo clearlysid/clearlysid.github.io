@@ -1,7 +1,7 @@
 ---
-title: The Cyberchondria Clinic
+title: A Cyberchondria Clinic
 work: Web Design
-thumbnail: /assets/thumbs/doc.png
+thumbnail: /assets/thumbs/cyberchondria.png
 feature: <img class="wip" src="/assets/wip.gif" width="640px">
 color: D51662
 
