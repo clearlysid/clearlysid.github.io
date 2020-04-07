@@ -13,14 +13,8 @@ layout: default
     <div class="project-list">
         {% for item in site.portfolio %}
         <div class="project-item">
-            <div class="img-outer">
-                <div class="img-inner" style="background-image:url('assets/placeholder.jpg');"></div>
-            </div>
-            <span class="project-item-title">
-                <a class="project-link" href="{{ item.url }}">
-                    <span>{{ item.work }}</span>
-                </a>
-            </span>
+            <div class="project-image" style="background-image:url('{{ item.thumbnail }}'); opacity: 0.9;"></div>
+            <h2 class="project-item-title project-link"><a href="{{ item.url }}">{{ item.title }}</a></h2>
         </div>
         {% endfor %}
     </div>
