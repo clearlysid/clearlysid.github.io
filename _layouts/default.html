@@ -12,7 +12,8 @@
             {% endif %}
         </title>
         <meta name="description" content="{{ site.description }}">
-        <link rel="stylesheet" href={{ "/styles/main.css" | absolute_url }} id="CSS">
+        <link rel="stylesheet" href={{ "/styles/main.css" | absolute_url }}>
+        <link rel="stylesheet" href={{ "/styles/main.css" | relative_url }}>
     </head>
 
 <body data-barba="wrapper">
