@@ -14,7 +14,9 @@ layout: default
         {% for item in site.portfolio %}
         <div class="project-item">
             <div class="project-image" style="background-image:url('{{ item.thumbnail }}'); opacity: 0.9;"></div>
-            <h2 class="project-item-title project-link"><a href="{{ item.url }}">{{ item.title }}</a></h2>
+            <a class="project-link" href="{{ item.url }}">
+                <h2 class="project-item-title">{{ item.title }}</h2>
+            </a>
         </div>
         {% endfor %}
     </div>
