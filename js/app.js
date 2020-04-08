@@ -180,6 +180,14 @@ function burgerToggler(){
         }
     });
 }
+function delay(n){
+    n = n || 2000;
+    return new Promise(done => {
+        setTimeout(() => {
+            done();
+        }, n);
+    });
+}
 const MathUtils = {
     lineEq: (y2, y1, x2, x1, currentVal) => {
         // y = mx + b 
@@ -196,6 +204,7 @@ class SliderItem {
         this.DOM.title = this.DOM.el.querySelector('.project-link');
     }
 }
+
 
 
 class DraggableSlider {
@@ -226,10 +235,10 @@ class DraggableSlider {
             for (const key in this.renderedStyles ) {
                 this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, 0.1);
             }
-            gsap.set(this.DOM.strip, {x: this.renderedStyles.position.previous});
+            anime.set(this.DOM.strip, {translateX: this.renderedStyles.position.previous});
             for (const item of this.items) {
-                gsap.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
-                gsap.set(item.DOM.image, {scale: this.renderedStyles.imgScale.previous});
+                anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
+                anime.set(item.DOM.image, {scale: this.renderedStyles.imgScale.previous});
             }
             if ( !this.renderId ) {this.renderId = requestAnimationFrame(() => this.render());}
         };
@@ -304,7 +313,6 @@ class DraggableSlider {
         this.draggie.on('pointerDown', this.onDragStart);
         this.draggie.on('dragMove', this.onDragMove);
         this.draggie.on('pointerUp', this.onDragEnd);
-
     }
 }
 
@@ -319,56 +327,66 @@ window.addEventListener('resize', calcWinsize);
 
 barba.init({
     transitions: [{
-        leave(data) {
+        async leave(data) {
+            console.log("leave hook");
             const done = this.async();
-            gsap.to(data.current.container, {
+            anime({
+                targets: data.current.container,
                 opacity: 0,
-                duration: 0.3,
-                ease: Power4.easeOut,
-                onComplete: done
+                duration: 300
+            })
+            await delay(300);
+            done();
+        },
+        async enter(data){
+            console.log("enter hook");
+            window.scrollTo(0, 0);
+            anime({
+                targets: data.next.container,
+                opacity: [0, 1],
+                duration: 300,
+                delay: 500
+            })
+            await delay(1000);
+        },
+        after(){
+            console.log("after hook");
+            onPageLoad();
+        }
+    }, 
+    {
+        name: 'home-to-project',
+        from: {
+            namespace: 'default'
+        },
+        to: {
+            namespace: 'project'
+        },
+        async leave(data){
+            const done = this.async();
+            // console.log(data.trigger.parentElement);
+            anime({
+                targets: data.trigger.parentNode,
+                translateY: -200,
+                duration: 0.5,
             });
+            await delay(2000);
+            done();
         },
         enter(data){
-            window.scrollTo(0, 0);
-            gsap.from(data.next.container, {
-                opacity: 0,
-                duration: 0.3,
-                ease: Power4.easeIn,
-                delay: 0.5,
-                onComplete: done
-            });
+            
         },
         after(){
             onPageLoad();
         }
-    }, 
-    // {
-    //     name: 'home-to-project',
-    //     from: {
-    //         namespace: 'default'
-    //     },
-    //     to: {
-    //         namespace: 'project'
-    //     },
-    //     leave(){
-
-    //     },
-    //     enter(data){
-            
-    //     },
-    //     after(){
-    //         onPageLoad();
-    //     }
-    // }
+    }
 ]
 });
 
 function onPageLoad() {
     burgerToggler();
     colourHeaderByBG();
-    new DraggableSlider(document.querySelector('.portfolio'));
-   
-
+    if (document.querySelector('.portfolio')){new DraggableSlider(document.querySelector('.portfolio'));}
 }
 
 onPageLoad();
