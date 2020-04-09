@@ -3,6 +3,8 @@ const navLinks = document.querySelectorAll('.nav-link');
 const overlay = document.querySelector('.overlay');
 let winsize;
 const calcWinsize = () => winsize = {width: window.innerWidth, height: window.innerHeight};
+window.addEventListener('resize', calcWinsize);
+
 
 class ShapeOverlays {
     constructor(elm) {
@@ -120,10 +122,10 @@ function initPointer(){
     requestAnimationFrame(render)
 }
 function colourHeaderByBG() {
-    const projectHeaderBG = document.querySelector('.project-background');
+    const projectHeaderBG = document.getElementsByTagName('header')[0];
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
-    if (projectHeaderBG != null) {
+    if (projectHeader != null) {
         let headBg = window.getComputedStyle(projectHeaderBG).backgroundColor;
         let sep = headBg.indexOf(",") > -1 ? "," : " ";
         headBg = headBg.substr(4).split(")")[0].split(sep);
@@ -204,9 +206,6 @@ class SliderItem {
         this.DOM.title = this.DOM.el.querySelector('.project-link');
     }
 }
-
-
-
 class DraggableSlider {
     constructor(el) {
         this.DOM = {el: el};
@@ -237,7 +236,8 @@ class DraggableSlider {
             }
             anime.set(this.DOM.strip, {translateX: this.renderedStyles.position.previous});
             for (const item of this.items) {
-                anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
+                // anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
+                anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous});
                 anime.set(item.DOM.image, {scale: this.renderedStyles.imgScale.previous});
             }
             if ( !this.renderId ) {this.renderId = requestAnimationFrame(() => this.render());}
@@ -316,73 +316,85 @@ class DraggableSlider {
     }
 }
 
-
-
-//---------------------------------------------------------------
+// These scripts only need to be executed once in the site lifecycle
 
 initPointer();
-const fluidOverlay = new ShapeOverlays(overlay);
 calcWinsize();
-window.addEventListener('resize', calcWinsize);
+const fluidOverlay = new ShapeOverlays(overlay);
 
 barba.init({
     transitions: [{
-        async leave(data) {
-            console.log("leave hook");
-            const done = this.async();
+        leave(data) {
             anime({
                 targets: data.current.container,
-                opacity: 0,
-                duration: 300
-            })
-            await delay(300);
-            done();
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeOutQuad',
+            });
+            setTimeout(this.async(), 300);
         },
-        async enter(data){
-            console.log("enter hook");
+        enter(data){
             window.scrollTo(0, 0);
             anime({
                 targets: data.next.container,
                 opacity: [0, 1],
                 duration: 300,
-                delay: 500
-            })
-            await delay(1000);
+                delay: 500,
+                easing: 'easeOutQuad',
+            });
         },
         after(){
-            console.log("after hook");
             onPageLoad();
         }
-    }, 
+    },
     {
-        name: 'home-to-project',
-        from: {
-            namespace: 'default'
-        },
-        to: {
-            namespace: 'project'
-        },
-        async leave(data){
-            const done = this.async();
-            // console.log(data.trigger.parentElement);
+        name: "to-home",
+        to: { namespace: "default"},
+        leave(data) {
             anime({
-                targets: data.trigger.parentNode,
-                translateY: -200,
-                duration: 0.5,
+                targets: data.current.container,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeOutQuad',
             });
-            await delay(2000);
-            done();
+            setTimeout(this.async(), 300);
+        },
+        beforeEnter(){
+            anime.set('.project-item', {
+                opacity: 0,
+                translateY: 100,
+                rotate: 45,
+            });
         },
         enter(data){
-            
+            window.scrollTo(0, 0);
+            let homeFadeIn = anime.timeline();
+            homeFadeIn.add({
+                targets: '#home > *',
+                opacity: [0, 1],
+                translateX: [-100, 0],
+                duration: 500,
+                easing: "easeInOutQuad",
+                delay: anime.stagger(50)
+            }, 500)
+            .add({
+                targets: '.project-item',
+                opacity: [0, 1],
+                translateY: [100, 0],
+                rotate: [10, 0],
+                duration: 600,
+                easing: "easeInOutQuad",
+                delay: anime.stagger(100),
+            }, 700);   
         },
         after(){
             onPageLoad();
         }
     }
-]
+    ]
 });
 
+// And these ones need to be run at each pageload!
 function onPageLoad() {
     burgerToggler();
     colourHeaderByBG();
