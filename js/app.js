@@ -1,18 +1,9 @@
+let winsize;
+const overlay = document.querySelector('.overlay');
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
-const overlay = document.querySelector('.overlay');
-const ring = document.createElement("div");
-window.addEventListener('load', () => {document.body.classList.remove('fade')});
-
-ring.id = "pointer-ring"
-document.body.insertBefore(ring, document.body.children[0]);
-window.addEventListener('touchstart', function() {ring.remove();}); 
-let mouseX = -100
-let mouseY = -100
-let ringX = -100
-let ringY = -100
-let isHover = false
-let mouseDown = false
+const calcWinsize = () => winsize = {width: window.innerWidth, height: window.innerHeight};
+window.addEventListener('resize', calcWinsize);
 
 class ShapeOverlays {
     constructor(elm) {
@@ -50,10 +41,16 @@ class ShapeOverlays {
         this.timeStart = Date.now();
         this.renderLoop();
     }
+    
     updatePath(time) {
         const points = [];
+        function cubicInOut(t){
+            return t < 0.5
+                ? 4.0 * t * t * t
+                : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+        }
         for (var i = 0; i < this.numPoints; i++) {
-            points[i] = (1 - ease.cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
+            points[i] = (1 - cubicInOut(Math.min(Math.max(time - this.delayPointsArray[i], 0) / this.duration, 1))) * 100
         }
     
         let str = '';
@@ -89,51 +86,17 @@ class ShapeOverlays {
         }
     }
 }
-
-const ease = {
-    exponentialIn: (t) => {
-    return t == 0.0 ? t : Math.pow(2.0, 10.0 * (t - 1.0));
-    },
-    exponentialOut: (t) => {
-    return t == 1.0 ? t : 1.0 - Math.pow(2.0, -10.0 * t);
-    },
-    exponentialInOut: (t) => {
-    return t == 0.0 || t == 1.0
-        ? t
-        : t < 0.5
-        ? +0.5 * Math.pow(2.0, (20.0 * t) - 10.0)
-        : -0.5 * Math.pow(2.0, 10.0 - (t * 20.0)) + 1.0;
-    },
-    sineOut: (t) => {
-    const HALF_PI = 1.5707963267948966;
-    return Math.sin(t * HALF_PI);
-    },
-    circularInOut: (t) => {
-    return t < 0.5
-        ? 0.5 * (1.0 - Math.sqrt(1.0 - 4.0 * t * t))
-        : 0.5 * (Math.sqrt((3.0 - 2.0 * t) * (2.0 * t - 1.0)) + 1.0);
-    },
-    cubicIn: (t) => {
-    return t * t * t;
-    },
-    cubicOut: (t) => {
-    const f = t - 1.0;
-    return f * f * f + 1.0;
-    },
-    cubicInOut: (t) => {
-    return t < 0.5
-        ? 4.0 * t * t * t
-        : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
-    },
-    quadraticOut: (t) => {
-    return -t * (t - 2.0);
-    },
-    quarticOut: (t) => {
-    return Math.pow(t - 1.0, 3.0) * (1.0 - t) + 1.0;
-    },
-}
-
-const init_pointer = (options) => {
+function initPointer(){
+    const ring = document.createElement("div");
+    ring.id = "pointer-ring"
+    document.body.insertBefore(ring, document.body.children[0]);
+    window.addEventListener('touchstart', function() {ring.remove();}); 
+    let mouseX = -100
+    let mouseY = -100
+    let ringX = -100
+    let ringY = -100
+    let isHover = false
+    let mouseDown = false
     window.onmousemove = (mouse) => {
         mouseX = mouse.clientX
         mouseY = mouse.clientY
@@ -152,243 +115,17 @@ const init_pointer = (options) => {
         ringX = trace(ringX, mouseX, 0.2)
         ringY = trace(ringY, mouseY, 0.2)
         if (mouseDown) { ring.style.padding = 22 + "px"} else { ring.style.padding = 24 + "px" }
-        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 21)}px, ${ringY - (mouseDown ? 17 : 21)}px)`
+        ring.style.transform = `translate(${ringX - (mouseDown ? 17 : 19)}px, ${ringY - (mouseDown ? 17 : 19)}px)`
         requestAnimationFrame(render)
     }
     requestAnimationFrame(render)
 }
-
-const pageTransitions = [
-    { // from project to home
-        from: '/projects/*',
-        to: '/index.html',
-        in: function(next) {
-            imagesLoaded( '#swup', { background: true }, function(){      
-                fluidOverlay.toggle();
-                window.scrollTo(0, 0);
-                setTimeout( next, 1200);
-            });
-        },
-        out: (next) => {
-            fluidOverlay.toggle();
-            setTimeout( next, 1200);
-        }
-    },
-    { // from home to project
-        from: '/',
-        to: '/projects/*',
-        in: function(next) {
-            var loading = anime({
-                targets: '.loader',
-                opacity: 1,
-                duration: 1000,
-                delay: 1000
-            });
-            loading.restart();
-            imagesLoaded( '#swup', { background: true }, function(){    
-                loading.pause();
-                anime({
-                    targets: '.loader',
-                    opacity: 0,
-                    duration: 200
-                });
-                window.scrollTo(0, 0);
-                setTimeout( () => {
-                    fluidOverlay.toggle();
-                    next();
-                }, 1200);
-            });
-
-        },
-        out: (next) => {
-            anime.set('.loader', {opacity: 0})
-            fluidOverlay.toggle();
-            setTimeout( next, 1200);
-        }
-    }
-];
-
-function projectHoverFX() {
-    const lineEq = (y2, y1, x2, x1, currentVal) => {
-        // y = mx + b 
-        var m = (y2 - y1) / (x2 - x1), b = y1 - m * x1;
-        return m * currentVal + b;
-    };
-
-    const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-    const getRandomFloat = (min, max) => (Math.random() * (max - min) + min).toFixed(2);
-
-    const setRange = (obj) => {
-        for(let k in obj) {
-            if( obj[k] == undefined ) {
-                obj[k] = [0,0];
-            }
-            else if( typeof obj[k] === 'number' ) {
-                obj[k] = [-1*obj[k],obj[k]];
-            }
-        }
-    };
-
-    const getMousePos = (e) => {
-        let posx = 0;
-        let posy = 0;
-        if (!e) e = window.event;
-        if (e.pageX || e.pageY) 	{
-            posx = e.pageX;
-            posy = e.pageY;
-        }
-        else if (e.clientX || e.clientY) 	{
-            posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-            posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-        }
-        return { x : posx, y : posy }
-    };
-    
-    class Item {
-        constructor(el, options) {
-            this.DOM = {el: el};
-            this.options = {   
-                image: {
-                    translation : {x: -10, y: -10, z: 0},
-                    rotation : {x: 0, y: 0, z: 0},
-                    reverseAnimation : {
-                        duration : 1200,
-                        easing : 'easeOutElastic',
-                        elasticity : 600
-                    }
-                },
-                title: {
-                    translation : {x: 20, y: 10, z: 0},
-                    reverseAnimation : {
-                        duration : 1000,
-                        easing : 'easeOutExpo',
-                        elasticity : 600
-                    }
-                },
-                container: {
-                    translation : {x: 30, y: 20, z: 0},
-                    rotation : {x: 0, y: 0, z: -2},
-                    reverseAnimation : {
-                        duration: 2,
-                        easing: 'easeOutElastic'
-                    }
-                }, 
-            };
-
-            Object.assign(this.options, options);
-            
-            this.DOM.animatable = {};
-            this.DOM.animatable.image = this.DOM.el.querySelector('.project-item-img');
-            this.DOM.animatable.title = this.DOM.el.querySelector('.project-item-title');
-            this.DOM.animatable.container = this.DOM.el.querySelector('.project-item-bg');
-            
-            this.initEvents();
-        }
-        
-        initEvents() { 
-            let enter = false;
-            this.mouseenterFn = () => {
-                if ( enter ) {enter = false;};
-                clearTimeout(this.mousetime);
-                this.mousetime = setTimeout(() => enter = true, 40);
-            };
-            this.mousemoveFn = ev => requestAnimationFrame(() => {
-                if ( !enter ) return;
-                this.tilt(ev);
-            });
-            this.mouseleaveFn = (ev) => requestAnimationFrame(() => {
-                if ( !enter || !allowTilt ) return;
-                enter = false;
-                clearTimeout(this.mousetime);
-
-                for (let key in this.DOM.animatable ) {
-                    if( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {continue;}
-                    anime({
-                        targets: this.DOM.animatable[key],
-                        duration: this.options[key].reverseAnimation != undefined ? this.options[key].reverseAnimation.duration || 0 : 1.5,
-                        easing: this.options.reverseAnimation != undefined ? this.options.movement[key].reverseAnimation.easing || 'easeOutBack' : 'easeOutBack',
-                        elasticity: this.options.reverseAnimation != undefined ? this.options.reverseAnimation.elasticity || null : null,
-                        scaleX: 1,
-                        scaleY: 1,
-                        scaleZ: 1,
-                        translateX: 0,
-                        translateY: 0,
-                        translateZ: 0,
-                        rotateX: 0,
-                        rotateY: 0,
-                        rotateZ: 0
-                    });                    
-                }
-            });
-            this.DOM.el.addEventListener('mouseenter', this.mouseenterFn);
-            this.DOM.el.addEventListener('mousemove', this.mousemoveFn);
-            this.DOM.el.addEventListener('mouseleave', this.mouseleaveFn);
-        }
-        
-        tilt(ev) {
-            if ( !allowTilt ) return;
-            const mousepos = getMousePos(ev);
-            // Document scrolls.
-            const docScrolls = {
-                left : document.body.scrollLeft + document.documentElement.scrollLeft, 
-                top : document.body.scrollTop + document.documentElement.scrollTop
-            };
-            const bounds = this.DOM.el.getBoundingClientRect();
-            // Mouse position relative to the main element (this.DOM.el).
-            const relmousepos = { 
-                x : mousepos.x - bounds.left - docScrolls.left, 
-                y : mousepos.y - bounds.top - docScrolls.top 
-            };
-            
-            // Movement settings for the animatable elements.
-            for (let key in this.DOM.animatable) {
-                if ( this.DOM.animatable[key] == undefined || this.options[key] == undefined ) {
-                    continue;
-                }
-                
-                let t = this.options[key] != undefined ? this.options[key].translation || {x:0,y:0,z:0} : {x:0,y:0,z:0},
-                    r = this.options[key] != undefined ? this.options[key].rotation || {x:0,y:0,z:0} : {x:0,y:0,z:0};
-
-                setRange(t);
-                setRange(r);
-                
-                const transforms = {
-                    translation : {
-                        x: (t.x[1]-t.x[0])/bounds.width*relmousepos.x + t.x[0],
-                        y: (t.y[1]-t.y[0])/bounds.height*relmousepos.y + t.y[0],
-                        z: (t.z[1]-t.z[0])/bounds.height*relmousepos.y + t.z[0],
-                    },
-                    rotation : {
-                        x: (r.x[1]-r.x[0])/bounds.height*relmousepos.y + r.x[0],
-                        y: (r.y[1]-r.y[0])/bounds.width*relmousepos.x + r.y[0],
-                        z: (r.z[1]-r.z[0])/bounds.width*relmousepos.x + r.z[0]
-                    }
-                };
-
-                this.DOM.animatable[key].style.WebkitTransform = this.DOM.animatable[key].style.transform = 'translateX(' + transforms.translation.x + 'px) translateY(' + transforms.translation.y + 'px) translateZ(' + transforms.translation.z + 'px) rotateX(' + transforms.rotation.x + 'deg) rotateY(' + transforms.rotation.y + 'deg) rotateZ(' + transforms.rotation.z + 'deg)';
-            }
-        }
-    }
-    
-    class Grid {
-        constructor(el) {
-            this.DOM = {el: el};
-            this.items = [];
-            Array.from(this.DOM.el.querySelectorAll('a.project-item')).forEach((item) => {
-                const itemObj = new Item(item);
-                this.items.push(itemObj);
-            });
-        }
-    }
-    let allowTilt = true;
-    new Grid(document.querySelector('.project-list'));
-}
-
 function colourHeaderByBG() {
+    const projectHeaderBG = document.getElementsByTagName('header')[0];
     const projectHeader = document.querySelector('.project-header');
     const backButton = document.querySelector('.back-button');
     if (projectHeader != null) {
-        let headBg = window.getComputedStyle(projectHeader).backgroundColor;
+        let headBg = window.getComputedStyle(projectHeaderBG).backgroundColor;
         let sep = headBg.indexOf(",") > -1 ? "," : " ";
         headBg = headBg.substr(4).split(")")[0].split(sep);
     
@@ -404,64 +141,29 @@ function colourHeaderByBG() {
             l = (Math.min(r,g,b) + Math.max(r,g,b)) / 2;
     
         if (l < 128) {
-            backButton.classList.add('light');
-            burger.classList.add('light');
+            backButton.classList.add('dark');
+            burger.classList.add('dark');
             projectHeader.style.color = "white";
             window.addEventListener('scroll', () => {
-                if (window.scrollY > projectHeader.offsetHeight - 50) {
-                    backButton.classList.remove('light');
-                    burger.classList.remove('light');
-                } else if (window.scrollY < projectHeader.offsetHeight){
-                    backButton.classList.add('light');
-                    burger.classList.add('light');
+                if (window.scrollY > projectHeaderBG.offsetHeight - 50) {
+                    backButton.classList.remove('dark');
+                    burger.classList.remove('dark');
+                } else if (window.scrollY < projectHeaderBG.offsetHeight){
+                    backButton.classList.add('dark');
+                    burger.classList.add('dark');
                 }
             })    
-            } else if (l > 128){
-                projectHeader.style.color = "black";
-                backButton.classList.remove('light');
-                burger.classList.remove('light');
             }
     } else {
-        burger.classList.remove('light');
+        burger.classList.remove('dark');
     }
 }
-
-//---------------------------------------------------------------
-
-init_pointer({})
-const swup = new Swup({plugins: [new SwupJsPlugin(pageTransitions), new SwupPreloadPlugin()]});
-const fluidOverlay = new ShapeOverlays(overlay);
-
-swup.on('contentReplaced', onPageLoad);
-swup.on('transitionStart', () => {burger.style.zIndex = "1";});
-swup.on('transitionEnd', () => {burger.style.zIndex = "4";});
-
-lax.addPreset("addDepth", function() {
-    return { "data-lax-scale": "(vh) 1.07, -elh 0.95" }
-});
-
-function onPageLoad() {
-    if(window.innerWidth >= 800){ if (document.querySelector('.project-list')) {projectHoverFX();}}
-
-    if(window.innerWidth <= 800){
-        if (document.querySelector('.glide')) {
-            new Glide('.glide', {
-                type: 'carousel',
-                startAt: 0,
-                perView: 1.3,
-                focusAt: 'center',
-                autoplay: 8000,
-                animationTimingFunc: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animationDuration: 600
-            }).mount();
-        }
-    }
-    
+function burgerMenu(){
     burger.addEventListener('click', () => {
         if (fluidOverlay.isAnimating) {return false;}
         fluidOverlay.toggle();
         if (fluidOverlay.isOpened === true) {
-            setTimeout( () => {burger.classList.remove('light')}, 900);
+            setTimeout( () => {burger.classList.remove('dark')}, 900);
             burger.classList.add('is-active');
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].classList.add('is-opened');
@@ -473,22 +175,268 @@ function onPageLoad() {
                 navLinks[i].classList.remove('is-opened');
             }
         }
-    })
-
-    lax.setup({
-        breakpoints: { small: 0, large: 800 }
-    })
-    const updateLax = () => {
-        lax.update(window.scrollY);
-        window.requestAnimationFrame(updateLax);
+    });
+}
+function delay(n){
+    n = n || 2000;
+    return new Promise(done => {
+        setTimeout(() => {
+            done();
+        }, n);
+    });
+}
+function homePreload(){
+    if (document.getElementById('home') == null){ return }
+    let homeFadeIn = anime.timeline();
+        homeFadeIn.add({
+            targets: '#home > *',
+            opacity: [0, 1],
+            translateX: [-100, 0],
+            duration: 500,
+            easing: "easeInOutQuad",
+            delay: anime.stagger(50)
+        }, 500)
+        .add({
+            targets: '.project-item',
+            opacity: [0, 1],
+            translateY: [100, 0],
+            rotate: [10, 0],
+            duration: 600,
+            easing: "easeInOutQuad",
+            delay: anime.stagger(100),
+        }, 700);
+}
+function lazyLoad(){
+    'use strict';
+    const objects = document.querySelectorAll("[data-lazy]");
+    console.log(objects);
+    Array.from(objects).map((item) => {
+        // Start loading image
+        const img = new Image();
+        img.src = item.dataset.lazy;
+        // Once image is loaded replace the src of the HTML element
+        img.onload = () => {
+        item.src = item.dataset.lazy;
+        };
+    });
+}
+const MathUtils = {
+    lineEq: (y2, y1, x2, x1, currentVal) => {
+        // y = mx + b 
+        var m = (y2 - y1) / (x2 - x1), b = y1 - m * x1;
+        return m * currentVal + b;
+    },
+    lerp: (a, b, n) => (1 - n) * a + n * b,
+    getRandomFloat: (min, max) => (Math.random() * (max - min) + min).toFixed(2)
+};
+class SliderItem {
+    constructor(el) {
+        this.DOM = {el: el};
+        this.DOM.image = this.DOM.el.querySelector('.project-image');
+        this.DOM.title = this.DOM.el.querySelector('.project-link');
     }
-    window.requestAnimationFrame(updateLax);
+}
+class DraggableSlider {
+    constructor(el) {
+        this.DOM = {el: el};
+        this.DOM.strip = this.DOM.el.querySelector('.project-list');
+        this.items = [];
+        [...this.DOM.strip.querySelectorAll('.project-item')].forEach(item => this.items.push(new SliderItem(item)));
+        this.DOM.draggable = this.DOM.el.querySelector('.draggable'); // draggable container
+        this.draggableWidth = this.DOM.draggable.offsetWidth; // width of draggable & strip container
+        this.maxDrag = this.draggableWidth < winsize.width ? 0 : this.draggableWidth - winsize.width; // amount that we can drag
+        this.dragPosition = 0; // The current amount (in pixels) that was dragged
+        this.draggie = new Draggabilly(this.DOM.draggable, { axis: 'x' }); // Initialize the Draggabilly
+        this.init();
+        this.initEvents();
+        
+    }
+    init() {
+        this.renderedStyles = {
+            position: {previous: 0, current: this.dragPosition},
+            scale: {previous: 1, current: 1},
+            imgScale: {previous: 1, current: 1},
+            opacity: {previous: 1, current: 1},
+        };
 
+        this.render = () => {
+            this.renderId = undefined;
+            for (const key in this.renderedStyles ) {
+                this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, 0.1);
+            }
+            anime.set(this.DOM.strip, {translateX: this.renderedStyles.position.previous});
+            for (const item of this.items) {
+                // anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous, opacity: this.renderedStyles.opacity.previous});
+                anime.set(item.DOM.el, {scale: this.renderedStyles.scale.previous});
+                anime.set(item.DOM.image, {scale: this.renderedStyles.imgScale.previous});
+            }
+            if ( !this.renderId ) {this.renderId = requestAnimationFrame(() => this.render());}
+        };
+        this.renderId = requestAnimationFrame(() => this.render());
+    }
+
+    initEvents() {
+        window.addEventListener('resize', () => {
+            this.maxDrag = this.draggableWidth < winsize.width ? 0 : this.draggableWidth - winsize.width;
+            if ( Math.abs(this.dragPosition) + winsize.width > this.draggableWidth ) {
+                const diff = Math.abs(this.dragPosition) + winsize.width - this.draggableWidth;
+                this.dragPosition = this.dragPosition+diff;
+                this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
+            }
+        });
+
+        this.onDragStart = () => {
+            this.renderedStyles.scale.current = 0.9;
+            this.renderedStyles.imgScale.current = 1.2;
+            this.renderedStyles.opacity.current = 0.8;
+            // cursor effects on dragstart, scale up, show arrows, etc
+        };
+
+        this.onDragMove = (event, pointer, moveVector) => {
+            if ( this.draggie.position.x >= 0 ) {
+                this.dragPosition = MathUtils.lineEq(0.5*winsize.width,0, winsize.width, 0, this.draggie.position.x);
+            } else if ( this.draggie.position.x < -1*this.maxDrag ) {
+                this.dragPosition = MathUtils.lineEq(0.5*winsize.width,0, this.maxDrag+winsize.width, this.maxDrag, this.draggie.position.x);
+            } else { this.dragPosition = this.draggie.position.x; }
+            this.renderedStyles.position.current = this.dragPosition;
+
+            if (this.draggie.position.x <= -100){
+                document.getElementById('home').classList.add('hide');
+
+            }
+            if (this.draggie.position.x > -100){
+                document.getElementById('home').classList.remove('hide');
+            }
+            this.draggie.direction = moveVector.x;
+            // mousepos = getMousePos(event);
+        };
+
+        this.onDragEnd = () => {
+            // reset if out of bounds
+            if ( this.draggie.position.x > 0 ) {
+                this.dragPosition = 0;
+                this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
+            }
+            else if ( this.draggie.position.x < -1*this.maxDrag ) {
+                this.dragPosition = -1*this.maxDrag;
+                this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
+            }
+            // snap to beginning, hide home
+            if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction < 0){
+                this.dragPosition = -600;
+                this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
+            } 
+            else if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction > 0){
+                this.dragPosition = 0;
+                this.draggie.setPosition(this.dragPosition);
+                document.getElementById('home').classList.remove('hide');
+            }
+
+            this.renderedStyles.position.current = this.dragPosition;
+            this.renderedStyles.scale.current = 1;
+            this.renderedStyles.imgScale.current = 1;
+            this.renderedStyles.opacity.current = 1;
+            
+            // cursor effects on dragend, like scale, hide arrows, etc
+        };
+
+        this.draggie.on('pointerDown', this.onDragStart);
+        this.draggie.on('dragMove', this.onDragMove);
+        this.draggie.on('pointerUp', this.onDragEnd);
+    }
+}
+
+// These scripts only need to be executed once in the site lifecycle
+initPointer();
+calcWinsize();
+homePreload();
+const fluidOverlay = new ShapeOverlays(overlay);
+
+barba.init({
+    transitions: [{
+        leave(data) {
+            anime({
+                targets: data.current.container,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeOutQuad',
+            });
+            setTimeout(this.async(), 300);
+        },
+        enter(data){
+            window.scrollTo(0, 0);
+            anime({
+                targets: data.next.container,
+                opacity: [0, 1],
+                duration: 300,
+                delay: 500,
+                easing: 'easeOutQuad',
+            });
+        },
+        after(){
+            onPageLoad();
+        }
+    },
+    {
+        name: "to-home",
+        to: { namespace: "default"},
+        leave(data) {
+            anime({
+                targets: data.current.container,
+                opacity: [1, 0],
+                duration: 300,
+                easing: 'easeOutQuad',
+            });
+            setTimeout(this.async(), 300);
+        },
+        beforeEnter(){
+            anime.set('.project-item', {
+                opacity: 0,
+                translateY: 100,
+                rotate: 45,
+            });
+        },
+        enter(data){
+            window.scrollTo(0, 0);
+            let homeFadeIn = anime.timeline();
+            homeFadeIn.add({
+                targets: '#home > *',
+                opacity: [0, 1],
+                translateX: [-100, 0],
+                duration: 500,
+                easing: "easeInOutQuad",
+                delay: anime.stagger(50)
+            }, 500)
+            .add({
+                targets: '.project-item',
+                opacity: [0, 1],
+                translateY: [100, 0],
+                rotate: [10, 0],
+                duration: 600,
+                easing: "easeInOutQuad",
+                delay: anime.stagger(100),
+            }, 700);   
+        },
+        after(){
+            onPageLoad();
+        }
+    }
+    ]
+});
+
+// And these ones need to be run at each pageload!
+function onPageLoad() {
+    burgerMenu();
     colourHeaderByBG();
+    lazyLoad();
+    if (document.querySelector('.portfolio')){new DraggableSlider(document.querySelector('.portfolio'));}
 }
 
 onPageLoad();
-  
+
+
+
+
 
 
 
