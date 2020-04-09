@@ -322,11 +322,11 @@ class DraggableSlider {
                 this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
             }
             // snap to beginning, hide home
-            if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction < 0){
+            if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction < 0 && window.innerWidth > 800){
                 this.dragPosition = -600;
                 this.draggie.setPosition(this.dragPosition, this.draggie.position.y);
             } 
-            else if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction > 0){
+            else if (this.draggie.position.x <= -100 && this.draggie.position.x > -600 && this.draggie.direction > 0 && window.innerWidth > 800){
                 this.dragPosition = 0;
                 this.draggie.setPosition(this.dragPosition);
                 document.getElementById('home').classList.remove('hide');
