@@ -3,7 +3,7 @@ title: Siddharth Jha
 email: mail@siddharthjha.com
 description: "A design student exploring Product, UX and Interaction who loves slick animation and frequently dabbles in code."
 baseurl: "" # the subpath of your site, e.g. /blog/
-url:  "" # the base hostname & protocol for your site
+url:  "https://www.siddharthjha.com" # the base hostname & protocol for your site
 markdown: kramdown
 
 sass:
