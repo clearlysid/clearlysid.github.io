@@ -1,10 +1,9 @@
+let winsize;
+const overlay = document.querySelector('.overlay');
 const burger = document.querySelector('.burger');
 const navLinks = document.querySelectorAll('.nav-link');
-const overlay = document.querySelector('.overlay');
-let winsize;
 const calcWinsize = () => winsize = {width: window.innerWidth, height: window.innerHeight};
 window.addEventListener('resize', calcWinsize);
-
 
 class ShapeOverlays {
     constructor(elm) {
@@ -142,33 +141,29 @@ function colourHeaderByBG() {
             l = (Math.min(r,g,b) + Math.max(r,g,b)) / 2;
     
         if (l < 128) {
-            backButton.classList.add('light');
-            burger.classList.add('light');
+            backButton.classList.add('dark');
+            burger.classList.add('dark');
             projectHeader.style.color = "white";
             window.addEventListener('scroll', () => {
                 if (window.scrollY > projectHeaderBG.offsetHeight - 50) {
-                    backButton.classList.remove('light');
-                    burger.classList.remove('light');
+                    backButton.classList.remove('dark');
+                    burger.classList.remove('dark');
                 } else if (window.scrollY < projectHeaderBG.offsetHeight){
-                    backButton.classList.add('light');
-                    burger.classList.add('light');
+                    backButton.classList.add('dark');
+                    burger.classList.add('dark');
                 }
             })    
-            } else if (l > 128){
-                projectHeader.style.color = "black";
-                backButton.classList.remove('light');
-                burger.classList.remove('light');
             }
     } else {
-        burger.classList.remove('light');
+        burger.classList.remove('dark');
     }
 }
-function burgerToggler(){
+function burgerMenu(){
     burger.addEventListener('click', () => {
         if (fluidOverlay.isAnimating) {return false;}
         fluidOverlay.toggle();
         if (fluidOverlay.isOpened === true) {
-            setTimeout( () => {burger.classList.remove('light')}, 900);
+            setTimeout( () => {burger.classList.remove('dark')}, 900);
             burger.classList.add('is-active');
             for (var i = 0; i < navLinks.length; i++) {
                 navLinks[i].classList.add('is-opened');
@@ -188,6 +183,41 @@ function delay(n){
         setTimeout(() => {
             done();
         }, n);
+    });
+}
+function homePreload(){
+    if (document.getElementById('home') == null){ return }
+    let homeFadeIn = anime.timeline();
+        homeFadeIn.add({
+            targets: '#home > *',
+            opacity: [0, 1],
+            translateX: [-100, 0],
+            duration: 500,
+            easing: "easeInOutQuad",
+            delay: anime.stagger(50)
+        }, 500)
+        .add({
+            targets: '.project-item',
+            opacity: [0, 1],
+            translateY: [100, 0],
+            rotate: [10, 0],
+            duration: 600,
+            easing: "easeInOutQuad",
+            delay: anime.stagger(100),
+        }, 700);
+}
+function lazyLoad(){
+    'use strict';
+    const objects = document.querySelectorAll("[data-lazy]");
+    console.log(objects);
+    Array.from(objects).map((item) => {
+        // Start loading image
+        const img = new Image();
+        img.src = item.dataset.lazy;
+        // Once image is loaded replace the src of the HTML element
+        img.onload = () => {
+        item.src = item.dataset.lazy;
+        };
     });
 }
 const MathUtils = {
@@ -317,9 +347,9 @@ class DraggableSlider {
 }
 
 // These scripts only need to be executed once in the site lifecycle
-
 initPointer();
 calcWinsize();
+homePreload();
 const fluidOverlay = new ShapeOverlays(overlay);
 
 barba.init({
@@ -396,8 +426,9 @@ barba.init({
 
 // And these ones need to be run at each pageload!
 function onPageLoad() {
-    burgerToggler();
+    burgerMenu();
     colourHeaderByBG();
+    lazyLoad();
     if (document.querySelector('.portfolio')){new DraggableSlider(document.querySelector('.portfolio'));}
 }
 
