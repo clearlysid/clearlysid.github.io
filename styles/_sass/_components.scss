@@ -1,64 +1,4 @@
-.burger {
-    position: fixed;
-    top: 0;
-    right: 0;
-    padding: 1rem 2rem;
-    display: inline-block;
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    overflow: visible;
-    z-index: 4;       
-}
-  
-.burger-box {
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    position: relative;
-}
-
-.burger-inner, .burger-inner::before, .burger-inner::after {
-    width: 2.1rem;
-    height: 0.16rem;
-    background-color: #000;
-    border-radius: 0.12rem;
-    position: absolute;
-    transition-property: transform;
-    transition-duration: 0.15s;
-    transition-timing-function: ease;
-    z-index: 200;
-    content: "";
-    display: block;
-}
-
-.burger-inner {top: 50%; margin-top: -0.12rem;}
-.burger-inner::before {top: -0.6rem;}
-.burger-inner::after {bottom: -0.6rem;}
-
-.overlay {
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-.overlay-path {fill: #cccccc;}
-
-
 #pointer-ring {display: none;}
-
-// certain mobile-only queries
-@media screen and (max-width: 800px) {
-    :root { font-size: 4vw; }
-    main {
-        width: 100vw;
-        overflow-x: hidden;
-    }
-}
 
 body {
     overflow-x: hidden;
@@ -89,7 +29,7 @@ footer {
     p {
         text-align: center;
         font-size: 12px;
-        opacity: 0.2;
+        opacity: 0.4 ;
     }
 
 }
@@ -111,9 +51,7 @@ footer {
 
     h1 {
         margin-top: 1rem;
-        span {
-            display: none;
-        }
+        span {display: none;}
     }
 
     p {
@@ -127,75 +65,84 @@ footer {
 }
 
 // Portfolio Styles
-
-@media screen and (max-width: 800px) {
-    .portfolio {
-        position: relative;
-        width: -moz-fit-content;
-        width: fit-content;
-    }
-    
-    .draggable {
-        height: 24rem;
-        width: 100%;
-        position: absolute;
-    }
-    
-    .project-list {
-        width: -moz-fit-content;
-        width: fit-content;
-        display: flex;
-        align-items: start;
-        position: relative;
-        pointer-events: none;
-        will-change: transform;
-    }
-    
-    .project-item {
-        height: 100%;
-        margin-right: 4rem;
-        position: relative;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        will-change: transform;
-    }
-    
-    .project-item:first-child {
-        margin-left: 4rem;
-    }
-    
-    .img-outer {
-        --imgheight: 20rem;
-        height: var(--imgheight);
-        width: calc(var(--imgheight) * 0.7);
-        overflow: hidden;
-        position: relative;
-        flex: none;
-    }
-    
-    .img-inner {
-        width: calc(100% + 2rem);
-        height: calc(100% + 2rem);
-        left: -1rem;
-        top: -1rem;
-        background-size: cover;
-        background-position: 50% 50%;
-        position: absolute;
-    }
-    
-    .project-item-title {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem;
-        user-select: none;
-        pointer-events: all;
-    }
+.portfolio {
+    position: relative;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
+.draggable {
+    height: 24rem;
+    width: 100%;
+    position: absolute;
+}
 
+.project-list {
+    width: -moz-fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    position: relative;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.project-item {
+    --imgheight: 20rem;
+    height: var(--imgheight);
+    width: calc(var(--imgheight) * 0.7);
+    margin-right: 4rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    will-change: transform;
+    overflow: hidden;
+}
+
+.project-item:first-child {
+    margin-left: 4rem;
+}
+
+.project-item:nth-child(2) {
+    height: calc(var(--imgheight) * 0.8);
+    width: var(--imgheight);
+}
+
+.project-item:last-child {
+    height: calc(var(--imgheight) * 0.9);
+    width: calc(var(--imgheight) * 0.9);
+}
+
+.project-image {
+    width: calc(100% + 2rem);
+    height: calc(100% + 2rem);
+    left: -1rem;
+    top: -1rem;
+    background-size: cover;
+    background-position: 50% 50%;
+    position: absolute;
+}
+
+.project-item-title {
+    -webkit-text-stroke: 0.6px black;
+    color: transparent;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1.2rem 1rem;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    bottom: 0;
+    text-align: center;
+    user-select: none;
+    pointer-events: all;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-item-title:hover {
+    color: black;
+    transform: scale(1.05);
+}
 
 // Blog Styles
 
@@ -239,15 +186,16 @@ footer {
         height: 36rem;
     }
 
-    .project-description {
-    }
-
     .project-metadata {
         display: flex;
         flex-direction: row;
+        h3 {
+            font-size: 1rem;
+        }
 
         p {
             padding: 0;
+            font-size: 0.8rem;
         }
     }
 
@@ -292,16 +240,28 @@ article {
     width: 100%;
 }
 
+// certain mobile-only queries
+@media screen and (max-width: 800px) {
+    :root { font-size: 4vw; }
+    main {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
 // Desktop only styles begin here
 @media only screen and (min-width: 800px) {
+    body {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
     #pointer-ring {display: initial;}
 
     #home {
         position: absolute;
         height: 100vh;
         width: 24rem;
-        display: flex;
-        flex-direction: column;
         align-items: initial;
         padding: 0;
         justify-content: center;
@@ -309,29 +269,32 @@ article {
         margin-left: 10rem;
         z-index: 2;
         opacity: 1;
+        transition: all 0.4s ease-out;
     
         .avatar {
             height: 12rem;
             width: 12rem;
-            transition: transform 0.2s ease-out, opacity 0.15s ease;
         }
 
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            transition: transform 0.2s ease-out 0.05s, opacity 0.15s ease 0.05s;
         }
     
         p {
             text-align: initial;
             width: 100%;
-            transition: transform 0.2s ease-out 0.1s, opacity 0.15s ease 0.1s;
         }
     
         p + p {
             display: initial;
-            transition: transform 0.2s ease-out 0.15s, opacity 0.15s ease 0.15s;
         }
+    }
+
+    #home.hide {
+        z-index: 0;
+        transform: translateX(-5rem);
+        opacity: 0;
     }
 
     footer {
@@ -345,15 +308,11 @@ article {
     .portfolio {
         position: relative;
         height: calc(100vh - 2.13rem);
-        width: -moz-fit-content;
-        width: fit-content;
     }
     
     .draggable {
         height: 24rem;
         top: calc(50% - 12rem);
-        width: 100%;
-        position: absolute;
         cursor: grab;
     }
     
@@ -363,63 +322,19 @@ article {
     
     .project-list {
         height: 100vh;
-        width: -moz-fit-content;
-        width: fit-content;
-        display: flex;
-        align-items: start;
-        position: relative;
-        pointer-events: none;
-        will-change: transform;
     }
-    
+
     .project-item {
-        height: 100%;
-        margin-right: 4rem;
-        position: relative;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        will-change: transform;
+        --imgheight: 30rem;
     }
     
     .project-item:first-child {
         margin-left: 40rem;
     }
-    
-    .img-outer {
-        --imgheight: 30rem;
-        height: var(--imgheight);
-        width: calc(var(--imgheight) * 0.7);
-        overflow: hidden;
-        position: relative;
-        flex: none;
-    }
-    
-    .img-inner {
-        width: calc(100% + 2rem);
-        height: calc(100% + 2rem);
-        left: -1rem;
-        top: -1rem;
-        background-size: cover;
-        background-position: 50% 50%;
-        position: absolute;
-    }
-    
-    .project-item-title {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem;
-        user-select: none;
-        pointer-events: all;
-    }
 
     .project-header {
-        // height: 36rem;
-        padding: 6rem 0;
         max-width: 1200px;
-        margin: auto;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
@@ -472,7 +387,7 @@ article {
         }
     
         p, li {
-            opacity: 0.8;
+            opacity: 0.6;
             font-size: 20px;
         }
 

@@ -2,7 +2,7 @@
 layout: default
 ---
 <header id="home"> 
-    <img class="avatar" src="/assets/phone.jpg" alt="">
+    <img class="avatar" src="/assets/avatar.jpg" alt="">
     <h1>Hello, I'm Sid<span>dharth</span>!</h1>
     <p>A design student exploring Product, UX and Interaction who loves slick animation and frequently dabbles in code.</p>
     <p>I’m seeking an Internship for Summer 2020. If you know of an opportunity that I'd be a good fit for, please drop me an email.</p>
@@ -14,10 +14,14 @@ layout: default
         {% for item in site.portfolio %}
         <div class="project-item">
             <div class="project-image" style="background-image:url('{{ item.thumbnail }}'); opacity: 0.9;"></div>
-            <a class="project-link" href="{{ item.url }}">
-                <h2 class="project-item-title">{{ item.title }}</h2>
-            </a>
+            <a class="project-link" href="{{ item.url }}"><h2 class="project-item-title">{{ item.title }}</h2></a>
         </div>
         {% endfor %}
+        <div class="project-item">
+            <div class="project-image" style="background-image:url('/assets/graphic-showcase.jpg'); opacity: 0.9;"></div>
+            <a class="project-link" href="https://www.behance.net/siddharth-jha">
+                <h2 class="project-item-title">Graphic Design</h2>
+            </a>
+        </div>
     </div>
 </div>
