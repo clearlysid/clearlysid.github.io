@@ -1,14 +1,14 @@
 ---
 title: Simply Spent
 work: UX/UI Design
-thumbnail: /assets/thumbs/simplyspent.png
-feature: <img src="/assets/thumbs/ui.png">
-color: 0d6b56
+thumbnail: /assets/thumbs/simplyspent.jpg
+feature: <img src="/assets/thumbs/simplyspent.jpg">
+color: e4e3cf
 
 description:
   - Despite access to so many expense-tracking platforms, I was intrigued by how most teens in the country didn’t use any of them. In this project, I set out to find the reasons why  …and hopefully fix them if I could.
 
-  - “Simply Spent” is an app concept, aimed at providing a frictionless experience tracking day to day transactions for young adults in India.
+  - “Simply Spent” is an app concept, aimed at providing a frictionless experience tracking day to day transactions for young adults in India. I'm still working on some prototypes, so please keep an eye on this page for more!
 
 metadata:
   - name: Role

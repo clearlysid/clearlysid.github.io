@@ -1,9 +1,9 @@
 ---
 title: The EMF Project
 work: Motion Design
-thumbnail: /assets/thumbs/print.png
+thumbnail: /assets/thumbs/motion.jpg
 feature: <div class="iframe-container"><iframe src="https://player.vimeo.com/video/391774451" frameborder="0" allowfullscreen></iframe></div>
-color: 0B1533
+color: b4ddf3
 
 description:
     - The International EMF Project is an initiative by the World Health Organization to assess possible health concerns on exposure to Electromagnetic Frequencies.
