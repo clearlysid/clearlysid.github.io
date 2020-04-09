@@ -1,26 +1,25 @@
 ---
 layout: default
 ---
-<header class="project-header">
-    <div class="project-background" style="background-color:#{{ page.color }}"></div>
-    <h1 class="project-title">{{ page.title }}</h1>
-
-    {% for item in page.description %}
+<header style="background-color:#{{ page.color }}">
+    <div class="project-header">
+        <h1 class="project-title">{{ page.title }}</h1>
+        {% for item in page.description %}
         <p class="project-description">{{ item }}</p>
-    {% endfor %}
-
-    <div class="project-metadata">
-        {% for item in page.metadata %}
-        <div style="padding-right: 2rem;">
-            <h3>{{ item.name }}</h3>
-            {% for item in item.items %}
-            <p>{{ item }}</p>
+        {% endfor %}
+        <div class="project-metadata">
+            {% for item in page.metadata %}
+            <div style="padding-right: 2rem;">
+                <h3>{{ item.name }}</h3>
+                {% for item in item.items %}
+                <p>{{ item }}</p>
+                {% endfor %}
+            </div>
             {% endfor %}
         </div>
-        {% endfor %}
     </div>
-
-    <div class="project-feature">{{ page.feature }}</div>
+    <!-- <div class="project-background"></div> -->
+    <!-- <div class="project-feature">{{ page.feature }}</div> -->
 </header>
 
 <a href="{{ site.url }}" class="back-button">
