@@ -136,6 +136,7 @@ footer {
 }
 
 .project-item-label {
+    font-family: 'Noah', sans-serif;
     position: absolute;
     bottom: 0.6rem;
     opacity: 0.2;
@@ -178,6 +179,9 @@ footer {
         }
     }   
 }
+
+
+
 
 // Project Styles
 
@@ -233,6 +237,16 @@ article {
     }
 }
 
+.post-header {
+    margin: 0 auto;
+    padding: 0 2.8rem;
+    margin-top: 6rem;
+
+    h1 {
+        padding-bottom: 0;
+    }
+}
+
 .iframe-container {
     overflow: hidden;
     padding-top: 56.25%;
@@ -246,6 +260,18 @@ article {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+figcaption {
+    font-size: 0.8rem;
+    text-align: center;
+    opacity: 0.4;
+    margin-bottom: 1rem;
 }
 
 // certain mobile-only queries
@@ -306,7 +332,7 @@ article {
     }
 
     footer {
-        position: static;
+        position: relative;
         padding: 0;
         bottom: 0;
         left: 0;
@@ -413,7 +439,7 @@ article {
     
         p, li {
             opacity: 0.6;
-            font-size: 20px;
+            font-size: 1.11rem;
         }
 
         h2 {
@@ -428,6 +454,35 @@ article {
                 width: 100%;
                 margin: 0 auto;
             }
+        }
+    }
+
+    .post-header {
+        max-width: 740px;
+        margin: 0 auto;
+        margin-top: 6rem;
+        padding: 0;
+
+        h1 {
+            padding-bottom: 0;
+        }
+    }
+
+    .blog {
+        figure {
+            max-width: 1000px;
+            width: 100%;
+            margin: 2rem auto;
+            overflow: hidden;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                padding: 0;
+            }
+
+            
         }
     }
 
