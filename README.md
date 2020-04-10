@@ -13,4 +13,3 @@
 - [x] Add a Blog section
 - [ ] Image Alt Texts
 - [ ] Loader at Launch
-- [ ] 
