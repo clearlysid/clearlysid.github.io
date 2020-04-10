@@ -11,21 +11,18 @@ permalink: /blog/
 
 <main class="blog-home">
 
-
     <h1>Siddharth's Blog</h1>
     <ul class="post-list">
         {% for post in site.posts %}
         <li>
             <a href="{{ post.url }}">
                 <h3>{{ post.title }}</h3>
-                <p>{{ post.excerpt }}</p>
+                <p style="opacity: 0.6;">{{ post.summary }}</p>
             </a>
+            <hr style="width: 60%; margin: 1rem 0; opacity: 0.2;">
         </li>
         {% endfor %}
     </ul>
-
-
-
 
 </main>
 
