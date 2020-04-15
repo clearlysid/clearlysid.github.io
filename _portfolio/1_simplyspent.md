@@ -1,5 +1,6 @@
 ---
 title: Simply Spent
+slug: simply-spent
 work: UX/UI Design
 thumbnail: /assets/thumbs/simplyspent.jpg
 feature: <img src="/assets/thumbs/simplyspent.jpg">

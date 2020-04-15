@@ -1,5 +1,6 @@
 ---
 title: The EMF Project
+slug: emf-project
 work: Motion Design
 thumbnail: /assets/thumbs/motion.jpg
 feature: <div class="iframe-container"><iframe src="https://player.vimeo.com/video/391774451" frameborder="0" allowfullscreen></iframe></div>
