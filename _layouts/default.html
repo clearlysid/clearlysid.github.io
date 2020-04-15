@@ -6,7 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>
             {% if page.title %}
-                {{ page.title }} | Siddharth's Portfolio
+                {% case page.layout %}
+                {% when "post" %}
+                    {{ page.title }} | Siddharth's Blog
+                {% when "project" %}
+                    {{ page.title }} | Siddharth's Portfolio
+                {% else %}
+                    {{ page.title }} | Siddharth's Website
+                {% endcase %}
             {% else %}
                 {{ site.title }} | Interaction & Product Designer
             {% endif %}
