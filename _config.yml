@@ -11,6 +11,9 @@ sass:
   style: compressed # for minifying css
 
 collections:
+  posts:
+    output: true
+    permalink: /blog/:title/
   portfolio: 
     output: true
     permalink: /projects/:title/
