@@ -20,6 +20,8 @@ a:focus {text-decoration: none; color:inherit;}
 a:hover, a:active {text-decoration: none; color:inherit;}
 
 body {
+    min-height: 100vh;
+    position: relative;
     background-color: var(--background-color);
     overflow-x: hidden;
     font-family: $body-font;
@@ -55,6 +57,12 @@ h4 {
     line-height: 1.25;
     letter-spacing: -0.02em;
     font-weight: 400;
+}
+
+h5 {
+    font-size: 1rem;
+    line-height: 1.1;
+    font-weight: normal;
 }
 
 @media only screen and (max-width: 800px) {

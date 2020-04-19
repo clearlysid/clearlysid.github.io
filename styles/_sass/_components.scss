@@ -158,7 +158,8 @@ footer {
 .blog-home {
     max-width: 800px;
     width: 80vw;
-    margin: 8rem auto;
+    padding: 8rem 0;
+    margin: 0 auto;
     
     .post-list {
         list-style: none;
@@ -168,14 +169,16 @@ footer {
             margin: 1rem 0;
         }
 
-        h3 {
-            transition: border 0.2s ease;
-            border-bottom: 2px solid transparent;
+        h2 {
             display: inline-block;
+            position: relative;
+            transition: all 0.3s ease;
+            transform-origin: left;
+            transform: scale(1);
         }
 
-        a:hover h3 {
-            border-bottom: 2px solid black;
+        a:hover h2 {
+            transform: scale(1.1);
         }
     }   
 }
@@ -332,7 +335,7 @@ figcaption {
     }
 
     footer {
-        position: relative;
+        position: absolute;
         padding: 0;
         bottom: 0;
         left: 0;
@@ -447,12 +450,14 @@ figcaption {
         }
     
         figure{
-            width: 800px;
+            width: 740px;
             margin: 0 auto;
 
             img {
+                object-fit: cover;
+                height: 100%;
                 width: 100%;
-                margin: 0 auto;
+                padding: 0;
             }
         }
     }
@@ -470,7 +475,7 @@ figcaption {
 
     .blog {
         figure {
-            max-width: 1000px;
+            max-width: 740px;
             width: 100%;
             margin: 2rem auto;
             overflow: hidden;
