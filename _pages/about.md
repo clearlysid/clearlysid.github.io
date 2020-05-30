@@ -5,9 +5,7 @@ permalink: /about/
 image: '/assets/blog/udaipur.jpg'
 ---
 
-Hello, my name is Siddharth Jha. I like being at the center of events, being free and enjoying every moment. Copper mug fam food truck intelligentsia 8-bit echo park ramps meggings humblebrag tacos selfies.
-
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity.
+Hello, my name is Siddharth Jha. I'm a Design Student based in Ahmedabad.
 
 ***
 

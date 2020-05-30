@@ -1,17 +1,7 @@
 title: Siddharth Jha | Interaction and Product Designer
 description: A design student exploring Product, UX and Interaction who loves slick animation and frequently dabbles in code.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-
-# Contact links
-contact:
-  - name: Twitter
-    link: https://twitter.com/clearlysid
-  - name: Instagram
-    link: https://instagram.com/clearlysid
-  - name: Behance
-    link: https://www.behance.net/siddharth-jha
-
+url: "https://www.siddharthjha.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Google Analytics
 google-analytics: # add your identifier. For example UA-99631805-1.
