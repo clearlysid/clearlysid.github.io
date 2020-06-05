@@ -32,10 +32,6 @@
   @media (max-width: $mobile) { font-size: 28px; }
 }
 
-
-
-
-
 .author__bio {
   max-width: 450px;
   margin: 0 auto 20px;
@@ -43,11 +39,24 @@
   line-height: 27px;
   text-align: center;
   color: $gray-blue;
+  svg {transform: scale(1); transition: all 0.3s ease; fill: $gray-blue;}
+}
+
+.author__bio > a {
+	color: $gray-blue;
+}
+
+.author__bio > a:hover {
+	color: black;
+	svg {
+		transform: scale(1.2);
+		fill: #EC1943;
+	}
 }
 
 .socials {
 	display: flex;
-	width: 160px;
+	width: min-content;
 	justify-content: space-between;
 	margin: 0 auto;
 	margin-bottom: 30px;
@@ -56,6 +65,13 @@
 .socials > a {
 	transition: all 150ms ease-in-out;
 	opacity: 0.2;
+	padding: 0 10px;
+}
+
+.socials > a > svg {
+	height: 20px;
+	width: 20px;
+	fill: black;
 }
 
 .socials > a:hover {
@@ -79,7 +95,7 @@ a.say-hello {
   transition: all 150ms ease-in-out;
   &:hover {
     transform: translate(0px, -5px);
-    box-shadow: 0 10px 20px -4px rgba(77, 168, 204, 0.3);
+    box-shadow: 0 10px 20px -4px rgba(0, 0, 0, 0.3);
   }
 }
 
