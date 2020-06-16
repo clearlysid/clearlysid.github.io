@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: 'Lora', Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   color: $dark;
   background-color: #fff;
@@ -37,9 +37,9 @@ h4,
 h5,
 h6 {
   margin: 45px 0 30px;
-  font-family: 'Lora', Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Lora', 'Times New Roman', serif;
   line-height: initial;
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: 0.1px;
 }
 
@@ -69,7 +69,7 @@ h6 {
 
 blockquote {
   padding-left: 30px;
-  font-family: 'Lora', Georgia, Times, serif;
+  font-family: 'Lora', Georgia, serif;
   font-weight: 400;
   font-style: italic;
   font-size: 18px;
