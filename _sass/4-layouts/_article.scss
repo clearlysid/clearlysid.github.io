@@ -7,6 +7,7 @@
 .article__image-box {
   display: table;
   margin-right: 30px;
+  align-self: center;
   @media (max-width: $mobile) {
     display: none;
   }
